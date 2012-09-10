@@ -1,0 +1,357 @@
+/*
+ *  ControlPanel
+ */
+
+.border-2px {
+	border-width:3px;
+}
+
+.border-4px {
+	border-width:5px;
+}
+
+.border-6px {
+	border-width:7px;
+}
+
+.border-8px {
+	border-width:8px;
+}
+
+
+.controlPanelBackground {
+	background-color:transparent;
+	border:0px none #000000;
+}
+
+.controlPanel {
+	background-color:rgb(48,48,64);	
+	background-color:rgba(48,48,64, 0.6);
+}
+
+.controlPanelButton {
+	background-image:none;
+	border:0px none #000000;
+	/* border-color:#303040; */
+	background-color:transparent;	
+}
+
+.controlPanel-tiled {
+	padding:0px;
+	margin:4px;
+}
+
+.controlPanelPopup {
+	border-color:rgb(80,112,192); /* #5070C0; */
+	border-color:rgba(80,112,192, 0.6);
+	background-color:transparent;
+	padding:0px;
+	z-index:20;
+}
+
+
+.progressBar {
+	background-color:rgb(64, 64, 128);  /* #404080; */
+	background-color:rgba(64, 64, 128, 0.5);
+	color:#C0D0FF;
+	font-size:xx-small;
+	text-align:left;
+	overflow:visible;
+}
+
+.progressBar-3px {
+	height:3px;
+	font-size:3px;
+}
+
+.progressBar-4px {
+	height:4px;
+	font-size:4px;
+}
+
+.progressBar-8px {
+	height:8px;
+	font-size:8px;
+}
+
+.progressBar-9px {
+	height:9px;
+	font-size:9px;
+}
+
+.progressBar-10px {
+	height:10px;
+	font-size:10px;
+}
+
+.progressBar-12px {
+	height:12px;
+	font-size:12px;
+}
+
+.progressBar-16px {
+	height:16px;
+	font-size:16px;
+}
+
+
+.progressFrame {
+	border:2px solid #B0B0B0;
+	border:2px solid rgba(176,176,176,0.6);
+	background-color:E0E0E0;
+	background-color:rgba(224, 224, 224, 0.5);
+}
+
+.progressFrame-thin {
+	border:1px solid #B0B0B0;
+	border:1px solid rgba(176,176,176,0.6);
+	background-color:white;
+	background-color:rgba(255, 255, 255, 0.5);
+}
+
+
+
+/*
+ *  Caption
+ */ 
+
+.caption {
+	text-align:center;
+	font-size:9px;
+}
+
+.caption-tiled {
+	width:100%;
+	color:white;
+}
+
+.caption-overlay {
+	color:white;
+	background-color:transparent;
+/*     text-shadow: 0.1em 0.1em 0.1em black; 
+    text-shadow: -1px 0 black, 0 1px black,
+      1px 0 black, 0 -1px black;
+    filter: dropshadow(color=#000000,offX=2,offY=2); */  
+	/* border:1px solid #FF0000; debugging */
+}
+
+.caption-overlay-shadow {
+	color:black;
+	/* background-color:transparent; */
+	/* border:1px solid #00FF00; debugging */ 		
+}
+
+.captionPopup {
+	background-color:transparent;
+	border:0px none #000000;
+	z-index:10;	
+}
+
+.captionPopup-oldBrowser {
+	background-color:black;
+	/* border:0px none #000000; */
+	z-index:10;			
+}
+
+.caption-9px  { font-size:9px; }
+.caption-10px {	font-size:10px; }
+.caption-12px {	font-size:12px; }
+.caption-14px {	font-size:14px; }
+.caption-18px {	font-size:18px; }
+.caption-24px { font-size:24px; }
+.caption-32px { font-size:32px; }
+.caption-40px { font-size:40px; }
+.caption-48px { font-size:48px; }
+.caption-64px { font-size:64px; }
+
+
+/*
+ *  Filmstrip
+ */
+
+.controlFilmstripButton {
+	background-image:none;
+	border:0px none #000000;
+	border-color:#303040;
+	background-color:transparent;
+}
+
+.controlFilmstripBackground {
+	background-color:rgb(16,16,32);
+	background-color:rgba(16,16,32, 0.6);
+}
+
+/* currently not in use
+.controlFilmstripOverlayBackground {
+	background-color:#000000; 
+}*/
+
+/* border-width must be reflected in variable Filmstrip.borderwidth ! */
+.filmstripPanel {
+	background-color:transparent;	
+	border:0px none #000000;
+}
+
+.filmstripEnvelope {
+	background-color:transparent;
+/*	border-color:transparent;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-top-style:none;
+	border-bottom-style:none;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-top-width:0px;
+	border-bottom-width:0px;	*/
+	border:0px none #000000;
+}
+
+.filmstrip {
+	border:2px solid transparent; /* #101020; */
+	cursor:default;	
+}
+
+.filmstrip-selectable{
+	border:2px solid transparent; /* #101020; */
+	cursor:pointer;
+}
+
+.filmstripHighlighted {
+	border:2px solid #D0D0D8; /* #D0D090; */
+	cursor:default;	
+}
+
+/*.filmstripHighlighted-selectable {
+	border:2px ridge #D0D090;
+	cursor:default;	
+}*/
+
+.filmstripTouched {
+	border:2px solid #505058; /* #F0A040; */
+}
+
+.filmstripPressed {
+	border:2px solid #E0E0E8; /* #A07040; */
+}
+
+.filmstripPopup {
+	border:0px none #000000;
+	background-color:transparent;
+	padding:0px;
+	z-index:20;
+}
+
+
+/*
+ *  Gallery
+ */
+
+.gallery {
+	background-color:#FFFFF0;
+	text-align:center;
+}
+
+.galleryBottomLine {
+	font-size:80%;
+	text-align:center;
+	padding:4px;
+	color:black;
+}
+
+.galleryBottomSeparator {
+	border:1px outset #50A090;
+	width:90%;
+	height:0px;
+	background-color:#50A090;
+}
+
+.galleryImage {
+	border:2px solid #EFEFEF;  /* #A07040; #E0C0B0; */ 
+	cursor:pointer;
+}
+
+.galleryTouched {
+	border:2px solid #BFBFB8;  /*  #CF8020; */
+	cursor:pointer;
+}
+
+.galleryPressed {
+	border:2px solid #AFAFA8; /* #A07040; */
+	cursor:pointer;	
+}
+
+.galleryRow {
+
+}
+
+.galleryStartButton {
+	margin-top:10px;
+}
+
+.gallerySubTitle {
+	font-size:120%;
+	text-align:center;
+	padding:4px;
+	color:black;
+}
+
+.galleryTitle {
+	font-size:200%;
+	text-align:center;
+	padding:10px;
+	color:black;
+}
+
+.galleryTopSeparator {
+	border:1px outset #50A090;
+	width:90%;
+	height:0px;
+	background-color:#50A090;	
+}
+
+
+/*
+ *  Other
+ */
+
+.icon {
+	
+}
+
+.imageBackground {
+	background-color:#303040;
+}
+
+/* .imageClickable {
+	cursor:pointer;
+}*/
+
+
+.slide {
+	z-index:0;
+}
+
+
+.tiled {
+	background-color:#303040;
+	width:100%;
+	height:100%;
+}
+
+.tiledSeparator {
+	border:0px solid black;
+	width:80%;
+	height:2px;
+	background-color:#509050;	
+}
+
+.tooltip {
+	background-color:#FFF8A0;
+	border:1px solid #302000;
+	font-size:80%;	
+	z-Index:30;
+}
+
+.debugger {
+	z-index:100;
+}

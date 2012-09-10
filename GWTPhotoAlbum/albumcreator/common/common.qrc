@@ -1,0 +1,7 @@
+<RCC>
+    <qresource>
+        <file>data/htmlchunks.json</file>
+        <file>data/GWTPhotoAlbum-Deploy.qa</file>
+        <file>data/VERSION.txt</file>
+    </qresource>
+</RCC>

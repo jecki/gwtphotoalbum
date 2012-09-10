@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/:">
+        <file>../images/filenew.png</file>
+        <file>../images/filesave.png</file>
+        <file>../images/fileopen.png</file>
+        <file>../images/exit.png</file>
+        <file>../images/1uparrow.png</file>
+        <file>../images/editundo.png</file>
+        <file>../images/editcopy.png</file>
+        <file>../images/editcut.png</file>
+        <file>../images/editpaste.png</file>
+        <file>../images/editredo.png</file>
+        <file>../images/1leftarrow.png</file>
+        <file>../images/1rightarrow.png</file>
+        <file>../images/image_placeholder.png</file>
+    </qresource>
+</RCC>

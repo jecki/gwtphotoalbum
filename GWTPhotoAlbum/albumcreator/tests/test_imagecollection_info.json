@@ -1,0 +1,10 @@
+{
+  "bottom line": "<a href=\"http://www.eckhartarnold.de\">www.eckhartarnold.de</a><br />", 
+  "subtitle": "Pictures from Bayreuth and abroad", 
+  "title": "GWTPhotoAlbum Demonstration",
+  "image clickable": "true",
+  "disable scrolling": "true",
+  "layout type":"tiled",
+  "layout data":"IOF",
+  "presentation type":"gallery"  
+}

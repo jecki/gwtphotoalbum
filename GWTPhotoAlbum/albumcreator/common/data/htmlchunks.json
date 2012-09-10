@@ -1,0 +1,162 @@
+{
+
+"doctypeHTML5" : "<!DOCTYPE html>",
+
+"doctypeXHTML11" : """<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">""",
+
+"doctypeWAP": """<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">""",
+
+
+"checkJSPageHTML" : """$DOCTYPE
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>GWTPhotoAlbum Redirect Page</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="generator"  content="GWTPhotoAlbum creator" />
+  <script type="text/javascript">
+  <!--
+  window.location = "$ALBUM"
+  //-->
+  </script>
+</head>
+<body>
+<div style="text-align:center;">
+<h1>GWTPhotoGallery</h1>
+<p>Sorry, but your browser does not seem to support javascript. Without
+javascript the photo album cannot be displayed. If you would like to
+try it none the less, please click on the link below:
+</p>
+<br />
+<p><a href="$ALBUM">javascript version (recommended)</a></p>
+</div>
+</body>
+</html>
+""",
+
+
+"redirectPageHTML" : """$DOCTYPE
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>GWTPhotoAlbum Redirect Page</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="generator"  content="GWTPhotoAlbum creator" />
+  <script type="text/javascript">
+  <!--
+  window.location = "$ALBUM"
+  //-->
+  </script>
+  <noscript>
+  <meta http-equiv="REFRESH" content="0;noscript_$ENTRY.html">
+  </noscript>
+</head>
+<body>
+<div style="text-align:center;">
+<h1>GWTPhotoGallery</h1>
+<p>Sorry, but your browser does not support automatic redirection to another html-page.
+Please, use one of the links below to get to the photo album:
+</p>
+<br />
+<p><a href="$ALBUM">javascript version (recommended)</a></p>
+<p><a href="noscript_$ENTRY.html">javascript free version</a></p>
+</div>
+</body>
+</html>
+""",
+
+"galleryHTML" : """$DOCTYPE
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>$TITLE</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="generator"  content="GWTPhotoAlbum creator" />  
+  <link rel="stylesheet" type="text/css" href="GWTPhotoAlbum.css" />     
+</head>
+<body>
+<h1 style="text-align:center;">$TITLE</h1>
+<h2 style="text-align:center;">$SUBTITLE</h2>
+<table align="center" cellpadding="0" cellspacing="0">
+$GALLERYROWS
+</table>
+<p style="text-align:center;">$BOTTOMLINE</p>
+<br /><br />
+<div style="text-align:center;">
+  <a style="color:#4090FF; text-size:10px;" href="GWTPhotoAlbum.html#Gallery">javascript version</a>
+</div><br /> 
+</body>
+</html>
+""",
+
+"galleryCellHTML" : """<td align="center" valign="middle" width="200" height="200">
+  <a href="$LINK">
+  <img src="$IMG" alt="$IMG" class="galleryImage" />
+  </a>
+</td>
+""",
+
+"galleryEmptyCellHTML" : """<td align="center" valign="middle" width="200" height="200">
+
+</td>
+""",
+
+"imagePageHTML" : """$DOCTYPE
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>$TITLE</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="generator"  content="GWTPhotoAlbum creator" />  
+  <link rel="stylesheet" type="text/css" href="GWTPhotoAlbum.css" />     
+</head>
+<body class="imageBackground">
+    <div style="text-align:center;">
+    $PANEL
+    </div>
+    <div style="text-align:center; padding:5px;">
+    $IMAGE
+    </div>
+    <div class="caption-tiled" style="text-align:center;">
+    $CAPTION
+    </div>
+    <br /><br /><br />
+    <div style="text-align:center;">
+    <a style="color:#40A0FF; text-size:9px;" href="GWTPhotoAlbum_xs.html#Slide_$SLIDENR">javascript version</a>
+    </div><br />
+</body>
+</html>
+""",
+
+"panelHTML" : """<table align="center" cellspacing="0" cellpadding="0">
+<tr>
+  <td>
+    <a href="$BACKLINK">
+    <img src="icons/back_32.png" alt="back" width="16" height="32" border="0" />
+    </a>
+  </td>
+  <td>&nbsp;</td>
+  <td>
+  $GALLERYBUTTON
+  </td>
+  <td>&nbsp;</td>
+  <td>
+    <a href="$NEXTLINK">  
+    <img src="icons/next_32.png" alt="back" width="16" height="32" border="0" />
+    </a>    
+  </td>
+</tr>
+</table>
+""",
+
+"galleryButtonHTML" : """<a href="noscript_gallery.html">
+<img src="icons/gallery_32.png" alt="back" width="16" height="32" border="0" />
+</a>
+""",
+
+"imageWithLinkHTML" : """<a target="_blank" href="original_size/$IMG">
+<img src="$SIZE/$IMG" alt="$IMG not found!" style="pointer:cursor; border:0px none #000000;" />
+</a>
+""",
+
+"imageHTML" : """<img src="$SIZE/$IMG" alt="$IMG not found!" style="border:0px none #000000;" />"""
+
+}

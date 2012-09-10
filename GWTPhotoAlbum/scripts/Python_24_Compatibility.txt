@@ -1,0 +1,9 @@
+For Python 2.4/2.5 compatibility this directory contains a file "zipfile.py" 
+and a sub-directory names "json". The "zipfile.py" and the files in the 
+sub-directory "json" are modules from the Python 2.6 distribution which
+are included here so that the scripts also run with older Python 
+versions, i.e. Python 2.4 and above. The files "decoder.py" and
+"encoder.py" have been backported for compatibility with Python 2.4/2.5.
+Please note that these file are not under the Apache 2.0 license but 
+under the PSF ("Python Software Foundation") license!
+

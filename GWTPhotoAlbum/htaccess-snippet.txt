@@ -1,0 +1,17 @@
+<Files *.nocache.*>
+  ExpiresActive on
+  ExpiresDefault "now"
+  Header merge Cache-Control "public, max-age=0, must-revalidate"
+</Files>
+
+
+<Files *.cache.*>
+  ExpiresActive on
+  ExpiresDefault "now plus 1 year"
+</Files>
+
+<Files *.json>
+  ExpiresActive on
+  ExpiresDefault "now"
+  Header merge Cache-Control "public, max-age=0, must-revalidate"
+</Files>

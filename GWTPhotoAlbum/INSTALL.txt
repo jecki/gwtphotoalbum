@@ -1,0 +1,189 @@
+Installing GWTPhotoAlbum from GWTPhotoAlbum-fat-sources-VERSION.tgz
+-------------------------------------------------------------------
+
+A. Requirements and Dependencies:
+
+
+A.1: AJAX part of GWTPhotoAlbum
+
+The AJAX part of GWTPhotoAlbum is realized with the google web 
+toolkit. There is a  pre-compiled version of the AJAX part of 
+GWTPhotoAlbum in the "scripts/GWTPhotoAlbum-Deploy.zip" file. 
+
+If you want to compile the AJAX part of GWTPhotoAlbum yourself, 
+you need to install the google web toolkit first:
+
+1. google web toolkit version 2.4 or higher:
+   https://developers.google.com/web-toolkit/
+   
+   (This may require the installation of further
+    software like a java virtual machine, an internet
+    browser and the Apache ant build tool.)
+   
+   
+A.2: GWTPhotoAlbum creator python script
+   
+In order to run the GWTPhotoAlbumCreator.py program to generate
+web galleries you additionally need the following software:
+
+(GWTPhotoAlbumCreator.py can be run without compiling the AJAX
+part first as it already contains the compiled AJAX scripts.)
+   
+2. The Python programming language version 2.6 or higher:
+   www.python.org
+   
+3. The python imaging library version 1.1.7 or higher:
+   http://www.pythonware.com/products/pil/
+   
+4. The pyexiv2 library version 1.3 or higher (probably 1.3 works best):
+   http://tilloy.net/dev/pyexiv2/
+
+
+A.3: C++ version of an album creator programm and plugins for external
+     photo management software
+
+The development of a C++ replacement of GWTPhotoAlbumCreator.py as well
+as plugings for common photo management software is under way. The C++
+part is realized with the Qt toolkit. The sources for the C++ replacement 
+and plugins can be found under the  ubdirectory "albumcreator".
+
+1. Qt toolkit version 4.6 or higher:
+   https://developers.google.com/web-toolkit/
+   
+2. Furthermore, the boost::crc library is needed: 
+   http://www.boost.org/doc/libs/1_49_0/libs/crc/
+
+3. For the kipi-plugin also the KDE libraries and headers are needed. Find 
+   out more on:
+   http://www.kde.org
+   
+   On Linux systems it is the easiest to just install the KDE and kipi 
+   development libraries with the standard package manager of your 
+   linux distribution.
+
+
+
+
+B. Installing and running GWTPhotoAlbum:
+
+
+1. Download the latest fat source package: 
+   
+   GWTPhotoAlbum-fat-sources-VERSION.tgz
+   
+   from the project website: 
+   
+   http://code.google.com/p/gwtphotoalbum/
+   
+   or check out the subversion repository from there!
+
+
+2. Create a new google web toolkit project by entering the command
+   on the shell:
+
+   webAppCreator -out GWTPhotoAlbum de.eckhartarnold.client.GWTPhotoAlbum
+
+
+3. Extract the GWTPhotoAlbum sources with the command:
+   
+   tar --overwrite -xzvf GWTPhotoAlbum-fat-sources-VERSION.tar.gz
+   
+   
+4. Change to the GWTPhotoAlbum directory with:
+
+   cd GWTPhotoAlbum
+   
+   
+5. View the demo gallery with the command:
+
+   ant devmode   
+   
+   
+
+
+C. Installing the kipi-plugin:
+
+
+1. Download the latest kipi-plugin source package:
+   kipiplugin_webslideshow-VERSION.tgz
+
+   from the project website
+   
+   http://code.google.com/p/gwtphotoalbum/
+   
+   or check out the subversion repository from there!
+   
+      
+2. Run qmake:
+   
+   qmake kipi-plugin.pro
+
+ 
+3. Run make:
+
+   make 
+   
+   Optionally, you can also run "make debug" instead.
+   
+   
+4. Change to the albumcreator/kipiplugin_wbslideshow directory and run:
+
+   sudo make install
+
+
+
+
+D. Creating a web slide show (without using the kipi-plugin):
+
+Change to the "scripts" sub-directory of the "GWTPhotoAlbum" main 
+directory tree and enter the command from the shell:
+
+python GWTPhotoAlbumCreator.py
+
+
+
+
+
+E. Compiling the C++ replacement (or what there exists of it so far) for 
+   GWTPhotoAlbumCreator.py 
+
+
+1. Download the sources from svn:
+
+   svn checkout http://gwtphotoalbum.googlecode.com/svn/trunk/ gwtphotoalbum-read-only
+   
+   
+2. Change to the albumcreator subdirectory and run:
+   
+   qmake
+   make
+   
+
+3. Run albumcreator/quickalbum/quickalbum to create photoalbums. Or
+   install the kipi-plugin by running "make install" in the 
+   "albumcreator/kipiplugin_webslideshow" subdirectory. 
+
+
+
+
+F. Changing the GWTPhotoAlbum AJAX code:
+
+
+1. Change the code as you like (Apache 2.0 license :-) ). 
+   I recommend using a powerful integrated development
+   environment like eclipse.
+
+
+2. Compile the code by simply running this command from the
+   main directory:
+  
+   ant
+    
+
+3. In the "scripts" sub-directory re-run the "genDeploymentPackage.py" 
+   script to update the AJAX code that is deployed by 
+   "GWTPhotoAlbumCreator.py". Just type:
+   
+   python genDeploymentPackage.py
+   
+

@@ -1,0 +1,44 @@
+# ============================================================
+#
+# THIS CMAKE MAKEFILE IS A STUB AND HAS NOT YET BEEN TESTED!!!
+#
+# This file is GOTING TO BE a part of kipi-plugins project
+# http://www.digikam.org
+#
+# Date        : 2012-02-26
+# Description : a GWTPhotoAlbum plugin 
+			    (http://code.google.com/p/gwtphotoalbum/)
+#
+# Copyright (C) 2012 by Eckhart Arnold <eckhart_arnold@yahoo.de>
+#
+# This program is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General
+# Public License as published by the Free Software Foundation;
+# either version 2, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# ============================================================ */
+
+SET(kipiplugin_webslideshow_PART_SRCS kipiplugin_webslideshow.cpp)
+
+KDE4_ADD_PLUGIN(kipiplugin_webslideshow ${kipiplugin_webslideshow_PART_SRCS})
+
+TARGET_LINK_LIBRARIES(kipiplugin_webslideshow 
+                      ${KDE4_KPARTS_LIBS} 
+                      ${QT_AND_KDECORE_LIBS} 
+                      ${KIPI_LIBRARIES} 
+                      ${KEXIV2_LIBRARIES} 
+                      ${KDCRAW_LIBRARIES}
+                      kipiplugins
+                     )
+
+INSTALL(TARGETS kipiplugin_webslideshow DESTINATION ${PLUGIN_INSTALL_DIR})
+
+INSTALL(FILES kipiplugin_webslideshow.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+
+ADD_SUBDIRECTORY(common)
+ADD_SUBDIRECTORY(common_ui)

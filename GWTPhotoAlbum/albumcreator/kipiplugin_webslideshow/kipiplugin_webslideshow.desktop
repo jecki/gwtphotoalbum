@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Web Slideshow
+Name[de]=Internet Diashow
+Comment=A tool to export an image collection as a dynamic HTML/Javascript slide show that can watched with an internet browser
+Commend[de]=Ein Werkzeug, um eine Bildersammlung als Internet-Diashow zu exportieren, basierend auf HTML und Javascript.
+Type=Service
+Icon=applications-internet
+ServiceTypes=KIPI/Plugin
+X-KDE-Library=kipiplugin_webslideshow
+author=Eckhart Arnold, eckhart_arnold@yahoo.de

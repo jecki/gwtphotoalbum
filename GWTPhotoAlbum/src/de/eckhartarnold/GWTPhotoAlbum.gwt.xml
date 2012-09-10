@@ -1,0 +1,37 @@
+<module rename-to="GWTPhotoAlbum">
+
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.google.gwt.user.User' />
+
+	<!-- Inherit additional components like the tooltip class -->
+	<inherits name="com.gwt.components.User" />
+
+	<!-- Inherit the default GWT style sheet. You can change -->
+	<!-- the theme of your GWT application by uncommenting -->
+	<!-- any one of the following lines. -->
+	<!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
+	<inherits name='com.google.gwt.user.theme.chrome.Chrome' />
+	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/> -->
+
+	<!-- Other module inherits -->
+	<inherits name="com.google.gwt.json.JSON" />
+	<inherits name="com.google.gwt.http.HTTP" />
+	<inherits name="com.google.gwt.i18n.I18N" />
+	<extend-property name="locale" values="en,de" />
+	<inherits name="com.google.gwt.resources.Resources" />
+
+	<!-- Specify the app entry point class. -->
+	<entry-point class='de.eckhartarnold.client.GWTPhotoAlbum' />
+
+	<!-- Specify the application specific style sheet. -->
+	<stylesheet src='../GWTPhotoAlbum.css' />
+
+	<!-- add cross-site linker so that GWTPhotoAlbum can be loaded from the 
+		hard disk. see: http://www.devcomments.com/Hello-Sample-doesn-t-work-in-Chrome-Issues-with-invoking-at1009369.htm -->
+	<define-linker name="xs" class="com.google.gwt.core.linker.XSLinker" />
+	<define-linker name="std"
+		class="com.google.gwt.core.linker.IFrameLinker" />
+	<define-linker name="sso"
+		class="com.google.gwt.core.linker.SingleScriptLinker" />
+	<add-linker name="std" />
+</module>
