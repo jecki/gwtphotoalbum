@@ -1,0 +1,9 @@
+/release
+/debug
+/libcommon.so
+/libcommon.so.1
+/libcommon.so.1.0
+/libcommon.so.1.0.0
+/Makefile
+/Makefile.Debug
+/Makefile.Release
