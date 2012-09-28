@@ -75,6 +75,7 @@ public abstract class PanelOverlayBase implements MouseMoveHandler,
   /* (non-Javadoc)
    * @see com.google.gwt.event.dom.client.MouseMoveHandler#onMouseMove(com.google.gwt.event.dom.client.MouseMoveEvent)
    */
+  // TODO: Change this behavior for better use with touch-screens and small screen handhelds!
   @Override
   public void onMouseMove(MouseMoveEvent event) {
     int x = event.getX();

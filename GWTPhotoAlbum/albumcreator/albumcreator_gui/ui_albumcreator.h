@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'albumcreator.ui'
 **
-** Created: Thu Aug 30 21:36:34 2012
+** Created: Tue Sep 11 22:27:04 2012
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

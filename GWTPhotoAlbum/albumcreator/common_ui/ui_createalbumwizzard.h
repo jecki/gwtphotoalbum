@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'createalbumwizzard.ui'
 **
-** Created: Tue Sep 11 08:59:42 2012
+** Created: Tue Sep 11 22:26:38 2012
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
