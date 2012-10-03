@@ -26,6 +26,9 @@ import com.google.gwt.user.client.ui.UIObject;
  *
  */
 public final class Toolbox {
+  /** Constants user device classes */
+  public final static int PC = 1, PAD = 2, PHONE = 3;
+  
   /**
    * Returns the offset height of an UI object. For some reason, this is often
    * zero in non-quirks mode. In this case the offset height will be guessed
@@ -52,5 +55,34 @@ public final class Toolbox {
    */
   public static int getOffsetWidth(UIObject uiobject) {
     return uiobject.getOffsetWidth();
+  }
+  
+  /**
+   * Determines the kind of device (personal computer, smartphone or
+   * touchpad) that the user has.
+   * @return  constant describing the device; either PC, PAD, or PHONE.
+   */
+  public static int detectUserDeviceType() {
+    // TODO: Determine user device type
+    return PC;
+  }
+  
+  /**
+   * Returns the user's device's screen size in inches. Most of the
+   * time this will be just an informed guess.
+   * 
+   * @return screen size of the user's device in inches.
+   */
+  public static float detectUserScreenSize() {
+    // TODO: Determine user screen size in inches! HOW?
+    int device = detectUserDeviceType();
+    if (device == PC) {
+      return 22.0f;
+    } else if (device == PHONE) {
+      return 4.0f;
+    } else {
+      return 10.0f;
+    }
+    
   }
 }
