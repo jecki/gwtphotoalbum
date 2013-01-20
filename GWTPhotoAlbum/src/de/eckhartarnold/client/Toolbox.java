@@ -29,6 +29,46 @@ public final class Toolbox {
   /** Constants user device classes */
   public final static int PC = 1, PAD = 2, PHONE = 3;
   
+  /** stores the device type */
+  private static int   userDeviceType;
+  /** stores the pixel density (dots per inch) of the user's screen */
+  private static int   userDPI;
+  /** stores the user's screen size in inches */
+  private static float userScreenSize;
+  
+  /** substrings of navigator.userAgent that indicate a handheld device. */
+  private static final String[] handheld_markers = 
+  {
+    "iPhone","Android", "Opera Mobi", "Opera Mini", "BlackBerry", "IEMobile",
+    "MSIEMobile", "Windows Phone", "Symbian", "Maemo", "Midori", "Windows CE",
+    "WindowsCE", "Smartphone","240x320", "320x320", "160x160", "webOS"
+  };  
+  
+  static {
+    /* determine the device type. As of now tablet computers are always 
+     * classified as smartphones. */
+    String userAgent = Window.Navigator.getUserAgent().toLowerCase();
+    userDeviceType = PC;
+    for (String marker: handheld_markers){
+      if (userAgent.contains(marker.toLowerCase())) {
+        userDeviceType = PHONE;
+        break;
+      }
+    }
+    
+    if (userDeviceType == PC) {
+      userScreenSize = 22.0f;
+      userDPI = 100;
+    } else if (userDeviceType == PHONE) {
+      userScreenSize = 4.0f;
+      userDPI = 200;
+    } else {
+      userScreenSize = 10.0f;
+      userDPI = 150;
+    }      
+  }
+  
+  
   /**
    * Returns the offset height of an UI object. For some reason, this is often
    * zero in non-quirks mode. In this case the offset height will be guessed
@@ -62,27 +102,26 @@ public final class Toolbox {
    * touchpad) that the user has.
    * @return  constant describing the device; either PC, PAD, or PHONE.
    */
-  public static int detectUserDeviceType() {
-    // TODO: Determine user device type
-    return PC;
+  public static int getUserDeviceType() {
+    return userDeviceType;
   }
   
   /**
-   * Returns the user's device's screen size in inches. Most of the
-   * time this will be just an informed guess.
-   * 
+   * Returns the pixel density of the user's display in dots per inch.
+   * (Warning: As of now, the returned value is not very reliable)
+   * @return pixel density in dots per inch
+   */
+  public static int getUserDPI() {
+    return userDPI;
+  }
+  
+  /**
+   * Returns the user's device's screen size in inches. (Most of the
+   * time this will be just an informed guess.)
    * @return screen size of the user's device in inches.
    */
-  public static float detectUserScreenSize() {
-    // TODO: Determine user screen size in inches! HOW?
-    int device = detectUserDeviceType();
-    if (device == PC) {
-      return 22.0f;
-    } else if (device == PHONE) {
-      return 4.0f;
-    } else {
-      return 10.0f;
-    }
-    
+  public static float getUserScreenSize() {
+    return userScreenSize;
   }
+
 }
