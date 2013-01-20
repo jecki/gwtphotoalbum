@@ -23,6 +23,7 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Image;
 
 /**
@@ -30,6 +31,16 @@ import com.google.gwt.user.client.ui.Image;
  * Browser.
  */
 public class Compatibility {
+  
+  /** true, if user device is a handheld device */
+  static final boolean handheld;
+  /** substrings of navigator.userAgent that indicate a handheld device. */
+  static final String[] handheld_markers = 
+  {
+    "iPhone","Android", "Opera Mobi", "Opera Mini", "BlackBerry", "IEMobile",
+    "MSIEMobile", "Windows Phone", "Symbian", "Maemo", "Midori", "Windows CE",
+    "WindowsCE", "Smartphone","240x320", "320x320", "160x160", "webOS"
+  };
   /** true, if the browser is an Internet Explorer older than version 9 */
   static final boolean oldIE;
   /** true, if the browser supports shadowed text */
@@ -44,6 +55,8 @@ public class Compatibility {
       supportsTextShadow = true;
     else
       supportsTextShadow = false;
+    
+    handheld = checkHandheld();
   }
   
   /**
@@ -104,5 +117,20 @@ public class Compatibility {
     if (agent.indexOf("msie") != -1) return -11;
     return 0;    
   }-*/; 
-   
+  
+  /** 
+   * Checks whether the user device is a handheld device with a touch screen.
+   * @return true, if user device is a handhel; false otherwise
+   */
+  private static boolean checkHandheld() {
+    String userAgent = Window.Navigator.getUserAgent().toLowerCase();
+    for (String marker: handheld_markers){
+      if (userAgent.contains(marker.toLowerCase())) {
+
+        return true;
+      }
+    }
+    return false;
+  }
+  
 }
