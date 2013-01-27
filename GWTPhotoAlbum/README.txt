@@ -75,10 +75,11 @@ How to use the sources:
 -----------------------
 
 If you want to use GWTPhotoAlbum in your own AJAX projects, you can browse
-the source code in the "src/de.eckhartarnold.client" directory. Also, you may
-want to have a look at the javadoc Documentation in the "doc" directory.
-I am planning to write some more comprehensive documentation, describing
-the overall structure and design, besides the javadoc documentation, soon.
+the source code in the "src/de.eckhartarnold.client" directory. Please
+read "INSTALL.txt" for for information on how to compile and use GWTPhotoAlbum.
+Further documentation can be found in the documentation directory. The 
+javadocs of the AJAX part of GWTPhotoAlbum can be found in the sub-directory
+"documentation/javadocs".
 
 
 How to join in:

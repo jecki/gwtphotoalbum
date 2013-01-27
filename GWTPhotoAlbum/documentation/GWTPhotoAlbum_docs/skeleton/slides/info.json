@@ -1,0 +1,17 @@
+{
+  "add mobile layout": "true", 
+  "bottom line": "GALLERY BOTTOM LINE", 
+  "disable scrolling": "true", 
+  "display duration": "5000", 
+  "gallery horizontal padding": "70", 
+  "gallery vertical padding": "30", 
+  "image clickable": "true", 
+  "image fading": "-750", 
+  "layout data": "IOF", 
+  "layout type": "fullscreen", 
+  "presentation type": "gallery", 
+  "subtitle": "GALLERY SUBTITLE", 
+  "thumbnail height": "160", 
+  "thumbnail width": "160", 
+  "title": "GALLERY TITLE"
+}

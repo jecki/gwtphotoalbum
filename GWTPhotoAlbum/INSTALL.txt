@@ -93,12 +93,25 @@ B. Installing and running GWTPhotoAlbum:
 
    cd GWTPhotoAlbum
    
-   
-5. View the demo gallery with the command:
+ 
+5. In file "build.xml" find and edit the line 
 
-   ant devmode   
+   <property name="gwt.sdk" location="/opt/gwt" />
+   	
+   so that location points to the location where you have installed gwt.
+   	
+   
+6. View the demo gallery with the command:
+
+   ant devmode
    
    
+7. In order to generate the javadoc Documentation run:
+
+   ant -f javadoc.xml   
+   
+   
+
 
 
 C. Installing the kipi-plugin:
@@ -133,12 +146,59 @@ C. Installing the kipi-plugin:
 
 
 
-D. Creating a web slide show (without using the kipi-plugin):
+D. Creating a web slide show:
 
-Change to the "scripts" sub-directory of the "GWTPhotoAlbum" main 
-directory tree and enter the command from the shell:
+There are different alternatives for creating a web slide show. In either
+of the cases described in the following the photo album will be created
+on your local hard-disk. As of now, you will still have to upload it 
+manually (e.g. via FTP) to a server to have a web slide show in the internet.
 
-python GWTPhotoAlbumCreator.py
+
+Alternative 1: Use the "GWTPhotoAlbumCreator.py" script.
+
+1. Change to the "scripts" sub-directory of the "GWTPhotoAlbum" main 
+   directory tree and enter the command from the shell:
+
+   python GWTPhotoAlbumCreator.py
+   
+2. Follow the dialog which allows you to add and sort images, add captions,
+   make some customizations and, finally, create the web slide show on
+   your local hard disk.
+
+or
+
+Alternative 2: Use the "quickalbum" executable. (Much faster then the
+   "GWTPhotoAlbumCreator.py script! But it does not support adding 
+   caption string.)
+
+1. Change to the "albumcreator" directory. Run "qmake" and then "make".
+
+2. Change to the "albumcreator/quickalbum" subdirectory. Run "quickalbum": 
+   A Dialog Box pops up that leads you through the process of creating an
+   album.
+
+or
+
+Alternative 3: Use the "kipi-plugin"
+
+1. Compile and install the kipi-plugin as described above in section
+   "C. Installing the kipi-plugin".
+   
+2. Run any programm that makes use of kipi-plugins like KDE's "Digikam"
+   to create a web slide show on your local hard disk.
+   
+3. Upload the web slide show to a server with any FTP client (e.g. gftp).
+
+or
+
+Alternative 4: Create a web slide show manually
+
+See documentation/skeleton for an example of the directory layout and 
+basic files needed to create a web slide show.
+
+If you wonder what the .json files in the sub-directory "skeleton/slides"
+are good for, have a look at "documentation/GWTPhotoAlbum_docs/javadocs/
+de/eckhartarnold/client/ImageCollectionReader.html"
 
 
 

@@ -1,4 +1,0 @@
-#!/bin/sh
-APPDIR=`dirname $0`;
-java32  -Xmx512M -cp "$APPDIR/src:$APPDIR/bin:/opt/gwt-linux/gwt-user.jar:/opt/gwt-linux/gwt-dev-linux.jar" com.google.gwt.dev.GWTCompiler -out "$APPDIR/www" "$@" de.eckhartarnold.GWTPhotoAlbum -style OBF;
-# style = OBF, PRETTY

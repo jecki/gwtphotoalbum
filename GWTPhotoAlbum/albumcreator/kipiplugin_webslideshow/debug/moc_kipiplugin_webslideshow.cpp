@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'kipiplugin_webslideshow.h'
 **
-** Created: Tue Sep 11 22:27:41 2012
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
+** Created: Sun Jan 27 10:45:52 2013
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,7 +11,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'kipiplugin_webslideshow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.2. It"
+#error "This file was generated using the moc from 4.8.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif

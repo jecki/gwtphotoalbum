@@ -37,7 +37,6 @@ tar -cvzf ~/tmp/kipiplugin_webslideshow-$version.tgz --transform "s,^,kipiplugin
     scripts/createGWTPhotoAlbum.py \
     scripts/GWTPhotoAlbumCreator.py \
     licenses/* \
-    src/Overview.* \
     src/com/gwt/components/*.xml \
     src/de/eckhartarnold/*.xml \
     src/de/eckhartarnold/client/*.java \

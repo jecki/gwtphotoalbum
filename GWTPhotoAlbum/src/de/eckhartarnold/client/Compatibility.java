@@ -23,7 +23,6 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Image;
 
 /**

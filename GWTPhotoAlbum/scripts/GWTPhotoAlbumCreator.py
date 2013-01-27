@@ -45,7 +45,7 @@ except ImportError:
         return eval(jsonString)                               
 
 
-VERSION = "0.8.0"
+VERSION = "0.8.9"
 about_text="GWTPhotoAlbumCreater.py\n\nVersion "+VERSION+"\n\n"+\
 """
 A program to create an html/AJAX photo album from a collection of images. 
@@ -53,7 +53,7 @@ See: http://code.google.com/p/gwtphotoalbum/ for more information and
 source codes
 
 
-Copyright 2008 Eckhart Arnold (eckhart_arnold@hotmail.com).
+Copyright (C) 2008-2013 Eckhart Arnold (eckhart_arnold@yahoo.de).
 
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
