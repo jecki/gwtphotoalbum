@@ -37,9 +37,7 @@ HEADERS += imageitemdelegate.h \
     ../common/threadsafeset_class.h \
     ../common/toolbox.h \
     ../common_ui/createalbumwizzard.h \
-    ../common_ui/progressdialog.h \
-    albumcreator.h \
-    filterproxy_class.h
+    ../common_ui/progressdialog.h
 SOURCES += imageitemdelegate.cpp \
     filebrowserlistview.cpp \
     albumview.cpp \
@@ -49,6 +47,5 @@ SOURCES += imageitemdelegate.cpp \
     albumcreator.cpp
 FORMS += albumcreator.ui \
     ../common_ui/createalbumwizzard.ui \
-    ../common_ui/progressdialog.ui \
-    albumcreator.ui
+    ../common_ui/progressdialog.ui
 RESOURCES += albumcreator_gui.qrc

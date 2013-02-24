@@ -62,7 +62,7 @@ public class GWTPhotoAlbum implements EntryPoint {
    * whether an optimized layout for small screen or window 
    * sizes (like on mobile devices) shall be added.
    */
-  public static final String  KEY_ADD_MOBILE_LAYOUT = "add mobile layout";
+  public static final String  KEY_ADD_LOWRES_LAYOUT = "add lowres layout";
   
   /** entry name for the full screen layout */
   public static final String  LAYOUT_FULLSCREEN = "fullscreen";
@@ -144,10 +144,10 @@ public class GWTPhotoAlbum implements EntryPoint {
           ImageCollectionReader.ERROR_DIALOG.message("Illegal presentation " +
               "type: " + layoutType);
 		    }
-		    if (src.getInfo().get(KEY_ADD_MOBILE_LAYOUT) != "false" && 
+		    if (src.getInfo().get(KEY_ADD_LOWRES_LAYOUT) != "false" && 
 		        presentation != null) {
 		      Layout mobileLayout = new FullScreenLayout(src);
-		      presentation.setMobileLayout(mobileLayout);
+		      presentation.setLowresLayout(mobileLayout);
 		      if (presentation instanceof GalleryPresentation) {
 		        GalleryPresentation gp = (GalleryPresentation)presentation;
 		        mobileLayout.getControlPanel().setHomeButtonListener(gp);

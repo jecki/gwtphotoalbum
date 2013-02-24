@@ -31,7 +31,7 @@ import com.google.gwt.user.client.ui.Widget;
  * <p>A tiled layout consists
  * of three blocks, namely, the image panel ("I"), the control panel ("P")
  * and the caption ("C"), of which the image panel is obligatory while the
- * other two are optional. These three blocks can be arranged almost 
+ * other two are optional. These three blocks can be arranged
  * horizontally and vertically in an almost arbitrary manner, with possible
  * horizontal delimiting lines (html "<hr />" tags) in between. However,
  * layouts where the image panel is arranged together with another element

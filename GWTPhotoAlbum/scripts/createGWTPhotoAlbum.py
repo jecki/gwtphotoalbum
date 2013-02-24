@@ -122,7 +122,7 @@ info = {"title":"",
         # "image clickable": "false", # has been removed October 2011!
         "layout type":"fullscreen",
         "layout data":"PIC",
-        "add mobile layout":"true",
+        "add lowres layout":"true",
         "presentation type":"gallery",
         "disable scrolling": "true",
         "thumbnail width" : str(THUMBNAIL[0]),

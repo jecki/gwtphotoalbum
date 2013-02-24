@@ -67,7 +67,7 @@ public:
 	bool	disable_scrolling;
 	bool	add_noscript_version;
 	bool	add_offline_version;
-	bool	add_mobile_layout;
+	bool	add_lowres_layout;
 	int     display_duration;
 	int 	image_fading;
 	int		thumbnail_width, thumbnail_height;

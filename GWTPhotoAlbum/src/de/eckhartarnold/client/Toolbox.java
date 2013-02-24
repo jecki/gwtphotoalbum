@@ -17,6 +17,7 @@
 package de.eckhartarnold.client;
 
 // import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.UIObject;
 
@@ -29,6 +30,8 @@ public final class Toolbox {
   /** Constants user device classes */
   public final static int PC = 1, PAD = 2, PHONE = 3;
   
+  /** true, if the user device reacts to tough events */
+  private static boolean hasTouchScreen;
   /** stores the device type */
   private static int   userDeviceType;
   /** stores the pixel density (dots per inch) of the user's screen */
@@ -49,12 +52,17 @@ public final class Toolbox {
      * classified as smartphones. */
     String userAgent = Window.Navigator.getUserAgent().toLowerCase();
     userDeviceType = PC;
+    hasTouchScreen = false;
     for (String marker: handheld_markers){
       if (userAgent.contains(marker.toLowerCase())) {
         userDeviceType = PHONE;
+        hasTouchScreen = true;
         break;
       }
     }
+    if (Document.get().getDocumentElement().getAttribute("ontouchstart").length() > 0) {
+      hasTouchScreen = true;
+    }    
     
     if (userDeviceType == PC) {
       userScreenSize = 22.0f;
@@ -65,7 +73,7 @@ public final class Toolbox {
     } else {
       userScreenSize = 10.0f;
       userDPI = 150;
-    }      
+    }  
   }
   
   

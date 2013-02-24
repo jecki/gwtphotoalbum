@@ -54,6 +54,8 @@ public:
 		this->fileBrowser = fileBrowser;
 	}
 
+	virtual ~IconProvider() { }
+
 	virtual QIcon icon(const QFileInfo &info) const
 	{
 		if (!info.isDir()) {

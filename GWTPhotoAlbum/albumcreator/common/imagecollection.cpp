@@ -66,7 +66,7 @@ ImageCollection::ImageCollection(QObject *parent)
 	disable_scrolling = true;
 	add_noscript_version = true;
 	add_offline_version = true;
-	add_mobile_layout = true;
+	add_lowres_layout = true;
 	display_duration  = 5000;
 	image_fading 	  = -750; // negative value: fade in, fade out in sequence rather than at the same time
 	thumbnail_width   = ImageItem::Thumbnail_Size.width();
@@ -261,7 +261,7 @@ QString ImageCollection::infoJSON() const
 	map["gallery vertical padding"]   = QString::number(gallery_vertical_padding);
 
 	map["disable scrolling"] = QString(disable_scrolling ? "true" : "false");
-	map["add mobile layout"] = QString(add_mobile_layout ? "true" : "false");
+	map["add lowres layout"] = QString(add_lowres_layout ? "true" : "false");
 
 	writeJSON(stream, QVariant(map), ok);
 	Q_ASSERT_X(ok, "ImageCollection::infoJSON", "error while constructing info JSON (this should never happen)!");

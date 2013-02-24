@@ -7,9 +7,9 @@ then
   version="$1"
 fi
 
-cd scripts
-python genDeploymentPackage.py
-cd ..
+#cd scripts
+#python genDeploymentPackage.py
+#cd ..
 
 cd ..
 

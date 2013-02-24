@@ -57,7 +57,7 @@ public abstract class Presentation implements ResizeHandler, ValueChangeHandler<
   protected Layout  layout;
   protected Layout  normalLayout;
   /** Layout for small screens like those on mobile devices */ 
-  protected Layout  mobileLayout;
+  protected Layout  lowresLayout;
   protected Panel   parent;
   
   protected boolean slideshowActive = false;
@@ -72,7 +72,7 @@ public abstract class Presentation implements ResizeHandler, ValueChangeHandler<
   Presentation(Panel parent, Layout layout) {
     this.parent = parent;
     this.normalLayout = layout;
-    this.mobileLayout = layout;
+    this.lowresLayout = layout;
     this.layout = layout; 
     Window.addResizeHandler(this);
     History.addValueChangeHandler(this);    
@@ -117,17 +117,18 @@ public abstract class Presentation implements ResizeHandler, ValueChangeHandler<
   }  
   
   /**
-   * Sets a mobile layout that will be activated automatically on small
-   * screens like those on mobile devices. The mobile layout should best
-   * be a full screen layout with overlay control panel and no filmstrip.
-   * 
-   * @param mobileLayout the layout to be used for mobile devices.
+   * Sets a lowres layout that will be activated automatically low
+   * resolution screens. 
+   * The lowres layout should best be a full screen layout with overlay 
+   * control panel and no filmstrip.
+   * TODO: Add proper mobile, i.e. touch screen support!
+   * @param lowresLayout the layout to be used for mobile devices.
    */
-  public void setMobileLayout(Layout mobileLayout) {
-    if (mobileLayout != null) {
-      this.mobileLayout = mobileLayout;
+  public void setLowresLayout(Layout lowresLayout) {
+    if (lowresLayout != null) {
+      this.lowresLayout = lowresLayout;
     } else {
-      this.mobileLayout = this.normalLayout;
+      this.lowresLayout = this.normalLayout;
     }
     onResize(null);
   }
@@ -169,7 +170,7 @@ public abstract class Presentation implements ResizeHandler, ValueChangeHandler<
   private boolean switchLayouts(int width, int height) {
     if (( (height <= SMALL_SCREEN_HEIGHT_THRESHOLD || 
            width <= SMALL_SCREEN_WIDTH_THRESHOLD ) 
-          && layout != mobileLayout) ||
+          && layout != lowresLayout) ||
         ( (height > SMALL_SCREEN_HEIGHT_THRESHOLD && 
            width > SMALL_SCREEN_WIDTH_THRESHOLD ) 
           && layout != normalLayout) ) {
@@ -180,8 +181,8 @@ public abstract class Presentation implements ResizeHandler, ValueChangeHandler<
       
       deactivateSlideshow();
       
-      if (layout != mobileLayout) 
-        layout = mobileLayout;
+      if (layout != lowresLayout) 
+        layout = lowresLayout;
       else 
         layout = normalLayout;
       

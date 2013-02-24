@@ -30,12 +30,21 @@ import com.google.gwt.event.dom.client.ErrorHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.dom.client.HasMouseMoveHandlers;
 import com.google.gwt.event.dom.client.HasMouseWheelHandlers;
+import com.google.gwt.event.dom.client.HasTouchEndHandlers;
+import com.google.gwt.event.dom.client.HasTouchMoveHandlers;
+import com.google.gwt.event.dom.client.HasTouchStartHandlers;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseMoveHandler;
 import com.google.gwt.event.dom.client.MouseWheelEvent;
 import com.google.gwt.event.dom.client.MouseWheelHandler;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchEndHandler;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
+import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Window;
@@ -57,8 +66,9 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class ImagePanel extends Composite implements HasClickHandlers, 
     HasMouseMoveHandlers, HasMouseWheelHandlers, SourcesAttachmentEvents, 
+    HasTouchStartHandlers, HasTouchMoveHandlers, HasTouchEndHandlers, 
     ResizeListener {
-  
+    
   /**
    * Interface for event listeners of <code>ImagePanel</code>.
    */
@@ -287,7 +297,27 @@ public class ImagePanel extends Composite implements HasClickHandlers,
   public HandlerRegistration addMouseWheelHandler(MouseWheelHandler handler) {
     return addHandler(handler, MouseWheelEvent.getType());   
   }
-
+  
+  /* (non-Javadoc)
+   * @see com.google.gwt.event.dom.client.HasTouchEndHandlers#addTouchEndHandler(com.google.gwt.event.dom.client.TouchEndHandler)
+   */
+  public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
+    return addHandler(handler, TouchEndEvent.getType());
+  }
+  
+  /* (non-Javadoc)
+   * @see com.google.gwt.event.dom.client.HasTouchMoveHandlers#addTouchStartHandler(com.google.gwt.event.dom.client.TouchMoveHandler)
+   */
+  public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
+    return addHandler(handler, TouchMoveEvent.getType());
+  }  
+  
+  /* (non-Javadoc)
+   * @see com.google.gwt.event.dom.client.HasTouchStartHandlers#addTouchStartHandler(com.google.gwt.event.dom.client.TouchStartHandler)
+   */
+  public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
+    return addHandler(handler, TouchStartEvent.getType());
+  }  
   
   /**
    * Removes the image from the panel so that an empty panel

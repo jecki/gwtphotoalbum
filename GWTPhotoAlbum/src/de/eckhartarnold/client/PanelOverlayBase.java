@@ -17,10 +17,10 @@
 package de.eckhartarnold.client;
 
 //import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+//import com.google.gwt.event.dom.client.ClickEvent;
+//import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasMouseMoveHandlers;
-import com.google.gwt.event.dom.client.HasClickHandlers;
+//import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseMoveHandler;
 import com.google.gwt.user.client.Timer;
@@ -32,8 +32,7 @@ import com.google.gwt.user.client.ui.Widget;
  *
  */
 public abstract class PanelOverlayBase implements MouseMoveHandler,
-  ClickHandler, ResizeListener, PopupPanel.PositionCallback,
-  AttachmentListener {
+  ResizeListener, PopupPanel.PositionCallback, AttachmentListener {
   
   /** the key in the "info.json" dictionary that determines the  
    *  panel position. Possible values: "top", "bottom", 
@@ -60,17 +59,17 @@ public abstract class PanelOverlayBase implements MouseMoveHandler,
     if (baseWidget instanceof SourcesAttachmentEvents)
       ((SourcesAttachmentEvents) this.baseWidget).addAttachmentListener(this);    
     ((HasMouseMoveHandlers)baseWidget).addMouseMoveHandler(this);
-    ((HasClickHandlers)baseWidget).addClickHandler(this);
+    //((HasClickHandlers)baseWidget).addClickHandler(this);
   }
   
-  /* (non-Javadoc)
-   * @see com.google.gwt.event.dom.client.MouseMoveHandler#onMouseMove(com.google.gwt.event.dom.client.MouseMoveEvent)
-   */
-  @Override
-  public void onClick(ClickEvent event) {
-    // GWT.log("clicked!");
-    showPopup(event.getX(), event.getY());
-  }
+//  /* (non-Javadoc)
+//   * @see com.google.gwt.event.dom.client.ClickHandler#onClick(com.google.gwt.event.dom.client.ClickEvent)
+//   */
+//  @Override
+//  public void onClick(ClickEvent event) {
+//    // GWT.log("clicked!");
+//    showPopup(event.getX(), event.getY());
+//  }
   
   /* (non-Javadoc)
    * @see com.google.gwt.event.dom.client.MouseMoveHandler#onMouseMove(com.google.gwt.event.dom.client.MouseMoveEvent)

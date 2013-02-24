@@ -2,6 +2,9 @@
 
 version=$(cat VERSION.txt)
 
+bash createTarBalls.sh
+bash createKipiTarBall.sh
+
 python2 scripts/upload.py -p gwtphotoalbum -j "[
 ['~/tmp/kipiplugin_webslideshow-$version.tgz', 'Sources for a KDE KIPI web slideshow plugin', 'Type-Source,OpSys-All'],
 ['~/tmp/GWTPhotoAlbum-executables-$version.tgz', 'Some Python scripts to create web slideshows', 'Type-Executable,OpSys-All'],
