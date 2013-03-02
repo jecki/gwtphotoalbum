@@ -48,8 +48,9 @@ public class ControlPanel extends Composite implements ClickHandler,
     SlideshowListener, ResizeListener, AttachmentListener {
   
   /** Constants (bit values) for the control panel buttons */
-  public static final int BEGIN = 1, BACK = 2, HOME = 4, PLAY = 8, NEXT = 16, END = 32;
-
+//  public static final int BEGIN = 1, BACK = 2, HOME = 4, PLAY = 8, NEXT = 16, END = 32;
+  public static final int BACK = 1, HOME = 2, PLAY = 4, NEXT = 8;
+  
   /** an array of the possible pixel sizes of the buttons */
   protected static final int[]    ICON_SIZES = { 16, 24, 32, 48, 64 };
   
@@ -57,14 +58,16 @@ public class ControlPanel extends Composite implements ClickHandler,
    * the base names (without size appendices, e.g. "_32" for the 32 pixel size
    * version of a button) of image files of the control buttons 
    */
-  protected static final String[] BASE_NAMES = { "begin", "begin_down",
-      "back", "back_down", "gallery", "gallery_down", "play", "pause", 
-      "next", "next_down", "end", "end_down" };
+//  protected static final String[] BASE_NAMES = { "begin", "begin_down",
+//      "back", "back_down", "gallery", "gallery_down", "play", "pause", 
+//      "next", "next_down", "end", "end_down" };
+  protected static final String[] BASE_NAMES = { "back", "back_down", 
+    "gallery", "gallery_down", "play", "pause", "next", "next_down" };
   
   /** a map that contains for each possible pixel size of the buttons another
    * map which maps the base name of the button to its image object
    */
-  protected static HashMap<Integer, HashMap<String, Image>> iconSets;
+  static HashMap<Integer, HashMap<String, Image>> iconSets;
   
   static {
     iconSets = new HashMap<Integer, HashMap<String, Image>>();
@@ -100,18 +103,17 @@ public class ControlPanel extends Composite implements ClickHandler,
   private HashMap<String, Image>  icons;
   private Filmstrip               filmstrip;
   private ProgressBar             progress;
-  private PushButton              begin, back, home, next, end;
+  private PushButton              back, home, next;   // begin and end are not needed any more
   private ToggleButton            play;
   private SimplePanel             wrapper;
   private Slideshow               slideshow;
-  private Tooltip                 beginTooltip, backTooltip, 
-                                  homeTooltip, playPauseTooltip,
-                                  nextTooltip, endTooltip;
+  private Tooltip                 backTooltip, homeTooltip, 
+                                  playPauseTooltip, nextTooltip;
   private int                     buttonSize;
   private boolean                 hasProgressBar = true;
   private boolean                 autoResize = true;
-  private int                     buttonsEnabled = BEGIN|NEXT|HOME|PLAY|BACK|END;
-  private int                     buttonsShown = BEGIN|NEXT|HOME|PLAY|BACK|END;
+  private int                     buttonsEnabled = NEXT|HOME|PLAY|BACK;
+  private int                     buttonsShown = NEXT|HOME|PLAY|BACK;
   
   /**
    * The constructor of class <code>ControlPanel</code>. The control panel
@@ -129,8 +131,8 @@ public class ControlPanel extends Composite implements ClickHandler,
     wrapper.setStyleName("controlPanel");
     buttonSize = ICON_SIZES[0];
     icons = iconSets.get(buttonSize);
-    beginTooltip = new Tooltip(I18N.i18n.begin());
-    endTooltip = new Tooltip(I18N.i18n.end());    
+//    beginTooltip = new Tooltip(I18N.i18n.begin());
+//    endTooltip = new Tooltip(I18N.i18n.end());    
     backTooltip = new Tooltip(I18N.i18n.back());
     nextTooltip = new Tooltip(I18N.i18n.next());
     homeTooltip = new Tooltip(I18N.i18n.home());
@@ -196,12 +198,12 @@ public class ControlPanel extends Composite implements ClickHandler,
     } else if (sender == next) {
       slideshow.stop();
       slideshow.next();
-    } else if (sender == begin) {
-      slideshow.stop();
-      slideshow.show(0);
-    } else if (sender == end) {
-      slideshow.stop();
-      slideshow.show(slideshow.size()-1);
+//    } else if (sender == begin) {
+//      slideshow.stop();
+//      slideshow.show(0);
+//    } else if (sender == end) {
+//      slideshow.stop();
+//      slideshow.show(slideshow.size()-1);
     } else if (sender == play) {
       if (play.isDown()) {
         slideshow.next();
@@ -225,8 +227,8 @@ public class ControlPanel extends Composite implements ClickHandler,
    * @see de.eckhartarnold.client.AttachmentListener#onLoad(com.google.gwt.user.client.ui.Widget)
    */
   public void onLoad(Widget sender) {
-    beginTooltip.setMaxAppearances(2);
-    endTooltip.setMaxAppearances(2);
+//    beginTooltip.setMaxAppearances(2);
+//    endTooltip.setMaxAppearances(2);
     backTooltip.setMaxAppearances(2);
     nextTooltip.setMaxAppearances(2);
     homeTooltip.setMaxAppearances(4);
@@ -291,8 +293,8 @@ public class ControlPanel extends Composite implements ClickHandler,
    * @see de.eckhartarnold.client.AttachmentListener#onUnload(com.google.gwt.user.client.ui.Widget)
    */
   public void onUnload(Widget sender) {  
-    beginTooltip.hide();
-    endTooltip.hide();
+//    beginTooltip.hide();
+//    endTooltip.hide();
     backTooltip.hide();
     nextTooltip.hide();
     homeTooltip.hide();
@@ -443,8 +445,8 @@ public class ControlPanel extends Composite implements ClickHandler,
     if (value >= 0) progress.setValue(value+1);    
     
     // button panel
-    begin = new PushButton(icons.get("begin"), icons.get("begin_down"), this);
-    Tooltip.addToWidget(beginTooltip, begin);    
+//    begin = new PushButton(icons.get("begin"), icons.get("begin_down"), this);
+//    Tooltip.addToWidget(beginTooltip, begin);    
     back = new PushButton(icons.get("back"), icons.get("back_down"), this);
     Tooltip.addToWidget(backTooltip, back);
     
@@ -462,8 +464,8 @@ public class ControlPanel extends Composite implements ClickHandler,
     
     next = new PushButton(icons.get("next"), icons.get("next_down"), this);
     Tooltip.addToWidget(nextTooltip, next);
-    end = new PushButton(icons.get("end"), icons.get("end_down"), this);
-    Tooltip.addToWidget(endTooltip, end);
+//    end = new PushButton(icons.get("end"), icons.get("end_down"), this);
+//    Tooltip.addToWidget(endTooltip, end);
     
     // if ((buttonsShown & BEGIN) != 0) buttonPanel.add(begin);
     if ((buttonsShown & BACK) != 0) buttonPanel.add(back);
@@ -501,12 +503,12 @@ public class ControlPanel extends Composite implements ClickHandler,
    * widgets.
    */
   protected void enableOrDisableButtons() {
-    begin.setEnabled((buttonsEnabled & BEGIN) != 0);    
+//    begin.setEnabled((buttonsEnabled & BEGIN) != 0);    
     back.setEnabled((buttonsEnabled & BACK) != 0);
     home.setEnabled((buttonsEnabled & HOME) != 0);
     play.setEnabled((buttonsEnabled & PLAY) != 0);
     next.setEnabled((buttonsEnabled & NEXT) != 0);
-    end.setEnabled((buttonsEnabled & END) != 0);    
+//    end.setEnabled((buttonsEnabled & END) != 0);    
   }
   
   
@@ -516,12 +518,12 @@ public class ControlPanel extends Composite implements ClickHandler,
    * @param buttonStyle     css style for the buttons 
    */
   private void addButtonStyles(String buttonStyle) {
-    begin.addStyleName(buttonStyle);      
+//    begin.addStyleName(buttonStyle);      
     back.addStyleName(buttonStyle);
     home.addStyleName(buttonStyle);
     play.addStyleName(buttonStyle);
     next.addStyleName(buttonStyle);
-    end.addStyleName(buttonStyle);     
+//    end.addStyleName(buttonStyle);     
   }  
 }
 

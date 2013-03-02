@@ -23,11 +23,8 @@ import java.util.HashMap;
 
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ErrorEvent;
 import com.google.gwt.event.dom.client.ErrorHandler;
-import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.dom.client.HasMouseMoveHandlers;
 import com.google.gwt.event.dom.client.HasMouseWheelHandlers;
 import com.google.gwt.event.dom.client.HasTouchEndHandlers;
@@ -64,10 +61,9 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * @author eckhart
  */
-public class ImagePanel extends Composite implements HasClickHandlers, 
-    HasMouseMoveHandlers, HasMouseWheelHandlers, SourcesAttachmentEvents, 
-    HasTouchStartHandlers, HasTouchMoveHandlers, HasTouchEndHandlers, 
-    ResizeListener {
+public class ImagePanel extends Composite implements HasMouseMoveHandlers, 
+    HasMouseWheelHandlers, SourcesAttachmentEvents, HasTouchStartHandlers, 
+    HasTouchMoveHandlers, HasTouchEndHandlers, ResizeListener {
     
   /**
    * Interface for event listeners of <code>ImagePanel</code>.
@@ -194,6 +190,9 @@ public class ImagePanel extends Composite implements HasClickHandlers,
     }
   }
   
+  // possible anchors of the notifier overlay image
+  public static int  WEST = 1, CENTER = 2, EAST = 3;
+  
   private static final double  FADE_IN_STEPS = 0.10;
   private static final double  FADE_OUT_STEPS = 0.13;
 
@@ -203,38 +202,49 @@ public class ImagePanel extends Composite implements HasClickHandlers,
    * is created in the front that takes the new photo and is faded in. 
    */
   protected Image         active;
-  /** 
-   * The image that was displayed out and is either already invisible, 
-   * i.e. faded out, or just about to be faded out.
-   */
-  protected Image         passive;
-  /**
-   * The main widget of the image panel. The images are placed on panel and 
-   * their size adjusted.
-   */
-  protected AbsolutePanel	panel;
+  
   /**
    * An envelope panel that wraps the <code>AbsolutePanel</code>. This is
    * necessary for working around some browser differences in connection with
    * resizing.
    */
   protected SimplePanel   envelope;
+  
+  /**
+   * A semi transparent notification image above the slide show images. The
+   * notifier image can be used to display visual feed back for touch events.
+   */
+  protected Image         notifier;
+  /** Flag storing the anchor of the notifier (WEST, CENTER or EAST) */
+  protected int           notifierAnchor;
+  
+  /**
+   * The main widget of the image panel. The images are placed on panel and 
+   * their size adjusted.
+   */
+  protected AbsolutePanel panel;
+  
+  /** 
+   * The image that was displayed out and is either already invisible, 
+   * i.e. faded out, or just about to be faded out.
+   */  
+  protected Image         passive;
 
+  
   private   int           duration = 5000; // duration in msecs for which the an image will be displayed
   private   int           fading = -750; // a negative value indicates that fading in and fading out should take place in sequence
   
 	private   NotifyingFade fadeIn;
 	private   Fade          fadeOut;
+  private   String[]      imageNames;
 	private   int			      panelW, panelH;
 
 	private   int           sizeStep = -1;      // a negative value means: no multiple image sizes present
   private   int           sizeBias = 0;       // bias in case of slow connection
-	private   String[]      imageNames;
   private   int[][]       sizes;
   
   private ArrayList<AttachmentListener> attachmentListeners;
   private DisplayListener   displayListener;
-  private boolean           hasClickHandlers = false;
   private ImageErrorHandler stdImageErrorHandler = new ImageErrorHandler();
 	
 	/**
@@ -275,15 +285,6 @@ public class ImagePanel extends Composite implements HasClickHandlers,
     attachmentListeners.add(listener);
   }
   
-
-  /* (non-Javadoc)
-   * @see com.google.gwt.event.dom.client.HasClickHandlers#addClickHandler(com.google.gwt.event.dom.client.ClickHandler)
-   */
-  public HandlerRegistration addClickHandler(ClickHandler handler) {
-    hasClickHandlers = true;
-    return addHandler(handler, ClickEvent.getType());
-  }
-
   /* (non-Javadoc)
    * @see com.google.gwt.event.dom.client.HasMouseMoveHandlers#addMouseMoveHandler(com.google.gwt.event.dom.client.MouseMoveHandler)
    */
@@ -428,7 +429,8 @@ public class ImagePanel extends Composite implements HasClickHandlers,
           return;
         }
       }
-      if (passive != null) adjustSize(passive);    
+      if (passive != null) adjustSize(passive);
+      positionNotifier();
     } 
   }    
   
@@ -477,6 +479,31 @@ public class ImagePanel extends Composite implements HasClickHandlers,
     this.fading = msecs;
     if (msecs == 0) {
       cancelFading(true);
+    }
+  }
+  
+  /**
+   * Sets the notifier image, i.e. an overlay image above the slides that may
+   * be used to indicate feedback to touch events or the like. The notifier
+   * images opacity will be set to fully transparent in the beginning. It is 
+   * the callers duty to change this so that it may become visible to the user.
+   * Any previously set notifier will be removed from the panel. It is possible
+   * to set the notifier to <code>null</code> thereby clearing the notifier.
+   * @param notifier  the notifier image to be added to the panel
+   * @param anchor    the anchor, i.e. position of the image, e.g. WEST, 
+   *                  CENTER or EAST.
+   */
+  public void setNotifier(Image notifier, int anchor) {
+    if (this.notifier != null) {
+      panel.remove(this.notifier);
+    }
+    this.notifier = notifier;
+    this.notifierAnchor = anchor;
+    if (notifier != null) {    
+      notifier.addStyleName("notifier");
+      Fade.setOpacity(notifier, 0.0);
+      panel.add(notifier);
+      positionNotifier();
     }
   }
   
@@ -541,6 +568,8 @@ public class ImagePanel extends Composite implements HasClickHandlers,
     exchangeImage(urls[sizeStep], notifier);
   }
   
+    
+  
   /**
    * Returns the currently selected size step, if image URLs for several
    * size steps have been specified by the last call of method 
@@ -569,7 +598,6 @@ public class ImagePanel extends Composite implements HasClickHandlers,
     Image discard = passive;
     passive = active;
     active = new Image();
-    if (hasClickHandlers) active.addStyleName("imageClickable");
     active.addStyleName("slide");
     Fade.setOpacity(active, 0.0);
     displayListener = notifier;    
@@ -726,6 +754,26 @@ public class ImagePanel extends Composite implements HasClickHandlers,
 //    }
 //    return Math.max(0, ret);
   }    
+ 
+  /**
+   * Positions the notifier image on the panel according to the the anchor of
+   * the notifier (<code>notifierAnchor</code>).
+   */
+  private void positionNotifier() {
+    if (notifier != null) {
+      int w = notifier.getWidth();
+      int h = notifier.getHeight();
+      int frameX = panelW / 10;
+      int x = panelW / 2;
+      int y = panelH / 2 - h / 2;
+      if (notifierAnchor == WEST) {
+          x = panelW - w - frameX;
+      } else if (notifierAnchor == EAST) {
+          x = frameX;
+      }
+      panel.setWidgetPosition(notifier, x, y);
+    }
+  }
   
   /**
    * Starts the fading out of the last ("passive") image and the fading in
@@ -749,3 +797,4 @@ public class ImagePanel extends Composite implements HasClickHandlers,
   }    
 
 }
+

@@ -31,9 +31,12 @@ src_dir = os.path.join(src_prefix, "grey")
 dst_dirs = [ "../war/icons" ]
 #dst_dir = "/home/eckhart/tmp"
 
-base_names = ["begin", "begin_down", "back", "back_down",
-              "gallery", "gallery_down", "play", "pause", 
-              "next", "next_down", "end", "end_down"]
+## begin and end buttons are not needed any more
+#base_names = ["begin", "begin_down", "back", "back_down",
+#              "gallery", "gallery_down", "play", "pause", 
+#              "next", "next_down", "end", "end_down"]
+base_names = ["back", "back_down", "gallery", "gallery_down", 
+              "play", "pause", "next", "next_down"]
 file_type = ".png"
 copy_only_names = ["start.png", "start_down.png"]
 
