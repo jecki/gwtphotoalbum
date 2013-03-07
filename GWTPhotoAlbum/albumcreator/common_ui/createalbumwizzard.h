@@ -1,7 +1,7 @@
 #ifndef CREATEALBUMWIZZARD_H
 #define CREATEALBUMWIZZARD_H
 
-#include <QtGui/QDialog>
+#include <QtWidgets/QDialog>
 #include "ui_createalbumwizzard.h"
 #include "imagecollection.h"
 

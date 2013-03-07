@@ -122,6 +122,7 @@
 			</target>
 		</buildTargets>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
 		<pathentry base-path="/usr/include" include="" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="kcalcore" kind="inc" path="" system="true"/>
@@ -746,9 +747,8 @@
 		<pathentry base-path="/usr/include" include="gstreamer-0.10" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="netrose" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="SDL" kind="inc" path="" system="true"/>
-		<pathentry base-path="/usr/include" include="QtGui" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include/qt5" kind="inc" path="" system="true"/>
 		<pathentry excluding="test_createalbumwizzard/" kind="src" path=""/>
 		<pathentry kind="out" path=""/>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 </cproject>
