@@ -13,7 +13,8 @@ unzip -o scripts/GWTPhotoAlbum-Deploy.zip -x VERSION.txt -d documentation/GWTPho
 
 cp VERSION.txt albumcreator/common/data
 cd albumcreator
-qmake
+qmake-qt4
+#qmake
 make debug
 
 #cd scripts
