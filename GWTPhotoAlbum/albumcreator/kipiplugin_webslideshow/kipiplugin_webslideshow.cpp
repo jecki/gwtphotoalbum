@@ -34,6 +34,7 @@
 #include <krun.h>
 
 // KIPIPlugins
+#include <libkipi/plugin.h>
 #include <libkipi/imagecollection.h>
 #include <libkipi/interface.h>
 
@@ -44,7 +45,7 @@
 
 
 K_PLUGIN_FACTORY(WebGalleryFactory, registerPlugin<Plugin_WebSlideShow>();)
-K_EXPORT_PLUGIN( WebGalleryFactory("kipiplugin_webslideshow"))
+K_EXPORT_PLUGIN(WebGalleryFactory("kipiplugin_webslideshow"))
 
 
 
@@ -66,7 +67,7 @@ void Plugin_WebSlideShow::setup(QWidget* widget) {
     m_action->setIcon(KIcon("applications-internet"));
     m_action->setShortcut(KShortcut(Qt::ALT+Qt::SHIFT+Qt::Key_S));
     connect(m_action, SIGNAL(triggered()), this, SLOT(slotActivate()));
-    addAction(m_action);
+    addAction("webslideshow", m_action, KIPI::CollectionsPlugin);
 
     m_iface = dynamic_cast<KIPI::Interface*>(parent());
     if (!m_iface) {
