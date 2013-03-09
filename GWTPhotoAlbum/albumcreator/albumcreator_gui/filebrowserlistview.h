@@ -17,6 +17,9 @@
 #ifndef FILEBROWSERLISTVIEW_H
 #define FILEBROWSERLISTVIEW_H
 
+#include <Qt>
+#include <QMimeData>
+#include <QDrag>
 #include <QListView>
 #include <QWidget>
 #include <QDropEvent>

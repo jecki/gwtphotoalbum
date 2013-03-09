@@ -18,6 +18,8 @@
 #ifndef ALBUMCREATOR_H
 #define ALBUMCREATOR_H
 
+#include <QMimeData>
+#include <QAbstractItemModel>
 #include <QMainWindow>
 #include <QFileSystemModel>
 #include <QSortFilterProxyModel>

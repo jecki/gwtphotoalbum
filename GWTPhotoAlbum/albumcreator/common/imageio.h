@@ -55,8 +55,8 @@ public:
     static ImageIO &instance();
     virtual ~ImageIO();
 
-    void registerFTPServer(const QString name, QFtp *server, int maxConnections = 1);
-    void deregisterFTPServer(const QString name);
+    void registerServer(const QString name, QNetworkAccessManager *server, int maxConnections = 1);
+    void deregisterServer(const QString name);
 
     Request *requestImage(CallbackInterface *callback, const QString filePath, const QSize size = QSize(),
     		              ImageIOCore::UseCache uc = ImageIOCore::Cache,

@@ -16,7 +16,12 @@
 
 
 
+#include <Qt>
+#if QT_VERSION >= 0x050000
+#include <QApplication>
+#else
 #include <QtGui/QApplication>
+#endif
 #include <QCoreApplication>
 #include <QDir>
 #include <iostream>

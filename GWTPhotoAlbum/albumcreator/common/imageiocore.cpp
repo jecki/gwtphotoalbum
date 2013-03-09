@@ -16,7 +16,11 @@
 
 
 #include "imageiocore.h"
-#include <QtConcurrentRun>
+#if QT_VERSION >= 0x050000
+#include <QtConcurrent/QtConcurrentRun>
+#else
+#include <QtCore/QtConcurrentRun>
+#endif
 #include <QMutexLocker>
 #include <QVariant>
 

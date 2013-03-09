@@ -19,7 +19,7 @@
 #include <QCoreApplication>
 #include <QMutexLocker>
 #include <QStringList>
-#include <QFtp>
+#include <QNetworkAccessManager>
 
 
 #ifndef NDEBUG
@@ -165,35 +165,35 @@ ImageIO::~ImageIO()
 }
 
 /*!
- * Registeres a ftp server connection under a specific name (e.g. "ftp1:") for sending images
- * via ftp to a server. The caller of this method is responsible for setting up the
- * connection and shutting down after deregistering a server.
+ * Registeres a network connection under a specific name (e.g. "ftp1:") for sending images
+ * via a network protokol to a server. The caller of this method is responsible for setting
+ * up the connection and shutting down after deregistering a server.
  *
- * Once an ftp connection has been registered, images can simply be sent or downloaded by
+ * Once a connection has been registered, images can simply be sent or downloaded by
  * calling the saveImage or requestImage method with the connection's name at the beginning
  * of the file path, e.g. "ftp1:/my.website.de/images/img1.jpg"
  *
  * @param name            name under which the server connection shall be registered
- * @param server          QFtp object for the connection
+ * @param server          QNetworkAccessManager object for the connection
  * @param maxConnections  maximum number files that may be transferred at the same time.
  */
-void ImageIO::registerFTPServer(const QString name, QFtp *server, int maxConnections)
+void ImageIO::registerServer(const QString name, QNetworkAccessManager *server, int maxConnections)
 {
-	iocore.registeredFTPServers.insert(name, server);
+	iocore.registeredServers.insert(name, server);
 	iocore.maxAllowedConnections.insert(name, maxConnections);
 	iocore.currentConnections.insert(name, 0);
 }
 
 /*!
- * Deregisters a ftp connection. Deregistering is only allowed after all file transfers
+ * Deregisters a network connection. Deregistering is only allowed after all file transfers
  * have been completed.
  *
- * @param name of the ftp connection to be derigstered.
+ * @param name of the connection to be derigstered.
  */
-void ImageIO::deregisterFTPServer(const QString name)
+void ImageIO::deregisterServer(const QString name)
 {
 	Q_ASSERT(iocore.currentConnections.value(name) == 0);
-	iocore.registeredFTPServers.remove(name);
+	iocore.registeredServers.remove(name);
 
 }
 

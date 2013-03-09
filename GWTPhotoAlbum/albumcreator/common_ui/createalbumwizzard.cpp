@@ -8,7 +8,11 @@
 #include <QFileDialog>
 #include <QUrl>
 #include <QDesktopServices>
-#include <qtconcurrentrun.h>
+#if QT_VERSION >= 0x050000
+#include <QtConcurrent/QtConcurrentRun>
+#else
+#include <QtCore/QtConcurrentRun>
+#endif
 
 #ifndef NDEBUG
 #include <iostream>

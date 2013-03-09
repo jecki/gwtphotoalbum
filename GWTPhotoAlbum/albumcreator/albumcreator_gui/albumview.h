@@ -17,6 +17,8 @@
 #ifndef ALBUMVIEW_H
 #define ALBUMVIEW_H
 
+#include <Qt>
+#include <QAbstractItemModel>
 #include <QListView>
 
 

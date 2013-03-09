@@ -13,7 +13,8 @@ TEMPLATE = app
 TARGET = quickalbum
 CONFIG += static debug_and_release
 QT += core \
-    gui
+    gui \
+    widgets
 INCLUDEPATH += ../common \
     ../common_ui
 

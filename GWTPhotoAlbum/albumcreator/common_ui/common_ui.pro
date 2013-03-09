@@ -14,7 +14,8 @@ CONFIG += precompile_header \
 	debug_and_release \
 	shared # staticlib # shared
 QT += core \
-	gui 
+	gui \
+	widgets
 INCLUDEPATH += ../common
 LIBS += -L../common \
     -lcommon

@@ -26,7 +26,7 @@
 #include <QMutex>
 #include <QFuture>
 #include <QLinkedList>
-#include <QtNetwork/QFtp>
+#include <QtNetwork/QNetworkAccessManager>
 
 
 /*!
@@ -77,7 +77,7 @@ private:
 	QMutex cacheMutex, resizeMutex;
 	QCache<QString, QImage> big, medium, small;
 	QLinkedList<QFuture<void> > resizeTasks;
-	QMap<QString, QFtp *> registeredFTPServers;
+	QMap<QString, QNetworkAccessManager *> registeredServers;
 	QMap<QString, int> maxAllowedConnections;
 	QMap<QString, int> currentConnections;
 

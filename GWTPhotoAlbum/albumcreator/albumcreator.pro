@@ -15,8 +15,11 @@ SUBDIRS = common \
     tests \
     albumcreator_gui \
     albumcreator_cli \
-    quickalbum \
-    kipiplugin_webslideshow
+    quickalbum
+# kipiplugin cannot yet be build with Qt5    
+contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+SUBDIRS += kipiplugin_webslideshow
+}        
 tests.depends = common
 quickalbum.depends = common \
     common_ui

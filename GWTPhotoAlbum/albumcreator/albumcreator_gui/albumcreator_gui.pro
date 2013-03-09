@@ -14,7 +14,8 @@ TARGET = albumcreator
 
 # CONFIG += debug
 QT += core \
-    gui
+    gui \
+    widgets
 INCLUDEPATH += ../common \
     ../common_ui
 LIBS += -L../common \

@@ -70,7 +70,7 @@ bool contains_still_templates(const QString &str)
 {
 	int i = str.indexOf("$");
 	if (i >= 0 && i < str.length()-1) {
-		char ch = str[i+1].toAscii();
+		char ch = str[i+1].toLatin1();
 		if (ch >= 'A' && ch <= 'Z') {
 			return true;
 		}

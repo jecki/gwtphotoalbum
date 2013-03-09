@@ -1,7 +1,12 @@
 #ifndef CREATEALBUMWIZZARD_H
 #define CREATEALBUMWIZZARD_H
 
+#include <Qt>
+#if QT_VERSION >= 0x050000
 #include <QtWidgets/QDialog>
+#else
+#include <QtGui/QDialog>
+#endif
 #include "ui_createalbumwizzard.h"
 #include "imagecollection.h"
 

@@ -747,6 +747,7 @@
 		<pathentry base-path="/usr/include" include="gstreamer-0.10" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="netrose" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="SDL" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include/qt4" kind="inc" path="" system="true"/>
 		<pathentry include="/usr/include/qt5" kind="inc" path="" system="true"/>
 		<pathentry excluding="test_createalbumwizzard/" kind="src" path=""/>
 		<pathentry kind="out" path=""/>

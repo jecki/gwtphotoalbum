@@ -14,7 +14,11 @@
 #include <QString>
 #include <QStringList>
 #include <QMap>
-#include <qtconcurrentrun.h>
+#if QT_VERSION >= 0x050000
+#include <QtConcurrent/QtConcurrentRun>
+#else
+#include <QtCore/QtConcurrentRun>
+#endif
 
 #include "toolbox.h"
 #include "jsonsupport.h"

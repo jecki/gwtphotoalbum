@@ -18,7 +18,12 @@
 #define IMAGELISTMODEL_H
 
 #include "../common/imageitem.h"
+#include <Qt>
+#if QT_VERSION >= 0x050000
+#include <QtWidgets/QWidget>
+#else
 #include <QtGui/QWidget>
+#endif
 #include <QAbstractListModel>
 #include <QList>
 #include <QSet>

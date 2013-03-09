@@ -107,7 +107,7 @@ AlbumCreator::AlbumCreator(QWidget *parent) :
     ui->mainSplitter->setCollapsible(1, false);
 
     directory.setFilter(QDir::AllEntries|QDir::AllEntries);
-    directory.setSupportedDragActions(Qt::CopyAction);
+    //directory.setSupportedDragActions(Qt::CopyAction);
     currentDir = QDir::home();
     directory.setRootPath(QDir::rootPath());
 

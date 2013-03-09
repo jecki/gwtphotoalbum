@@ -19,6 +19,8 @@
 #include "iconcache.h"
 
 #include <QString>
+#include <QDrag>
+#include <QMimeData>
 #include <QDragEnterEvent>
 #include <QDragLeaveEvent>
 #include <QDragMoveEvent>
