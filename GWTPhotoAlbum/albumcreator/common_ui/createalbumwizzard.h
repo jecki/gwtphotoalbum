@@ -61,6 +61,7 @@ public Q_SLOTS:
 	void on_prevButton_clicked();
 	void on_compressionSlider_valueChanged(int value);
 	void on_locationButton_clicked();
+	void on_locationEdit_editingFinished();
 	void on_startButton_clicked();
 	void on_cancelButton_clicked();
 	void on_archiveCheckBox_stateChanged(int state);

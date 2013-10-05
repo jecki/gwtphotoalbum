@@ -17,9 +17,11 @@
 
 #include "imageitem.h"
 
+#include <Qt>
 #include <QCoreApplication>
 #include <QEventLoop>
 #include <QDir>
+#include <QDebug>
 
 #include "toolbox.h"
 
@@ -262,6 +264,9 @@ QList<QImage> ImageItem::resized(QList<QSize> sizes) {
 	}
 
 #ifndef NDEBUG
+//	foreach (QSize sz, sizes) {
+//		qDebug() << sz;
+//	}
 	int l = i;
 	if (sizes[i].isEmpty()) l--;
 	while (l > 0) {

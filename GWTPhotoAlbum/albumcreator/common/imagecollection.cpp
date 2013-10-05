@@ -943,7 +943,7 @@ void ImageCollection::deploy_images(const QDir parent)
 		if (!archiveName.isEmpty() && (!archiveSize.isEmpty() ||
 				                       archiveSize == Original_Size) ) {
 			if (!sizesList.contains(archiveSize)) {
-				bool insert_flag;
+				bool insert_flag = true;
 				foreach(QSize size, sizesList) {
 					if (insert_flag && archiveSize.width() <= size.width() &&
 							archiveSize.height() <= size.height()) {
@@ -962,7 +962,7 @@ void ImageCollection::deploy_images(const QDir parent)
 
 //				if (archiveSize.width() > extSizesList.last().width() ||
 //						archiveSize.height() > extSizesList.last().height()) {
-				if (!insert_flag) {
+				if (insert_flag) {
 					if (extSizesList.last() == Original_Size) {
 						extSizesList.insert(extSizesList.length()-1, archiveSize);
 					} else {

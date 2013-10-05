@@ -8,6 +8,7 @@
 #include <QFileDialog>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QDebug>
 #if QT_VERSION >= 0x050000
 #include <QtConcurrent/QtConcurrentRun>
 #else
@@ -279,7 +280,7 @@ QString CreateAlbumWizzard::archiveNameSuggestion() const
 {
 	QString name = deriveFileName(ui.titleEdit->text());
 	if (name.isEmpty()) {
-		name = "all_pictures.zip";
+		name = "all_pictures";
 	}
 	return name+".zip";
 }
@@ -442,12 +443,28 @@ void CreateAlbumWizzard::on_locationButton_clicked()
 	fd.setFileMode(QFileDialog::Directory);
 	fd.setOptions(QFileDialog::ShowDirsOnly);
 	// fd.setFilter(QDir::Dirs|QDir::Drives);
-	fd.setWindowTitle(tr("Pick image directory or files..."));
+	// fd.setWindowTitle(tr("Pick image directory or files..."));
 	if (fd.exec()) {
 		QStringList paths = fd.selectedFiles();
 		// std::cout << paths[0].toStdString() << std::endl;
 		ui.locationEdit->setText(albumPath(paths[0]));
 	}
+}
+
+/*!
+ * Slots reacts to pressing of the return/enter button or loss of focus of the
+ * location editing line. If the location is invalid or already exists, it is
+ * substituted by a new location.
+ */
+void CreateAlbumWizzard::on_locationEdit_editingFinished()
+{
+	QString location = ui.locationEdit->text();
+	// verify and potentially fix location
+	QString path = albumPath(location);
+	if (path != location) {
+		ui.locationEdit->setText(path);
+	}
+
 }
 
 /*!
@@ -567,7 +584,7 @@ void CreateAlbumWizzard::progress(ImageCollection *source, int nr)
 
 /*!
  * Slot that is called when album creation is finished. Display an
- * error or warning message box in case an error or any warnings dir
+ * error or warning message box in case an error or any warnings did
  * occur. Rests the start button text to "Start".
  *
  * @parameter completed  true, if album creation could be completed

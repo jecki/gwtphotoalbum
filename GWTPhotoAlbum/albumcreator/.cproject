@@ -131,7 +131,6 @@
 		<pathentry base-path="/usr/include" include="libgdata" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="kcalutils" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="libnm-glib" kind="inc" path="" system="true"/>
-		<pathentry base-path="/usr/include" include="QtXml" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="clang" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="valgrind" kind="inc" path="" system="true"/>
 		<pathentry base-path="/usr/include" include="attica" kind="inc" path="" system="true"/>
@@ -749,6 +748,10 @@
 		<pathentry base-path="/usr/include" include="SDL" kind="inc" path="" system="true"/>
 		<pathentry include="/usr/include/qt4" kind="inc" path="" system="true"/>
 		<pathentry include="/usr/include/qt5" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include/qt4/Qt" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include/qt4/QtGui" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include/qt4/QtCore" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include/c++/4.8.1" kind="inc" path="" system="true"/>
 		<pathentry excluding="test_createalbumwizzard/" kind="src" path=""/>
 		<pathentry kind="out" path=""/>
 	</storageModule>

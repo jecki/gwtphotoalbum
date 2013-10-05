@@ -27,3 +27,7 @@ albumcreator_gui.depends = common \
     common_ui
 albumcreator_cli.depends = common
 
+contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+kipiplugin_webslideshow.depends = common \
+	common_ui
+}     

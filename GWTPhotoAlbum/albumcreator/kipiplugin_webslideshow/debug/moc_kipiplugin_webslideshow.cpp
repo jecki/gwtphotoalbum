@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'kipiplugin_webslideshow.h'
 **
-** Created: Sat Mar 9 19:31:05 2013
+** Created: Tue Mar 26 22:24:59 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
