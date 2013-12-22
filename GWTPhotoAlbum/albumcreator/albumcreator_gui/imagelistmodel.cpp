@@ -47,7 +47,6 @@ ImageListModel::~ImageListModel()
 }
 
 
-
 QVariant ImageListModel::data(const QModelIndex &index, int role) const
 {
 	Q_ASSERT(index.row() < imageList.length());
@@ -57,22 +56,24 @@ QVariant ImageListModel::data(const QModelIndex &index, int role) const
 
 	switch (role) {
 	case Qt::DisplayRole:
-		return QString();
+		return (QString());
 		break;
 	case Qt::DecorationRole:
-		return IconCache::sizeGuard(QPixmap::fromImage(it->image(
-				ImageItem::THUMBNAIL)), ImageItem::Thumbnail_Size);
+		return (sizeGuard(QPixmap::fromImage(it->image(ImageItem::THUMBNAIL)),
+				ImageItem::Thumbnail_Size, FRAME_SIZE));
+		//return (QPixmap::fromImage(it->image(ImageItem::THUMBNAIL)));
 		break;
 	case Qt::ToolTipRole:
 		if (!it->caption().isEmpty())
 			tip << it->caption() << "\n";
 		tip << it->path() << " (" << sizeStr(it->size(ImageItem::IMAGE)) << ") ";
-		return tip.join("");
+		return (tip.join(""));
 		break;
 	case Qt::SizeHintRole:
-		return it->size(ImageItem::THUMBNAIL);
+		return (QSize(ImageItem::Thumbnail_Size.width() +  2 * FRAME_SIZE,
+				      ImageItem::Thumbnail_Size.height() + 2 * FRAME_SIZE));
 	default:
-		return QVariant();
+		return (QVariant());
 	}
 }
 
@@ -86,8 +87,8 @@ QVariant ImageListModel::data(const QModelIndex &index, int role) const
 Qt::ItemFlags ImageListModel::flags(const QModelIndex &index) const
 {
 	Qt::ItemFlags defaultFlags = QAbstractListModel::flags(index);
-	return Qt::ItemIsSelectable|Qt::ItemIsDragEnabled|Qt::ItemIsDropEnabled|
-		   Qt::ItemIsEnabled|defaultFlags; // |Qt::IsEditable
+	return (Qt::ItemIsSelectable|Qt::ItemIsDragEnabled|Qt::ItemIsDropEnabled|
+		    Qt::ItemIsEnabled|defaultFlags); // |Qt::IsEditable
 }
 
 //bool QAbstractItemModel::insertRows (int row, int count, const QModelIndex & parent = QModelIndex())
@@ -105,7 +106,7 @@ bool ImageListModel::dropMimeData(const QMimeData *data, Qt::DropAction action,
 {
 	qDebug() << "dropMimeData: " << row << ", " << column << ";  " << parent.row();
 
-	if (action == Qt::IgnoreAction || !data->hasUrls())  return false;
+	if (action == Qt::IgnoreAction || !data->hasUrls())  return (false);
 
 	emit layoutAboutToBeChanged();
 	if (row < 0 && column < 0)  row = parent.row();
@@ -124,7 +125,7 @@ bool ImageListModel::dropMimeData(const QMimeData *data, Qt::DropAction action,
 	}
 	emit layoutChanged();
 
-	return true;
+	return (true);
 }
 
 
@@ -138,7 +139,7 @@ QMimeData *ImageListModel::mimeData(const QModelIndexList &indexes) const
 		urls.append(QUrl(imageList[idx.row()]->path()));
 	}
 	data->setUrls(urls);
-	return data;
+	return (data);
 }
 
 
@@ -146,18 +147,18 @@ QStringList ImageListModel::mimeTypes() const
 {
 	QStringList types = QAbstractListModel::mimeTypes();
 	types.append(QString("text/uri-list"));
-	return types;
+	return (types);
 }
 
 
 int ImageListModel::rowCount(const QModelIndex &parent) const
 {
 	(void) parent;
-	return imageList.size();
+	return (imageList.size());
 }
 
 
 Qt::DropActions ImageListModel::supportedDropActions() const
 {
-	return Qt::MoveAction|Qt::CopyAction;
+	return (Qt::MoveAction|Qt::CopyAction);
 }

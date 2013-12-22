@@ -1,8 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'progressdialog.ui'
 **
-** Created: Tue Mar 26 22:24:49 2013
-**      by: Qt User Interface Compiler version 4.8.4
+** Created by: Qt User Interface Compiler version 5.1.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,14 +10,14 @@
 #define UI_PROGRESSDIALOG_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QDialog>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QProgressBar>
-#include <QtGui/QPushButton>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QProgressBar>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -32,17 +31,17 @@ public:
     void setupUi(QDialog *ProgressDialogClass)
     {
         if (ProgressDialogClass->objectName().isEmpty())
-            ProgressDialogClass->setObjectName(QString::fromUtf8("ProgressDialogClass"));
+            ProgressDialogClass->setObjectName(QStringLiteral("ProgressDialogClass"));
         ProgressDialogClass->resize(400, 200);
         progressLabel = new QLabel(ProgressDialogClass);
-        progressLabel->setObjectName(QString::fromUtf8("progressLabel"));
+        progressLabel->setObjectName(QStringLiteral("progressLabel"));
         progressLabel->setGeometry(QRect(30, 30, 59, 17));
         progressBar = new QProgressBar(ProgressDialogClass);
-        progressBar->setObjectName(QString::fromUtf8("progressBar"));
+        progressBar->setObjectName(QStringLiteral("progressBar"));
         progressBar->setGeometry(QRect(30, 70, 331, 23));
         progressBar->setValue(24);
         cancelButton = new QPushButton(ProgressDialogClass);
-        cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
+        cancelButton->setObjectName(QStringLiteral("cancelButton"));
         cancelButton->setGeometry(QRect(270, 140, 92, 27));
 
         retranslateUi(ProgressDialogClass);
@@ -52,9 +51,9 @@ public:
 
     void retranslateUi(QDialog *ProgressDialogClass)
     {
-        ProgressDialogClass->setWindowTitle(QApplication::translate("ProgressDialogClass", "ProgressDialog", 0, QApplication::UnicodeUTF8));
-        progressLabel->setText(QApplication::translate("ProgressDialogClass", "Working...", 0, QApplication::UnicodeUTF8));
-        cancelButton->setText(QApplication::translate("ProgressDialogClass", "Cancel", 0, QApplication::UnicodeUTF8));
+        ProgressDialogClass->setWindowTitle(QApplication::translate("ProgressDialogClass", "ProgressDialog", 0));
+        progressLabel->setText(QApplication::translate("ProgressDialogClass", "Working...", 0));
+        cancelButton->setText(QApplication::translate("ProgressDialogClass", "Cancel", 0));
     } // retranslateUi
 
 };

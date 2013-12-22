@@ -1,8 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'albumcreator.ui'
 **
-** Created: Tue Mar 26 22:24:49 2013
-**      by: Qt User Interface Compiler version 4.8.4
+** Created by: Qt User Interface Compiler version 5.1.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,23 +10,23 @@
 #define UI_ALBUMCREATOR_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QMainWindow>
-#include <QtGui/QMenu>
-#include <QtGui/QMenuBar>
-#include <QtGui/QPlainTextEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QSplitter>
-#include <QtGui/QStatusBar>
-#include <QtGui/QToolBar>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QWidget>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPlainTextEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSplitter>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 #include <albumview.h>
 #include <filebrowserlistview.h>
 
@@ -86,73 +85,73 @@ public:
     void setupUi(QMainWindow *AlbumCreator)
     {
         if (AlbumCreator->objectName().isEmpty())
-            AlbumCreator->setObjectName(QString::fromUtf8("AlbumCreator"));
+            AlbumCreator->setObjectName(QStringLiteral("AlbumCreator"));
         AlbumCreator->resize(860, 580);
         AlbumCreator->setMinimumSize(QSize(720, 480));
         AlbumCreator->setMaximumSize(QSize(8192, 8192));
         actionNew = new QAction(AlbumCreator);
-        actionNew->setObjectName(QString::fromUtf8("actionNew"));
+        actionNew->setObjectName(QStringLiteral("actionNew"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/:/images/filenew.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/:/images/filenew.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionNew->setIcon(icon);
         actionOpen = new QAction(AlbumCreator);
-        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
+        actionOpen->setObjectName(QStringLiteral("actionOpen"));
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/:/images/fileopen.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QStringLiteral(":/:/images/fileopen.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionOpen->setIcon(icon1);
         actionSave = new QAction(AlbumCreator);
-        actionSave->setObjectName(QString::fromUtf8("actionSave"));
+        actionSave->setObjectName(QStringLiteral("actionSave"));
         QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/:/images/filesave.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QStringLiteral(":/:/images/filesave.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionSave->setIcon(icon2);
         actionSave_As = new QAction(AlbumCreator);
-        actionSave_As->setObjectName(QString::fromUtf8("actionSave_As"));
+        actionSave_As->setObjectName(QStringLiteral("actionSave_As"));
         actionImport = new QAction(AlbumCreator);
-        actionImport->setObjectName(QString::fromUtf8("actionImport"));
+        actionImport->setObjectName(QStringLiteral("actionImport"));
         actionExport = new QAction(AlbumCreator);
-        actionExport->setObjectName(QString::fromUtf8("actionExport"));
+        actionExport->setObjectName(QStringLiteral("actionExport"));
         actionExit = new QAction(AlbumCreator);
-        actionExit->setObjectName(QString::fromUtf8("actionExit"));
+        actionExit->setObjectName(QStringLiteral("actionExit"));
         QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/:/images/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QStringLiteral(":/:/images/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionExit->setIcon(icon3);
         actionUndo = new QAction(AlbumCreator);
-        actionUndo->setObjectName(QString::fromUtf8("actionUndo"));
+        actionUndo->setObjectName(QStringLiteral("actionUndo"));
         QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/:/images/editundo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon4.addFile(QStringLiteral(":/:/images/editundo.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionUndo->setIcon(icon4);
         actionRedo = new QAction(AlbumCreator);
-        actionRedo->setObjectName(QString::fromUtf8("actionRedo"));
+        actionRedo->setObjectName(QStringLiteral("actionRedo"));
         QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/:/images/editredo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon5.addFile(QStringLiteral(":/:/images/editredo.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionRedo->setIcon(icon5);
         actionCopy = new QAction(AlbumCreator);
-        actionCopy->setObjectName(QString::fromUtf8("actionCopy"));
+        actionCopy->setObjectName(QStringLiteral("actionCopy"));
         QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/:/images/editcopy.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon6.addFile(QStringLiteral(":/:/images/editcopy.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionCopy->setIcon(icon6);
         actionCuttingTool = new QAction(AlbumCreator);
-        actionCuttingTool->setObjectName(QString::fromUtf8("actionCuttingTool"));
+        actionCuttingTool->setObjectName(QStringLiteral("actionCuttingTool"));
         QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/:/images/editcut.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon7.addFile(QStringLiteral(":/:/images/editcut.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionCuttingTool->setIcon(icon7);
         actionPaste = new QAction(AlbumCreator);
-        actionPaste->setObjectName(QString::fromUtf8("actionPaste"));
+        actionPaste->setObjectName(QStringLiteral("actionPaste"));
         QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/:/images/editpaste.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon8.addFile(QStringLiteral(":/:/images/editpaste.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionPaste->setIcon(icon8);
         actionDelete = new QAction(AlbumCreator);
-        actionDelete->setObjectName(QString::fromUtf8("actionDelete"));
+        actionDelete->setObjectName(QStringLiteral("actionDelete"));
         actionAbout = new QAction(AlbumCreator);
-        actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
+        actionAbout->setObjectName(QStringLiteral("actionAbout"));
         actionCreate_Web_Slideshow = new QAction(AlbumCreator);
-        actionCreate_Web_Slideshow->setObjectName(QString::fromUtf8("actionCreate_Web_Slideshow"));
+        actionCreate_Web_Slideshow->setObjectName(QStringLiteral("actionCreate_Web_Slideshow"));
         actionActionCuttingTool = new QAction(AlbumCreator);
-        actionActionCuttingTool->setObjectName(QString::fromUtf8("actionActionCuttingTool"));
+        actionActionCuttingTool->setObjectName(QStringLiteral("actionActionCuttingTool"));
         actionActionCuttingTool->setCheckable(true);
         actionActionCuttingTool->setIcon(icon7);
         centralWidget = new QWidget(AlbumCreator);
-        centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
+        centralWidget->setObjectName(QStringLiteral("centralWidget"));
         QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -163,31 +162,31 @@ public:
         horizontalLayout = new QHBoxLayout(centralWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         mainSplitter = new QSplitter(centralWidget);
-        mainSplitter->setObjectName(QString::fromUtf8("mainSplitter"));
+        mainSplitter->setObjectName(QStringLiteral("mainSplitter"));
         mainSplitter->setOrientation(Qt::Horizontal);
         layoutWidget1 = new QWidget(mainSplitter);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
         sourceImagePane = new QVBoxLayout(layoutWidget1);
         sourceImagePane->setSpacing(6);
         sourceImagePane->setContentsMargins(11, 11, 11, 11);
-        sourceImagePane->setObjectName(QString::fromUtf8("sourceImagePane"));
+        sourceImagePane->setObjectName(QStringLiteral("sourceImagePane"));
         sourceImagePane->setContentsMargins(0, 0, 0, 0);
         pathSelectionPane = new QHBoxLayout();
         pathSelectionPane->setSpacing(6);
-        pathSelectionPane->setObjectName(QString::fromUtf8("pathSelectionPane"));
+        pathSelectionPane->setObjectName(QStringLiteral("pathSelectionPane"));
         parentDirButton = new QPushButton(layoutWidget1);
-        parentDirButton->setObjectName(QString::fromUtf8("parentDirButton"));
+        parentDirButton->setObjectName(QStringLiteral("parentDirButton"));
         parentDirButton->setMinimumSize(QSize(20, 16));
         QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/:/images/1uparrow.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon9.addFile(QStringLiteral(":/:/images/1uparrow.png"), QSize(), QIcon::Normal, QIcon::Off);
         parentDirButton->setIcon(icon9);
 
         pathSelectionPane->addWidget(parentDirButton);
 
         pathField = new QLineEdit(layoutWidget1);
-        pathField->setObjectName(QString::fromUtf8("pathField"));
+        pathField->setObjectName(QStringLiteral("pathField"));
         pathField->setMinimumSize(QSize(40, 25));
 
         pathSelectionPane->addWidget(pathField);
@@ -196,7 +195,7 @@ public:
         sourceImagePane->addLayout(pathSelectionPane);
 
         fileBrowser = new FileBrowserListView(layoutWidget1);
-        fileBrowser->setObjectName(QString::fromUtf8("fileBrowser"));
+        fileBrowser->setObjectName(QStringLiteral("fileBrowser"));
         fileBrowser->setMinimumSize(QSize(180, 160));
         fileBrowser->setAcceptDrops(false);
         fileBrowser->setProperty("showDropIndicator", QVariant(false));
@@ -205,7 +204,7 @@ public:
         fileBrowser->setDragDropMode(QAbstractItemView::DragDrop);
         fileBrowser->setDefaultDropAction(Qt::IgnoreAction);
         fileBrowser->setSelectionMode(QAbstractItemView::ExtendedSelection);
-        fileBrowser->setIconSize(QSize(100, 75));
+        fileBrowser->setIconSize(QSize(110, 70));
         fileBrowser->setMovement(QListView::Snap);
         fileBrowser->setResizeMode(QListView::Adjust);
         fileBrowser->setLayoutMode(QListView::Batched);
@@ -218,17 +217,17 @@ public:
 
         mainSplitter->addWidget(layoutWidget1);
         destImagePane = new QSplitter(mainSplitter);
-        destImagePane->setObjectName(QString::fromUtf8("destImagePane"));
+        destImagePane->setObjectName(QStringLiteral("destImagePane"));
         destImagePane->setOrientation(Qt::Vertical);
         layoutWidget2 = new QWidget(destImagePane);
-        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
         albumBlock = new QVBoxLayout(layoutWidget2);
         albumBlock->setSpacing(6);
         albumBlock->setContentsMargins(11, 11, 11, 11);
-        albumBlock->setObjectName(QString::fromUtf8("albumBlock"));
+        albumBlock->setObjectName(QStringLiteral("albumBlock"));
         albumBlock->setContentsMargins(0, 0, 0, 0);
         albumLabel = new QLabel(layoutWidget2);
-        albumLabel->setObjectName(QString::fromUtf8("albumLabel"));
+        albumLabel->setObjectName(QStringLiteral("albumLabel"));
         albumLabel->setMinimumSize(QSize(200, 12));
         QFont font;
         font.setPointSize(8);
@@ -238,30 +237,33 @@ public:
         albumBlock->addWidget(albumLabel);
 
         albumView = new AlbumView(layoutWidget2);
-        albumView->setObjectName(QString::fromUtf8("albumView"));
+        albumView->setObjectName(QStringLiteral("albumView"));
         albumView->setAcceptDrops(true);
+        albumView->setFrameShape(QFrame::StyledPanel);
         albumView->setDragDropMode(QAbstractItemView::DragDrop);
         albumView->setDefaultDropAction(Qt::MoveAction);
         albumView->setSelectionMode(QAbstractItemView::ExtendedSelection);
-        albumView->setIconSize(QSize(160, 160));
+        albumView->setIconSize(QSize(180, 160));
         albumView->setMovement(QListView::Snap);
+        albumView->setFlow(QListView::TopToBottom);
         albumView->setResizeMode(QListView::Adjust);
         albumView->setLayoutMode(QListView::Batched);
         albumView->setGridSize(QSize(180, 180));
         albumView->setViewMode(QListView::IconMode);
+        albumView->setUniformItemSizes(true);
 
         albumBlock->addWidget(albumView);
 
         destImagePane->addWidget(layoutWidget2);
         layoutWidget3 = new QWidget(destImagePane);
-        layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
+        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
         captionBlock = new QVBoxLayout(layoutWidget3);
         captionBlock->setSpacing(6);
         captionBlock->setContentsMargins(11, 11, 11, 11);
-        captionBlock->setObjectName(QString::fromUtf8("captionBlock"));
+        captionBlock->setObjectName(QStringLiteral("captionBlock"));
         captionBlock->setContentsMargins(0, 0, 0, 0);
         originalPath = new QLabel(layoutWidget3);
-        originalPath->setObjectName(QString::fromUtf8("originalPath"));
+        originalPath->setObjectName(QStringLiteral("originalPath"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
@@ -275,19 +277,19 @@ public:
 
         captionWidgets = new QHBoxLayout();
         captionWidgets->setSpacing(6);
-        captionWidgets->setObjectName(QString::fromUtf8("captionWidgets"));
+        captionWidgets->setObjectName(QStringLiteral("captionWidgets"));
         back = new QPushButton(layoutWidget3);
-        back->setObjectName(QString::fromUtf8("back"));
+        back->setObjectName(QStringLiteral("back"));
         back->setMinimumSize(QSize(24, 24));
         QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/:/images/1leftarrow.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon10.addFile(QStringLiteral(":/:/images/1leftarrow.png"), QSize(), QIcon::Normal, QIcon::Off);
         back->setIcon(icon10);
         back->setFlat(false);
 
         captionWidgets->addWidget(back);
 
         captionEdit = new QPlainTextEdit(layoutWidget3);
-        captionEdit->setObjectName(QString::fromUtf8("captionEdit"));
+        captionEdit->setObjectName(QStringLiteral("captionEdit"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
@@ -299,10 +301,10 @@ public:
         captionWidgets->addWidget(captionEdit);
 
         forward = new QPushButton(layoutWidget3);
-        forward->setObjectName(QString::fromUtf8("forward"));
+        forward->setObjectName(QStringLiteral("forward"));
         forward->setMinimumSize(QSize(24, 24));
         QIcon icon11;
-        icon11.addFile(QString::fromUtf8(":/:/images/1rightarrow.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon11.addFile(QStringLiteral(":/:/images/1rightarrow.png"), QSize(), QIcon::Normal, QIcon::Off);
         forward->setIcon(icon11);
 
         captionWidgets->addWidget(forward);
@@ -314,7 +316,7 @@ public:
         captionBlock->addLayout(captionWidgets);
 
         cpationLabel = new QLabel(layoutWidget3);
-        cpationLabel->setObjectName(QString::fromUtf8("cpationLabel"));
+        cpationLabel->setObjectName(QStringLiteral("cpationLabel"));
         sizePolicy1.setHeightForWidth(cpationLabel->sizePolicy().hasHeightForWidth());
         cpationLabel->setSizePolicy(sizePolicy1);
         cpationLabel->setMinimumSize(QSize(200, 12));
@@ -336,25 +338,25 @@ public:
 
         AlbumCreator->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(AlbumCreator);
-        menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 860, 22));
+        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 860, 21));
         menuFile = new QMenu(menuBar);
-        menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        menuFile->setObjectName(QStringLiteral("menuFile"));
         menuRecently_edited = new QMenu(menuFile);
-        menuRecently_edited->setObjectName(QString::fromUtf8("menuRecently_edited"));
+        menuRecently_edited->setObjectName(QStringLiteral("menuRecently_edited"));
         menuEdit = new QMenu(menuBar);
-        menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
+        menuEdit->setObjectName(QStringLiteral("menuEdit"));
         menuHelp = new QMenu(menuBar);
-        menuHelp->setObjectName(QString::fromUtf8("menuHelp"));
+        menuHelp->setObjectName(QStringLiteral("menuHelp"));
         menuCreate = new QMenu(menuBar);
-        menuCreate->setObjectName(QString::fromUtf8("menuCreate"));
+        menuCreate->setObjectName(QStringLiteral("menuCreate"));
         AlbumCreator->setMenuBar(menuBar);
         mainToolBar = new QToolBar(AlbumCreator);
-        mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
+        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         mainToolBar->setMouseTracking(false);
         AlbumCreator->addToolBar(Qt::RightToolBarArea, mainToolBar);
         statusBar = new QStatusBar(AlbumCreator);
-        statusBar->setObjectName(QString::fromUtf8("statusBar"));
+        statusBar->setObjectName(QStringLiteral("statusBar"));
         AlbumCreator->setStatusBar(statusBar);
 
         menuBar->addAction(menuFile->menuAction());
@@ -396,42 +398,42 @@ public:
 
     void retranslateUi(QMainWindow *AlbumCreator)
     {
-        AlbumCreator->setWindowTitle(QApplication::translate("AlbumCreator", "AlbumCreator", 0, QApplication::UnicodeUTF8));
-        actionNew->setText(QApplication::translate("AlbumCreator", "New...", 0, QApplication::UnicodeUTF8));
-        actionOpen->setText(QApplication::translate("AlbumCreator", "Open...", 0, QApplication::UnicodeUTF8));
-        actionSave->setText(QApplication::translate("AlbumCreator", "Save", 0, QApplication::UnicodeUTF8));
-        actionSave_As->setText(QApplication::translate("AlbumCreator", "Save As...", 0, QApplication::UnicodeUTF8));
-        actionImport->setText(QApplication::translate("AlbumCreator", "Import...", 0, QApplication::UnicodeUTF8));
-        actionExport->setText(QApplication::translate("AlbumCreator", "Export...", 0, QApplication::UnicodeUTF8));
-        actionExit->setText(QApplication::translate("AlbumCreator", "Exit", 0, QApplication::UnicodeUTF8));
-        actionUndo->setText(QApplication::translate("AlbumCreator", "Undo", 0, QApplication::UnicodeUTF8));
-        actionRedo->setText(QApplication::translate("AlbumCreator", "Redo", 0, QApplication::UnicodeUTF8));
-        actionCopy->setText(QApplication::translate("AlbumCreator", "Copy", 0, QApplication::UnicodeUTF8));
-        actionCuttingTool->setText(QApplication::translate("AlbumCreator", "Cut", 0, QApplication::UnicodeUTF8));
-        actionPaste->setText(QApplication::translate("AlbumCreator", "Paste", 0, QApplication::UnicodeUTF8));
-        actionDelete->setText(QApplication::translate("AlbumCreator", "Delete", 0, QApplication::UnicodeUTF8));
-        actionAbout->setText(QApplication::translate("AlbumCreator", "About AlbumCreator...", 0, QApplication::UnicodeUTF8));
-        actionCreate_Web_Slideshow->setText(QApplication::translate("AlbumCreator", "Create Web Slideshow...", 0, QApplication::UnicodeUTF8));
-        actionActionCuttingTool->setText(QApplication::translate("AlbumCreator", "actionCuttingTool", 0, QApplication::UnicodeUTF8));
+        AlbumCreator->setWindowTitle(QApplication::translate("AlbumCreator", "AlbumCreator", 0));
+        actionNew->setText(QApplication::translate("AlbumCreator", "New...", 0));
+        actionOpen->setText(QApplication::translate("AlbumCreator", "Open...", 0));
+        actionSave->setText(QApplication::translate("AlbumCreator", "Save", 0));
+        actionSave_As->setText(QApplication::translate("AlbumCreator", "Save As...", 0));
+        actionImport->setText(QApplication::translate("AlbumCreator", "Import...", 0));
+        actionExport->setText(QApplication::translate("AlbumCreator", "Export...", 0));
+        actionExit->setText(QApplication::translate("AlbumCreator", "Exit", 0));
+        actionUndo->setText(QApplication::translate("AlbumCreator", "Undo", 0));
+        actionRedo->setText(QApplication::translate("AlbumCreator", "Redo", 0));
+        actionCopy->setText(QApplication::translate("AlbumCreator", "Copy", 0));
+        actionCuttingTool->setText(QApplication::translate("AlbumCreator", "Cut", 0));
+        actionPaste->setText(QApplication::translate("AlbumCreator", "Paste", 0));
+        actionDelete->setText(QApplication::translate("AlbumCreator", "Delete", 0));
+        actionAbout->setText(QApplication::translate("AlbumCreator", "About AlbumCreator...", 0));
+        actionCreate_Web_Slideshow->setText(QApplication::translate("AlbumCreator", "Create Web Slideshow...", 0));
+        actionActionCuttingTool->setText(QApplication::translate("AlbumCreator", "actionCuttingTool", 0));
 #ifndef QT_NO_TOOLTIP
-        actionActionCuttingTool->setToolTip(QApplication::translate("AlbumCreator", "Cut off margins or cut out a detail.", 0, QApplication::UnicodeUTF8));
+        actionActionCuttingTool->setToolTip(QApplication::translate("AlbumCreator", "Cut off margins or cut out a detail.", 0));
 #endif // QT_NO_TOOLTIP
-        actionActionCuttingTool->setShortcut(QApplication::translate("AlbumCreator", "Ctrl+D", 0, QApplication::UnicodeUTF8));
+        actionActionCuttingTool->setShortcut(QApplication::translate("AlbumCreator", "Ctrl+D", 0));
 #ifndef QT_NO_TOOLTIP
         parentDirButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         parentDirButton->setText(QString());
-        albumLabel->setText(QApplication::translate("AlbumCreator", "Album (drag pictures here)", 0, QApplication::UnicodeUTF8));
-        originalPath->setText(QApplication::translate("AlbumCreator", "pathName", 0, QApplication::UnicodeUTF8));
+        albumLabel->setText(QApplication::translate("AlbumCreator", "Album (drag pictures here)", 0));
+        originalPath->setText(QApplication::translate("AlbumCreator", "pathName", 0));
         back->setText(QString());
-        back->setShortcut(QApplication::translate("AlbumCreator", "Ctrl+Left", 0, QApplication::UnicodeUTF8));
-        forward->setShortcut(QApplication::translate("AlbumCreator", "Ctrl+Space", 0, QApplication::UnicodeUTF8));
-        cpationLabel->setText(QApplication::translate("AlbumCreator", "Caption (press ctrl-SPC to move to next picture):", 0, QApplication::UnicodeUTF8));
-        menuFile->setTitle(QApplication::translate("AlbumCreator", "File", 0, QApplication::UnicodeUTF8));
-        menuRecently_edited->setTitle(QApplication::translate("AlbumCreator", "Recently edited", 0, QApplication::UnicodeUTF8));
-        menuEdit->setTitle(QApplication::translate("AlbumCreator", "Edit", 0, QApplication::UnicodeUTF8));
-        menuHelp->setTitle(QApplication::translate("AlbumCreator", "Help", 0, QApplication::UnicodeUTF8));
-        menuCreate->setTitle(QApplication::translate("AlbumCreator", "Create", 0, QApplication::UnicodeUTF8));
+        back->setShortcut(QApplication::translate("AlbumCreator", "Ctrl+Left", 0));
+        forward->setShortcut(QApplication::translate("AlbumCreator", "Ctrl+Space", 0));
+        cpationLabel->setText(QApplication::translate("AlbumCreator", "Caption (press ctrl-SPC to move to next picture):", 0));
+        menuFile->setTitle(QApplication::translate("AlbumCreator", "File", 0));
+        menuRecently_edited->setTitle(QApplication::translate("AlbumCreator", "Recently edited", 0));
+        menuEdit->setTitle(QApplication::translate("AlbumCreator", "Edit", 0));
+        menuHelp->setTitle(QApplication::translate("AlbumCreator", "Help", 0));
+        menuCreate->setTitle(QApplication::translate("AlbumCreator", "Create", 0));
     } // retranslateUi
 
 };

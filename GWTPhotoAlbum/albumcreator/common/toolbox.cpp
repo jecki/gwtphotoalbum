@@ -18,6 +18,7 @@
 
 #include "toolbox.h"
 
+#include <Qt>
 #include <QIODevice>
 #include <QTextStream>
 #include <QDir>
@@ -27,6 +28,7 @@
 #include <QStringList>
 #include <QByteArray>
 #include <QImageReader>
+#include <QPainter>
 
 #include <iostream>
 
@@ -43,7 +45,7 @@ QStringList getSupportedImageFormats()
 		QString strItem(item);
 		supportedFormats.append(strItem.toUpper());
 	}
-	return supportedFormats;
+	return (supportedFormats);
 }
 
 
@@ -60,9 +62,47 @@ bool hasSupportedImageFormat(const QString &imageFileName)
 	QFileInfo fi(imageFileName);
 	QString   ext(fi.suffix().toUpper());
 	foreach(QString fmtStr, toolbox_supportedFileFormats) {
-		if (fmtStr == ext) return true;
+		if (fmtStr == ext) return (true);
 	}
-	return false;
+	return (false);
+}
+
+
+/*!
+ * Rezises a pixmap if necessary. Keeps the aspect ratio, centres the pixmap
+ * and adds a frame, if needed.
+ * @pixmap the pixmap to be checked.
+ * @size   the desired size.
+ * @frame  the width of an empty frame to be added (defaults to 0).
+ * @return the adjusted pixmap.
+ */
+QPixmap sizeGuard(const QPixmap pixmap, const QSize size, const int frame) {
+	QSize pmsize = pixmap.size();
+	if (size + QSize(frame, frame) != pmsize) { // Fails if extended size matches, though not really a frame exists...
+//	if ( (size.height() == pmsize.height() && size.width() >= pmsize.width()) ||
+//		 (size.width() == pmsize.width() && size.height() >= pmsize.height()) ) {
+		QPixmap pm;
+		if (size == pmsize) {
+			pm = pixmap;
+		} else {
+			pm = pixmap.scaled(size, Qt::KeepAspectRatio, Qt::FastTransformation);
+		}
+		if (size.width() * pmsize.height() ==
+			pmsize.width() * size.height() && frame == 0) {
+			return (pm);
+
+		} else {
+			QPixmap dest(QSize(size.width() + 2 * frame, size.height() + 2 * frame));
+			dest.fill();
+			QPainter painter(&dest);
+
+			painter.drawPixmap((size.width() - pm.width())/2 + frame,
+					           (size.height() - pm.height())/2 + frame, pm);
+			return (dest);
+		}
+	} else {
+		return (pixmap);
+	}
 }
 
 
@@ -89,7 +129,7 @@ QImage toolboxResize(QImage image, const QSize &size, int trigger, int preshrink
 		image = image.scaled(size.width(), size.height(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
 	}
 
-	return image;
+	return (image);
 }
 
 
@@ -100,9 +140,9 @@ QImage toolboxResize(QImage image, const QSize &size, int trigger, int preshrink
  */
 QString sizeStr(const QSize &size) {
 	if (size.isEmpty()) {
-		return QString("original_size");
+		return (QString("original_size"));
 	} else {
-		return QString::number(size.width()) + QString("x") + QString::number(size.height());
+		return (QString::number(size.width()) + QString("x") + QString::number(size.height()));
 	}
 }
 
@@ -122,7 +162,7 @@ int bestMatch(const QSize &target, const QList<QSize> &sizes) {
 		int maxW = -1, maxH = -1;
 		for (int i = 0; i < sizes.count(); i++) {
 			if (sizes[i] == target) {
-				return i;
+				return (i);
 			} else {
 				int w = sizes[i].width();
 				int h = sizes[i].height();
@@ -145,7 +185,7 @@ int bestMatch(const QSize &target, const QList<QSize> &sizes) {
 			}
 		}
 	}
-	return bestMatch;
+	return (bestMatch);
 }
 
 /*!
@@ -156,7 +196,7 @@ int bestMatch(const QSize &target, const QList<QSize> &sizes) {
  * @return the adjusted size
  */
 QSize adjustSize(const QSize &imageSize, const QSize &targetSize) {
-	if (targetSize.isEmpty()) return imageSize;
+	if (targetSize.isEmpty()) return (imageSize);
 
 	int sx = imageSize.width();
 	int sy = imageSize.height();
@@ -174,7 +214,7 @@ QSize adjustSize(const QSize &imageSize, const QSize &targetSize) {
 		x = sx*ty/sy;
 	}
 
-	return QSize(x, y);
+	return (QSize(x, y));
 }
 
 
@@ -189,7 +229,7 @@ QString strRepSize(const QList<QSize> &sList) {
 		stream << s.width() << 'x' << s.height() << ";";
 	}
 	stream.flush();
-	return rep;
+	return (rep);
 
 /*	QStringList rep;
 	foreach(const QSize &s, sList) {
@@ -228,7 +268,7 @@ QString readTextFile(const QString &fileName, QStringList &error, bool &ok) {
 			ok = false;
 		}
 	}
-	return text;
+	return (text);
 }
 
 
@@ -296,7 +336,7 @@ struct ListTreeCallback : IWalkDirCallback {
 QFileInfoList listTree(const QString &dirName) {
 	ListTreeCallback registerFileInfo;
 	walkDir(dirName, &registerFileInfo);
-	return registerFileInfo.list;
+	return (registerFileInfo.list);
 }
 
 ///*!
@@ -329,9 +369,9 @@ QFileInfoList listTree(const QString &dirName) {
  */
 QString cleanPath(const QString &path) {
 	if (path.at(0) == '~') {
-		return QDir::cleanPath(QDir::homePath()+path.mid(1));
+		return (QDir::cleanPath(QDir::homePath()+path.mid(1)));
 	} else {
-		return QDir::cleanPath(path);
+		return (QDir::cleanPath(path));
 	}
 }
 
@@ -345,7 +385,7 @@ QString &replace_problematic_letters(QString &s)
 	s.replace("Ä", "Ae", Qt::CaseSensitive);
 	s.replace("Ö", "Oe", Qt::CaseSensitive);
 	s.replace("Ü", "Ue", Qt::CaseSensitive);
-	return s;
+	return (s);
 }
 
 /*!
@@ -366,7 +406,7 @@ QString deriveFileName(const QString &str) {
 		}
 	}
 
-	return QString(array, N);
+	return (QString(array, N));
 }
 
 
@@ -377,8 +417,8 @@ QString versionNumber() {
 	QFile file(":/data/VERSION.txt");
 	if (file.open(QIODevice::ReadOnly|QIODevice::Text)) {
 		QTextStream stream(&file);
-		return stream.readLine();
+		return (stream.readLine());
 	} else {
-		return QString("unknown version");
+		return (QString("unknown version"));
 	}
 }

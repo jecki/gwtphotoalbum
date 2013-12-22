@@ -16,7 +16,10 @@
 
 
 #include "albumview.h"
-#include "iconcache.h"
+#include "toolbox.h"
+#include "imageitem.h"
+#include "imageitemdelegate.h"
+#include "imagelistmodel.h"
 
 #include <QString>
 #include <QDrag>
@@ -26,6 +29,8 @@
 #include <QDragMoveEvent>
 #include <QDropEvent>
 #include <QUrl>
+#include <QPainter>
+#include <QSize>
 
 #ifndef NDEBUG
 #include <QDebug>
@@ -35,9 +40,12 @@
 
 
 AlbumView::AlbumView(QWidget *parent)
-    : QListView(parent)
+    : QListView(parent), itemDelegate(this)
 {
-
+	setMovement(QListView::Snap);
+	setDropIndicatorShown(true);
+	setItemDelegate(&itemDelegate);
+	//setIconSize(ImageItem::Thumbnail_Size);
 }
 
 AlbumView::~AlbumView()
@@ -62,10 +70,7 @@ void AlbumView::startDrag(Qt::DropActions supportedActions)
 
 	QVariant decoration = itemModel->data(current, Qt::DecorationRole);
 	Q_ASSERT(decoration.type() == QVariant::Pixmap);
-	QPixmap pixmap = IconCache::sizeGuard(qvariant_cast<QPixmap>(decoration),
-			iconSize());
-
-	qDebug() << "was here..." << pixmap.isNull();
+	QPixmap pixmap = sizeGuard(qvariant_cast<QPixmap>(decoration), iconSize());
 
 	QByteArray	imageData;
 	QDataStream	stream(&imageData, QIODevice::WriteOnly);
@@ -89,23 +94,28 @@ void AlbumView::dragEnterEvent(QDragEnterEvent* event)
 
 	if (event->mimeData()->hasFormat("text/uri-list")) {
 		foreach(QUrl url, event->mimeData()->urls()) {
-			// qDebug() << url.path() << event->mimeData()->hasImage();
+			qDebug() << url.path() << event->mimeData()->hasImage();
 		}
+		itemDelegate.highlightDropPosition(myIndexAt(event->pos()));
 		event->acceptProposedAction();
 	} else {
-		// ...
+		itemDelegate.highlightDropPosition(myIndexAt(event->pos()));
 	}
 
 }
 
 
-//void AlbumView::dragLeaveEvent(QDragLeaveEvent* event) {
-//}
+void AlbumView::dragLeaveEvent(QDragLeaveEvent* event) {
+	(void) event;
+	itemDelegate.clearDropPosition();
+}
 
 
 void AlbumView::dragMoveEvent(QDragMoveEvent* event) {
     if (event->mimeData()->hasFormat("image/x-pixmap")) {
         event->setDropAction(Qt::CopyAction);
+		// qDebug() << "AlbumView::dragMoveEvent index: " << myIndexAt(event->pos());
+		itemDelegate.highlightDropPosition(myIndexAt(event->pos()));
         event->accept();
     } else
         event->ignore();
@@ -114,6 +124,7 @@ void AlbumView::dragMoveEvent(QDragMoveEvent* event) {
 
 void AlbumView::dropEvent(QDropEvent* event)
 {
+	itemDelegate.clearDropPosition();
 	if (event->proposedAction() == Qt::IgnoreAction) {
 		event->acceptProposedAction();
 	} else if (event->mimeData()->hasFormat("text/uri-list")) {
@@ -123,6 +134,7 @@ void AlbumView::dropEvent(QDropEvent* event)
 			event->ignore();
 		} else {
 
+			qDebug() << "AlbumView::dropEvent index: " << myIndexAt(event->pos());
 			model()->dropMimeData(event->mimeData(), Qt::CopyAction,
 					-1, -1, myIndexAt(event->pos()));
 		}
@@ -140,8 +152,13 @@ void AlbumView::dropEvent(QDropEvent* event)
 QModelIndex AlbumView::myIndexAt(const QPoint &pos) {
 	QModelIndex index = indexAt(pos);
 	if (index.row() == -1 && model()->rowCount() > 0) {
-		// find position for index... findRectForIndex() ?
+//		int x = pos.x();
+//		int y = pos.y();
+//		int w = iconSize().width();
+//		int h = iconSize().height();
+
+
 	}
-	return index;
+	return (index);
 }
 

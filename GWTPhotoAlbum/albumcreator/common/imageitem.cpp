@@ -22,6 +22,8 @@
 #include <QEventLoop>
 #include <QDir>
 #include <QDebug>
+#include <QImage>
+#include <QPixmap>
 
 #include "toolbox.h"
 
@@ -38,7 +40,8 @@ QList<ImageItem *> ImageItem::cachedPreviews;
 int ImageItem::maxImages = 20;
 int ImageItem::maxPreviews = 50;
 QThread *ImageItem::mainThread = QThread::currentThread();
-
+QImage ImageItem::placeholder; // = QImage(":/:/images/image_placeholder.png");
+		// sizeGuard(QPixmap(":/:/images/image_placeholder.png"), Thumbnail_Size).toImage();
 
 /*!
  * Returns the original size of the image if class is IMAGE,
@@ -49,18 +52,18 @@ QThread *ImageItem::mainThread = QThread::currentThread();
 QSize ImageItem::size(ImageItem::ImageClass c)
 {
 	if (c == THUMBNAIL) {
-		return Thumbnail_Size;
+		return (Thumbnail_Size);
 	} else if (c == PREVIEW) {
-		return Preview_Size;
+		return (Preview_Size);
 	} else {
 		if (originalSize.isEmpty()) {
 #ifndef NDEBUG
 			std::cout << "ImageItem::size "<< this->destName.toStdString() << std::endl;
 #endif
 			QImage img = image(IMAGE);
-			return img.size();
+			return (img.size());
 		} else{
-			return originalSize;
+			return (originalSize);
 		}
 	}
 }
@@ -192,9 +195,9 @@ QImage ImageItem::image(ImageClass c)
 		while(noError() && fetch(c).isNull()) {  // need to implement aboutToQuit-Slot to get out of this loop!?
 			QCoreApplication::instance()->processEvents(QEventLoop::WaitForMoreEvents);
 		}
-		return fetch(c);
+		return (fetch(c));
 	} else {
-		return img;
+		return (img);
 	}
 }
 
@@ -216,11 +219,11 @@ void ImageItem::storeCaptionInOriginal()  {
  */
 QSize imgSize(ImageItem::ImageClass c) {
 	if (c == ImageItem::PREVIEW) {
-		return ImageItem::Preview_Size;
+		return (ImageItem::Preview_Size);
 	} else if (c == ImageItem::THUMBNAIL) {
-		return ImageItem::Thumbnail_Size;
+		return (ImageItem::Thumbnail_Size);
 	} else {
-		return QSize();
+		return (QSize());
 	}
 }
 
@@ -246,21 +249,21 @@ QList<QImage> ImageItem::resized(QList<QSize> sizes) {
 			img = ImageIO::instance().loadImmediately(filePath, imgSize(IMAGE));
 			if (img.isNull()) {
 				receiveErrorMsg(filePath, "could not load image");
-				return ret;
+				return (ret);
 			} else {
 				receiveImage(filePath, img);
 			}
 		}
 		// mutex.unlock();
 	}
-	if (!noError()) return ret;
+	if (!noError()) return (ret);
 
 	int N = sizes.length();
 	int i = N - 1;
 
 	if (N == 0) {
 		ret.prepend(img);
-		return ret;
+		return (ret);
 	}
 
 #ifndef NDEBUG
@@ -303,7 +306,7 @@ QList<QImage> ImageItem::resized(QList<QSize> sizes) {
 		i--;
 	}
 
-	return ret;
+	return (ret);
 }
 
 
@@ -314,7 +317,7 @@ QList<QImage> ImageItem::resized(QList<QSize> sizes) {
  * @return true if image item contains a valid image!
  */
 bool ImageItem::isValid() {
-	return noError() && (!error.isNull() || !image().isNull());
+	return (noError() && (!error.isNull() || !image().isNull()));
 }
 
 
@@ -354,11 +357,20 @@ QImage ImageItem::fetch(ImageClass c) const {
 			   "ImageItem::fetch", "image class must be IMAGE or PREVIEW or THUMBNAIL");
 
 	if (c == THUMBNAIL) {
-		return thumbnailImg;
+		if (thumbnailImg.isNull()) {
+			if (placeholder.isNull()) {
+				placeholder = sizeGuard(QPixmap(":/:/images/image_placeholder.png"), Thumbnail_Size).toImage();
+			}
+			Q_ASSERT(!placeholder.isNull());
+			return (placeholder);
+		} else {
+			return (thumbnailImg);
+		}
+
 	} else if (c == PREVIEW) {
-		return previewImg;
+		return (previewImg);
 	} else {
-		return original;
+		return (original);
 	}
 }
 

@@ -40,9 +40,9 @@ public:
     bool get(const QString filePath, QIcon &icon, const QSize size);
     bool readNextErrorMsg(QString &filePath, QString &errorMsg);
     void setIconSize(const QSize size);
-    QSize getIconSize() { return iconSize; }
+    QSize getIconSize() { return (iconSize); }
 
-    static QPixmap sizeGuard(const QPixmap pixmap, const QSize size);
+    //static QPixmap sizeGuard(const QPixmap pixmap, const QSize size, const int frame = 0);
 
  	virtual void receiveImage(const QString filePath, QImage image);
    	virtual void receiveErrorMsg(const QString filePath, const QString errorMsg);

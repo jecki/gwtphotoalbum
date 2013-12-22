@@ -45,9 +45,9 @@ IconCache AlbumCreator::iconCache;
 class AlbumCreator::IconProvider : public QFileIconProvider {
 public:
 	IconProvider(QListView *fileBrowser)
-		: placeholder(IconCache::sizeGuard(QPixmap(":/:/images/image_placeholder.png"),
+		: placeholder(sizeGuard(QPixmap(":/:/images/image_placeholder.png"),
 			fileBrowser->iconSize())),
-		  folderIcon(IconCache::sizeGuard(
+		  folderIcon(sizeGuard(
 				  (QFileIconProvider::icon(QFileIconProvider::Folder)).pixmap(
 						  fileBrowser->iconSize()), fileBrowser->iconSize() ))
 	{
@@ -63,12 +63,12 @@ public:
 			QSize iconSize = fileBrowser->iconSize();
 			if (FilterProxy::hasSupportedFormat(info.filePath()) &&
 				iconCache.get(info.filePath(), icon, iconSize) ) {
-				return icon;
+				return (icon);
 			} else {
 				// return QFileIconProvider::icon(QFileIconProvider::File);
-				return placeholder;
+				return (placeholder);
 			}
-		} else return folderIcon;
+		} else return (folderIcon);
 	}
 
 private:

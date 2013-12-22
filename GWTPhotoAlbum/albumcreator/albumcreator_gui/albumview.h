@@ -21,6 +21,8 @@
 #include <QAbstractItemModel>
 #include <QListView>
 
+#include "imageitemdelegate.h"
+
 
 class AlbumView : public QListView
 {
@@ -33,11 +35,13 @@ public:
 protected:
     virtual void startDrag(Qt::DropActions supportedActions);
     virtual void dragEnterEvent(QDragEnterEvent *event);
-//    virtual void dragLeaveEvent(QDragLeaveEvent *event);
+    virtual void dragLeaveEvent(QDragLeaveEvent *event);
     virtual void dragMoveEvent(QDragMoveEvent *event);
     virtual void dropEvent(QDropEvent * event);
 
 private:
+    ImageItemDelegate	itemDelegate;
+
     QModelIndex myIndexAt(const QPoint &pos);
 };
 

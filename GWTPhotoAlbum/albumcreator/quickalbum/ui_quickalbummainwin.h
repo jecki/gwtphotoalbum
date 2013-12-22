@@ -1,8 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'quickalbummainwin.ui'
 **
-** Created: Tue Mar 26 22:24:49 2013
-**      by: Qt User Interface Compiler version 4.8.4
+** Created by: Qt User Interface Compiler version 5.1.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,15 +10,15 @@
 #define UI_QUICKALBUMMAINWIN_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QHeaderView>
-#include <QtGui/QMainWindow>
-#include <QtGui/QMenuBar>
-#include <QtGui/QPushButton>
-#include <QtGui/QStatusBar>
-#include <QtGui/QWidget>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -34,20 +33,20 @@ public:
     void setupUi(QMainWindow *QuickAlbumMainWinClass)
     {
         if (QuickAlbumMainWinClass->objectName().isEmpty())
-            QuickAlbumMainWinClass->setObjectName(QString::fromUtf8("QuickAlbumMainWinClass"));
+            QuickAlbumMainWinClass->setObjectName(QStringLiteral("QuickAlbumMainWinClass"));
         QuickAlbumMainWinClass->resize(800, 600);
         centralwidget = new QWidget(QuickAlbumMainWinClass);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setObjectName(QStringLiteral("centralwidget"));
         startButton = new QPushButton(centralwidget);
-        startButton->setObjectName(QString::fromUtf8("startButton"));
+        startButton->setObjectName(QStringLiteral("startButton"));
         startButton->setGeometry(QRect(350, 230, 95, 31));
         QuickAlbumMainWinClass->setCentralWidget(centralwidget);
         menubar = new QMenuBar(QuickAlbumMainWinClass);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 29));
         QuickAlbumMainWinClass->setMenuBar(menubar);
         statusbar = new QStatusBar(QuickAlbumMainWinClass);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        statusbar->setObjectName(QStringLiteral("statusbar"));
         QuickAlbumMainWinClass->setStatusBar(statusbar);
 
         retranslateUi(QuickAlbumMainWinClass);
@@ -57,8 +56,8 @@ public:
 
     void retranslateUi(QMainWindow *QuickAlbumMainWinClass)
     {
-        QuickAlbumMainWinClass->setWindowTitle(QApplication::translate("QuickAlbumMainWinClass", "MainWindow", 0, QApplication::UnicodeUTF8));
-        startButton->setText(QApplication::translate("QuickAlbumMainWinClass", "Start...", 0, QApplication::UnicodeUTF8));
+        QuickAlbumMainWinClass->setWindowTitle(QApplication::translate("QuickAlbumMainWinClass", "MainWindow", 0));
+        startButton->setText(QApplication::translate("QuickAlbumMainWinClass", "Start...", 0));
     } // retranslateUi
 
 };

@@ -24,6 +24,7 @@
 #include <QString>
 #include <QStringList>
 #include <QFileInfo>
+#include <QPixmap>
 
 
 
@@ -31,6 +32,8 @@ QStringList getSupportedImageFormats();
 bool		hasSupportedImageFormat(const QString &imageFileName);
 
 // Functions for smart resizing of images
+
+QPixmap sizeGuard(const QPixmap pixmap, const QSize size, const int frame = 0);
 
 QImage toolboxResize(QImage image, const QSize &size, int trigger, int preshrink);
 
@@ -40,7 +43,7 @@ QImage toolboxResize(QImage image, const QSize &size, int trigger, int preshrink
  * @param size   the destination size
  * @return the resized image
  */
-inline QImage quickResize(const QImage &image, const QSize &size) { return toolboxResize(image, size, 2, 2); };
+inline QImage quickResize(const QImage &image, const QSize &size) { return (toolboxResize(image, size, 2, 2)); };
 
 /*!
  * Quickly but smoothly resizes an image. Slower than @code quickResize @endcode , but
@@ -49,7 +52,7 @@ inline QImage quickResize(const QImage &image, const QSize &size) { return toolb
  * @param size   the destination size
  * @return the resized image
  */
-inline QImage smartResize(const QImage &image, const QSize &size) { return toolboxResize(image, size, 4, 2); };
+inline QImage smartResize(const QImage &image, const QSize &size) { return (toolboxResize(image, size, 4, 2)); };
 
 
 /*!
@@ -62,8 +65,8 @@ inline QImage smartResize(const QImage &image, const QSize &size) { return toolb
  * @return  true, if the sizes match, false otherwise
  */
 inline bool sizeFits(const QSize &a, const QSize &b) {
-	return (a.width() == b.width() && a.height() <= b.height()) ||
-		   (a.height() == b.height() && a.width() <= b.width());
+	return ((a.width() == b.width() && a.height() <= b.height()) ||
+		    (a.height() == b.height() && a.width() <= b.width()));
 }
 
 
@@ -90,7 +93,7 @@ QFileInfoList listTree(const QString &dirName);
 //bool delAlbumTree(const QString &path);
 
 QString cleanPath(const QString &path);
-inline QString cleanPath(const char *path) { return cleanPath(QString(path)); }
+inline QString cleanPath(const char *path) { return (cleanPath(QString(path))); }
 
 QString deriveFileName(const QString &path);
 

@@ -61,8 +61,7 @@ void FileBrowserListView::startDrag(Qt::DropActions supportedActions) {
 //			itemModel->data(current, QFileSystemModel::FileNameRole));
 	QVariant decoration = itemModel->data(current, Qt::DecorationRole);
 	Q_ASSERT(decoration.type() == QVariant::Icon);
-	QPixmap pixmap = IconCache::sizeGuard((qvariant_cast<QIcon>(decoration))
-			.pixmap(iconSize()), iconSize());
+	QPixmap pixmap = sizeGuard((qvariant_cast<QIcon>(decoration)).pixmap(iconSize()), iconSize());
 
 	QByteArray	imageData;
 	QDataStream	stream(&imageData, QIODevice::WriteOnly);

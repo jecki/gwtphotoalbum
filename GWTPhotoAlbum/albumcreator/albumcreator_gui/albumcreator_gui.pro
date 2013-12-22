@@ -25,8 +25,8 @@ LIBS += -L../common \
 HEADERS += imageitemdelegate.h \
     filebrowserlistview.h \
     albumview.h \
-    imagelistmodel.h \
     iconcache.h \
+    imagelistmodel.h \
     albumcreator.h \
     filterproxy_class.h \
     ../common/htmlprocessing.h \
@@ -42,8 +42,8 @@ HEADERS += imageitemdelegate.h \
 SOURCES += imageitemdelegate.cpp \
     filebrowserlistview.cpp \
     albumview.cpp \
-    imagelistmodel.cpp \
     iconcache.cpp \
+    imagelistmodel.cpp \
     main_gui.cpp \
     albumcreator.cpp
 FORMS += albumcreator.ui \

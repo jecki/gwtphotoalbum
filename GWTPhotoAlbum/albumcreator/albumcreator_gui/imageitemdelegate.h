@@ -8,13 +8,15 @@
 #ifndef IMAGEITEMDELEGATE_H_
 #define IMAGEITEMDELEGATE_H_
 
+#include <Qt>
+#include <QListView>
 #include <qstyleditemdelegate.h>
 
 class ImageItemDelegate: public QStyledItemDelegate {
 	Q_OBJECT
 
 public:
-	ImageItemDelegate(QObject *parent = 0);
+	ImageItemDelegate(QListView *listView, QObject *parent = 0);
 	virtual ~ImageItemDelegate();
 
 	virtual void paint (QPainter *painter, const QStyleOptionViewItem &option,
@@ -24,6 +26,7 @@ public:
 	void clearDropPosition();
 
 private:
+	QListView	*view;
 	QModelIndex dropPosition;
 };
 

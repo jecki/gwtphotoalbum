@@ -1,8 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'createalbumwizzard.ui'
 **
-** Created: Tue Mar 26 22:20:05 2013
-**      by: Qt User Interface Compiler version 4.8.4
+** Created by: Qt User Interface Compiler version 5.1.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,26 +10,26 @@
 #define UI_CREATEALBUMWIZZARD_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QDialog>
-#include <QtGui/QFrame>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QProgressBar>
-#include <QtGui/QPushButton>
-#include <QtGui/QRadioButton>
-#include <QtGui/QSlider>
-#include <QtGui/QSpacerItem>
-#include <QtGui/QTabWidget>
-#include <QtGui/QTextBrowser>
-#include <QtGui/QTextEdit>
-#include <QtGui/QWidget>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QProgressBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QSlider>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -94,194 +93,194 @@ public:
     void setupUi(QDialog *CreateAlbumWizzardClass)
     {
         if (CreateAlbumWizzardClass->objectName().isEmpty())
-            CreateAlbumWizzardClass->setObjectName(QString::fromUtf8("CreateAlbumWizzardClass"));
+            CreateAlbumWizzardClass->setObjectName(QStringLiteral("CreateAlbumWizzardClass"));
         CreateAlbumWizzardClass->resize(592, 380);
         tabWidget = new QTabWidget(CreateAlbumWizzardClass);
-        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setEnabled(true);
         tabWidget->setGeometry(QRect(0, 10, 600, 291));
         tabWidget->setTabPosition(QTabWidget::North);
         tabWidget->setTabShape(QTabWidget::Rounded);
         infoTab = new QWidget();
-        infoTab->setObjectName(QString::fromUtf8("infoTab"));
+        infoTab->setObjectName(QStringLiteral("infoTab"));
         galleryPageFrrame = new QFrame(infoTab);
-        galleryPageFrrame->setObjectName(QString::fromUtf8("galleryPageFrrame"));
+        galleryPageFrrame->setObjectName(QStringLiteral("galleryPageFrrame"));
         galleryPageFrrame->setGeometry(QRect(20, 20, 551, 221));
         galleryPageFrrame->setFrameShape(QFrame::NoFrame);
         galleryPageFrrame->setFrameShadow(QFrame::Raised);
         addGallery = new QCheckBox(galleryPageFrrame);
-        addGallery->setObjectName(QString::fromUtf8("addGallery"));
+        addGallery->setObjectName(QStringLiteral("addGallery"));
         addGallery->setGeometry(QRect(10, 10, 181, 22));
         addGallery->setChecked(true);
         titleLable = new QLabel(galleryPageFrrame);
-        titleLable->setObjectName(QString::fromUtf8("titleLable"));
+        titleLable->setObjectName(QStringLiteral("titleLable"));
         titleLable->setGeometry(QRect(30, 50, 121, 17));
         subTitleLabel = new QLabel(galleryPageFrrame);
-        subTitleLabel->setObjectName(QString::fromUtf8("subTitleLabel"));
+        subTitleLabel->setObjectName(QStringLiteral("subTitleLabel"));
         subTitleLabel->setGeometry(QRect(30, 90, 121, 17));
         titleEdit = new QLineEdit(galleryPageFrrame);
-        titleEdit->setObjectName(QString::fromUtf8("titleEdit"));
+        titleEdit->setObjectName(QStringLiteral("titleEdit"));
         titleEdit->setGeometry(QRect(170, 50, 371, 27));
         titleEdit->setMaxLength(1024);
         subTitleEdit = new QLineEdit(galleryPageFrrame);
-        subTitleEdit->setObjectName(QString::fromUtf8("subTitleEdit"));
+        subTitleEdit->setObjectName(QStringLiteral("subTitleEdit"));
         subTitleEdit->setGeometry(QRect(170, 90, 371, 27));
         subTitleEdit->setMaxLength(1024);
         bottomLineLabel = new QLabel(galleryPageFrrame);
-        bottomLineLabel->setObjectName(QString::fromUtf8("bottomLineLabel"));
+        bottomLineLabel->setObjectName(QStringLiteral("bottomLineLabel"));
         bottomLineLabel->setGeometry(QRect(30, 140, 121, 17));
         bottomLineEdit = new QTextEdit(galleryPageFrrame);
-        bottomLineEdit->setObjectName(QString::fromUtf8("bottomLineEdit"));
+        bottomLineEdit->setObjectName(QStringLiteral("bottomLineEdit"));
         bottomLineEdit->setGeometry(QRect(170, 140, 371, 61));
         bottomLineEdit->setAcceptRichText(false);
         tabWidget->addTab(infoTab, QString());
         configurationTab = new QWidget();
-        configurationTab->setObjectName(QString::fromUtf8("configurationTab"));
+        configurationTab->setObjectName(QStringLiteral("configurationTab"));
         addArchiveFrame = new QFrame(configurationTab);
-        addArchiveFrame->setObjectName(QString::fromUtf8("addArchiveFrame"));
+        addArchiveFrame->setObjectName(QStringLiteral("addArchiveFrame"));
         addArchiveFrame->setGeometry(QRect(20, 20, 551, 41));
         addArchiveFrame->setFrameShape(QFrame::NoFrame);
         addArchiveFrame->setFrameShadow(QFrame::Raised);
         archiveCheckBox = new QCheckBox(addArchiveFrame);
-        archiveCheckBox->setObjectName(QString::fromUtf8("archiveCheckBox"));
+        archiveCheckBox->setObjectName(QStringLiteral("archiveCheckBox"));
         archiveCheckBox->setGeometry(QRect(10, 10, 261, 22));
         archiveCheckBox->setChecked(false);
         archiveResLabel = new QLabel(addArchiveFrame);
-        archiveResLabel->setObjectName(QString::fromUtf8("archiveResLabel"));
+        archiveResLabel->setObjectName(QStringLiteral("archiveResLabel"));
         archiveResLabel->setGeometry(QRect(280, 10, 121, 20));
         archiveResLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         archiveRes = new QComboBox(addArchiveFrame);
-        archiveRes->setObjectName(QString::fromUtf8("archiveRes"));
+        archiveRes->setObjectName(QStringLiteral("archiveRes"));
         archiveRes->setGeometry(QRect(407, 10, 131, 27));
         navigationTypeFrame = new QFrame(configurationTab);
-        navigationTypeFrame->setObjectName(QString::fromUtf8("navigationTypeFrame"));
+        navigationTypeFrame->setObjectName(QStringLiteral("navigationTypeFrame"));
         navigationTypeFrame->setGeometry(QRect(20, 80, 551, 41));
         navigationTypeFrame->setFrameShape(QFrame::NoFrame);
         navigationTypeFrame->setFrameShadow(QFrame::Raised);
         navigationLabel = new QLabel(navigationTypeFrame);
-        navigationLabel->setObjectName(QString::fromUtf8("navigationLabel"));
+        navigationLabel->setObjectName(QStringLiteral("navigationLabel"));
         navigationLabel->setGeometry(QRect(10, 10, 151, 17));
         controlPanelNavigation = new QRadioButton(navigationTypeFrame);
-        controlPanelNavigation->setObjectName(QString::fromUtf8("controlPanelNavigation"));
+        controlPanelNavigation->setObjectName(QStringLiteral("controlPanelNavigation"));
         controlPanelNavigation->setGeometry(QRect(350, 10, 121, 22));
         filmstripNavigation = new QRadioButton(navigationTypeFrame);
-        filmstripNavigation->setObjectName(QString::fromUtf8("filmstripNavigation"));
+        filmstripNavigation->setObjectName(QStringLiteral("filmstripNavigation"));
         filmstripNavigation->setGeometry(QRect(170, 10, 106, 22));
         filmstripNavigation->setChecked(true);
         imageCompressionFrame = new QFrame(configurationTab);
-        imageCompressionFrame->setObjectName(QString::fromUtf8("imageCompressionFrame"));
+        imageCompressionFrame->setObjectName(QStringLiteral("imageCompressionFrame"));
         imageCompressionFrame->setGeometry(QRect(20, 200, 551, 41));
         imageCompressionFrame->setFrameShape(QFrame::NoFrame);
         imageCompressionFrame->setFrameShadow(QFrame::Raised);
         imageCompressionLabel = new QLabel(imageCompressionFrame);
-        imageCompressionLabel->setObjectName(QString::fromUtf8("imageCompressionLabel"));
+        imageCompressionLabel->setObjectName(QStringLiteral("imageCompressionLabel"));
         imageCompressionLabel->setGeometry(QRect(10, 10, 151, 17));
         compressionSlider = new QSlider(imageCompressionFrame);
-        compressionSlider->setObjectName(QString::fromUtf8("compressionSlider"));
+        compressionSlider->setObjectName(QStringLiteral("compressionSlider"));
         compressionSlider->setGeometry(QRect(170, 10, 311, 20));
         compressionSlider->setMinimum(50);
         compressionSlider->setMaximum(98);
         compressionSlider->setValue(90);
         compressionSlider->setOrientation(Qt::Horizontal);
         compresssionLabel = new QLabel(imageCompressionFrame);
-        compresssionLabel->setObjectName(QString::fromUtf8("compresssionLabel"));
+        compresssionLabel->setObjectName(QStringLiteral("compresssionLabel"));
         compresssionLabel->setGeometry(QRect(490, 10, 51, 20));
         compresssionLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         imageChangeFrame = new QFrame(configurationTab);
-        imageChangeFrame->setObjectName(QString::fromUtf8("imageChangeFrame"));
+        imageChangeFrame->setObjectName(QStringLiteral("imageChangeFrame"));
         imageChangeFrame->setGeometry(QRect(20, 140, 551, 41));
         imageChangeFrame->setFrameShape(QFrame::NoFrame);
         imageChangeFrame->setFrameShadow(QFrame::Raised);
         imageChangeFrame->setLineWidth(1);
         label = new QLabel(imageChangeFrame);
-        label->setObjectName(QString::fromUtf8("label"));
+        label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 10, 101, 21));
         fadeInOut = new QRadioButton(imageChangeFrame);
-        fadeInOut->setObjectName(QString::fromUtf8("fadeInOut"));
+        fadeInOut->setObjectName(QStringLiteral("fadeInOut"));
         fadeInOut->setGeometry(QRect(170, 10, 151, 26));
         fadeInOut->setChecked(true);
         crossFade = new QRadioButton(imageChangeFrame);
-        crossFade->setObjectName(QString::fromUtf8("crossFade"));
+        crossFade->setObjectName(QStringLiteral("crossFade"));
         crossFade->setGeometry(QRect(350, 10, 108, 26));
         tabWidget->addTab(configurationTab, QString());
         destinationTab = new QWidget();
-        destinationTab->setObjectName(QString::fromUtf8("destinationTab"));
+        destinationTab->setObjectName(QStringLiteral("destinationTab"));
         protocolLabel = new QLabel(destinationTab);
-        protocolLabel->setObjectName(QString::fromUtf8("protocolLabel"));
+        protocolLabel->setObjectName(QStringLiteral("protocolLabel"));
         protocolLabel->setGeometry(QRect(20, 40, 91, 21));
         protocolLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         protocolSelector = new QComboBox(destinationTab);
-        protocolSelector->setObjectName(QString::fromUtf8("protocolSelector"));
+        protocolSelector->setObjectName(QStringLiteral("protocolSelector"));
         protocolSelector->setGeometry(QRect(120, 40, 161, 25));
         locationLabel = new QLabel(destinationTab);
-        locationLabel->setObjectName(QString::fromUtf8("locationLabel"));
+        locationLabel->setObjectName(QStringLiteral("locationLabel"));
         locationLabel->setGeometry(QRect(20, 100, 91, 21));
         locationLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         locationEdit = new QLineEdit(destinationTab);
-        locationEdit->setObjectName(QString::fromUtf8("locationEdit"));
+        locationEdit->setObjectName(QStringLiteral("locationEdit"));
         locationEdit->setEnabled(true);
         locationEdit->setGeometry(QRect(120, 100, 411, 21));
         locationButton = new QPushButton(destinationTab);
-        locationButton->setObjectName(QString::fromUtf8("locationButton"));
+        locationButton->setObjectName(QStringLiteral("locationButton"));
         locationButton->setGeometry(QRect(540, 100, 31, 27));
         portLabel = new QLabel(destinationTab);
-        portLabel->setObjectName(QString::fromUtf8("portLabel"));
+        portLabel->setObjectName(QStringLiteral("portLabel"));
         portLabel->setEnabled(false);
         portLabel->setGeometry(QRect(380, 150, 51, 21));
         portEdit = new QLineEdit(destinationTab);
-        portEdit->setObjectName(QString::fromUtf8("portEdit"));
+        portEdit->setObjectName(QStringLiteral("portEdit"));
         portEdit->setEnabled(false);
         portEdit->setGeometry(QRect(440, 150, 91, 21));
         portEdit->setMaxLength(15);
         usernameLabel = new QLabel(destinationTab);
-        usernameLabel->setObjectName(QString::fromUtf8("usernameLabel"));
+        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
         usernameLabel->setEnabled(false);
         usernameLabel->setGeometry(QRect(20, 150, 91, 21));
         usernameEdit = new QLineEdit(destinationTab);
-        usernameEdit->setObjectName(QString::fromUtf8("usernameEdit"));
+        usernameEdit->setObjectName(QStringLiteral("usernameEdit"));
         usernameEdit->setEnabled(false);
         usernameEdit->setGeometry(QRect(120, 150, 201, 21));
         usernameEdit->setMaxLength(255);
         passwordLabel = new QLabel(destinationTab);
-        passwordLabel->setObjectName(QString::fromUtf8("passwordLabel"));
+        passwordLabel->setObjectName(QStringLiteral("passwordLabel"));
         passwordLabel->setEnabled(false);
         passwordLabel->setGeometry(QRect(20, 200, 91, 21));
         passwordEdit = new QLineEdit(destinationTab);
-        passwordEdit->setObjectName(QString::fromUtf8("passwordEdit"));
+        passwordEdit->setObjectName(QStringLiteral("passwordEdit"));
         passwordEdit->setEnabled(false);
         passwordEdit->setGeometry(QRect(120, 200, 201, 21));
         passwordEdit->setMaxLength(255);
         tabWidget->addTab(destinationTab, QString());
         createTab = new QWidget();
-        createTab->setObjectName(QString::fromUtf8("createTab"));
+        createTab->setObjectName(QStringLiteral("createTab"));
         progress = new QProgressBar(createTab);
-        progress->setObjectName(QString::fromUtf8("progress"));
+        progress->setObjectName(QStringLiteral("progress"));
         progress->setEnabled(false);
         progress->setGeometry(QRect(70, 90, 451, 23));
         progress->setValue(0);
         progress->setAlignment(Qt::AlignCenter);
         progress->setInvertedAppearance(false);
         startButton = new QPushButton(createTab);
-        startButton->setObjectName(QString::fromUtf8("startButton"));
+        startButton->setObjectName(QStringLiteral("startButton"));
         startButton->setGeometry(QRect(250, 140, 95, 31));
         labelCreateGallery = new QLabel(createTab);
-        labelCreateGallery->setObjectName(QString::fromUtf8("labelCreateGallery"));
+        labelCreateGallery->setObjectName(QStringLiteral("labelCreateGallery"));
         labelCreateGallery->setGeometry(QRect(10, 40, 561, 21));
         labelCreateGallery->setAlignment(Qt::AlignCenter);
         horizontalLayoutWidget = new QWidget(createTab);
-        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(10, 219, 571, 41));
         openBrowserLayout = new QHBoxLayout(horizontalLayoutWidget);
         openBrowserLayout->setSpacing(6);
         openBrowserLayout->setContentsMargins(11, 11, 11, 11);
-        openBrowserLayout->setObjectName(QString::fromUtf8("openBrowserLayout"));
+        openBrowserLayout->setObjectName(QStringLiteral("openBrowserLayout"));
         openBrowserLayout->setContentsMargins(0, 0, 0, 0);
         openBrowserLeftSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         openBrowserLayout->addItem(openBrowserLeftSpacer);
 
         openBrowserCheckBox = new QCheckBox(horizontalLayoutWidget);
-        openBrowserCheckBox->setObjectName(QString::fromUtf8("openBrowserCheckBox"));
+        openBrowserCheckBox->setObjectName(QStringLiteral("openBrowserCheckBox"));
         openBrowserCheckBox->setAutoFillBackground(false);
         openBrowserCheckBox->setChecked(true);
 
@@ -293,21 +292,21 @@ public:
 
         tabWidget->addTab(createTab, QString());
         aboutTab = new QWidget();
-        aboutTab->setObjectName(QString::fromUtf8("aboutTab"));
+        aboutTab->setObjectName(QStringLiteral("aboutTab"));
         aboutTextBrowser = new QTextBrowser(aboutTab);
-        aboutTextBrowser->setObjectName(QString::fromUtf8("aboutTextBrowser"));
+        aboutTextBrowser->setObjectName(QStringLiteral("aboutTextBrowser"));
         aboutTextBrowser->setGeometry(QRect(0, 0, 591, 271));
         aboutTextBrowser->setReadOnly(true);
         aboutTextBrowser->setOpenExternalLinks(true);
         tabWidget->addTab(aboutTab, QString());
         nextButton = new QPushButton(CreateAlbumWizzardClass);
-        nextButton->setObjectName(QString::fromUtf8("nextButton"));
+        nextButton->setObjectName(QStringLiteral("nextButton"));
         nextButton->setGeometry(QRect(520, 320, 61, 27));
         cancelButton = new QPushButton(CreateAlbumWizzardClass);
-        cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
+        cancelButton->setObjectName(QStringLiteral("cancelButton"));
         cancelButton->setGeometry(QRect(260, 340, 81, 27));
         prevButton = new QPushButton(CreateAlbumWizzardClass);
-        prevButton->setObjectName(QString::fromUtf8("prevButton"));
+        prevButton->setObjectName(QStringLiteral("prevButton"));
         prevButton->setEnabled(false);
         prevButton->setGeometry(QRect(440, 320, 61, 27));
 
@@ -322,76 +321,76 @@ public:
 
     void retranslateUi(QDialog *CreateAlbumWizzardClass)
     {
-        CreateAlbumWizzardClass->setWindowTitle(QApplication::translate("CreateAlbumWizzardClass", "Create Web-Slideshow", 0, QApplication::UnicodeUTF8));
+        CreateAlbumWizzardClass->setWindowTitle(QApplication::translate("CreateAlbumWizzardClass", "Create Web-Slideshow", 0));
 #ifndef QT_NO_TOOLTIP
         addGallery->setToolTip(QApplication::translate("CreateAlbumWizzardClass", "Adds a gallery page with\n"
-"thumbnails of all images", 0, QApplication::UnicodeUTF8));
+"thumbnails of all images", 0));
 #endif // QT_NO_TOOLTIP
-        addGallery->setText(QApplication::translate("CreateAlbumWizzardClass", "Add Gallery Page", 0, QApplication::UnicodeUTF8));
-        titleLable->setText(QApplication::translate("CreateAlbumWizzardClass", "Gallery Title:", 0, QApplication::UnicodeUTF8));
-        subTitleLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Gallery Subtitle:", 0, QApplication::UnicodeUTF8));
+        addGallery->setText(QApplication::translate("CreateAlbumWizzardClass", "Add Gallery Page", 0));
+        titleLable->setText(QApplication::translate("CreateAlbumWizzardClass", "Gallery Title:", 0));
+        subTitleLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Gallery Subtitle:", 0));
 #ifndef QT_NO_TOOLTIP
         titleEdit->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        bottomLineLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Bottom Line(s):", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(infoTab), QApplication::translate("CreateAlbumWizzardClass", "Information", 0, QApplication::UnicodeUTF8));
+        bottomLineLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Bottom Line(s):", 0));
+        tabWidget->setTabText(tabWidget->indexOf(infoTab), QApplication::translate("CreateAlbumWizzardClass", "Information", 0));
 #ifndef QT_NO_TOOLTIP
         archiveCheckBox->setToolTip(QApplication::translate("CreateAlbumWizzardClass", "Adds the a zip-file that contains all images\n"
-"for download", 0, QApplication::UnicodeUTF8));
+"for download", 0));
 #endif // QT_NO_TOOLTIP
-        archiveCheckBox->setText(QApplication::translate("CreateAlbumWizzardClass", "Add Image Archive for Download", 0, QApplication::UnicodeUTF8));
-        archiveResLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Image Resolution:", 0, QApplication::UnicodeUTF8));
+        archiveCheckBox->setText(QApplication::translate("CreateAlbumWizzardClass", "Add Image Archive for Download", 0));
+        archiveResLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Image Resolution:", 0));
         archiveRes->clear();
         archiveRes->insertItems(0, QStringList()
-         << QApplication::translate("CreateAlbumWizzardClass", "Original Size", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("CreateAlbumWizzardClass", "3000x2250", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("CreateAlbumWizzardClass", "2048x1200", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("CreateAlbumWizzardClass", "Original Size", 0)
+         << QApplication::translate("CreateAlbumWizzardClass", "3000x2250", 0)
+         << QApplication::translate("CreateAlbumWizzardClass", "2048x1200", 0)
         );
 #ifndef QT_NO_TOOLTIP
-        archiveRes->setToolTip(QApplication::translate("CreateAlbumWizzardClass", "Selects the reolution for the images in the download archive", 0, QApplication::UnicodeUTF8));
+        archiveRes->setToolTip(QApplication::translate("CreateAlbumWizzardClass", "Selects the reolution for the images in the download archive", 0));
 #endif // QT_NO_TOOLTIP
-        navigationLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Slideshow Navigation:", 0, QApplication::UnicodeUTF8));
-        controlPanelNavigation->setText(QApplication::translate("CreateAlbumWizzardClass", "Control Panel", 0, QApplication::UnicodeUTF8));
-        filmstripNavigation->setText(QApplication::translate("CreateAlbumWizzardClass", "Filmstrip", 0, QApplication::UnicodeUTF8));
-        imageCompressionLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Image Compression:", 0, QApplication::UnicodeUTF8));
-        compresssionLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "90 %", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("CreateAlbumWizzardClass", "Image Change:", 0, QApplication::UnicodeUTF8));
-        fadeInOut->setText(QApplication::translate("CreateAlbumWizzardClass", "Fade out - Fade in", 0, QApplication::UnicodeUTF8));
-        crossFade->setText(QApplication::translate("CreateAlbumWizzardClass", "Cross-Fade", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(configurationTab), QApplication::translate("CreateAlbumWizzardClass", "Configuration", 0, QApplication::UnicodeUTF8));
-        protocolLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Protocol:", 0, QApplication::UnicodeUTF8));
+        navigationLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Slideshow Navigation:", 0));
+        controlPanelNavigation->setText(QApplication::translate("CreateAlbumWizzardClass", "Control Panel", 0));
+        filmstripNavigation->setText(QApplication::translate("CreateAlbumWizzardClass", "Filmstrip", 0));
+        imageCompressionLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Image Compression:", 0));
+        compresssionLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "90 %", 0));
+        label->setText(QApplication::translate("CreateAlbumWizzardClass", "Image Change:", 0));
+        fadeInOut->setText(QApplication::translate("CreateAlbumWizzardClass", "Fade out - Fade in", 0));
+        crossFade->setText(QApplication::translate("CreateAlbumWizzardClass", "Cross-Fade", 0));
+        tabWidget->setTabText(tabWidget->indexOf(configurationTab), QApplication::translate("CreateAlbumWizzardClass", "Configuration", 0));
+        protocolLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Protocol:", 0));
         protocolSelector->clear();
         protocolSelector->insertItems(0, QStringList()
-         << QApplication::translate("CreateAlbumWizzardClass", "Local File System", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("CreateAlbumWizzardClass", "FTP", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("CreateAlbumWizzardClass", "Local File System", 0)
+         << QApplication::translate("CreateAlbumWizzardClass", "FTP", 0)
         );
-        locationLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Location:", 0, QApplication::UnicodeUTF8));
+        locationLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Location:", 0));
 #ifndef QT_NO_TOOLTIP
         locationEdit->setToolTip(QApplication::translate("CreateAlbumWizzardClass", "The directory or url where the web album \n"
-"will be created", 0, QApplication::UnicodeUTF8));
+"will be created", 0));
 #endif // QT_NO_TOOLTIP
         locationEdit->setText(QString());
 #ifndef QT_NO_TOOLTIP
         locationButton->setToolTip(QApplication::translate("CreateAlbumWizzardClass", "Choose the destination directory\n"
-"for the web album", 0, QApplication::UnicodeUTF8));
+"for the web album", 0));
 #endif // QT_NO_TOOLTIP
-        locationButton->setText(QApplication::translate("CreateAlbumWizzardClass", "...", 0, QApplication::UnicodeUTF8));
-        portLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Port:", 0, QApplication::UnicodeUTF8));
-        usernameLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "User Name:", 0, QApplication::UnicodeUTF8));
-        passwordLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Password:", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(destinationTab), QApplication::translate("CreateAlbumWizzardClass", "Destination", 0, QApplication::UnicodeUTF8));
-        progress->setFormat(QApplication::translate("CreateAlbumWizzardClass", "%v / %m", 0, QApplication::UnicodeUTF8));
+        locationButton->setText(QApplication::translate("CreateAlbumWizzardClass", "...", 0));
+        portLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Port:", 0));
+        usernameLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "User Name:", 0));
+        passwordLabel->setText(QApplication::translate("CreateAlbumWizzardClass", "Password:", 0));
+        tabWidget->setTabText(tabWidget->indexOf(destinationTab), QApplication::translate("CreateAlbumWizzardClass", "Destination", 0));
+        progress->setFormat(QApplication::translate("CreateAlbumWizzardClass", "%v / %m", 0));
 #ifndef QT_NO_TOOLTIP
-        startButton->setToolTip(QApplication::translate("CreateAlbumWizzardClass", "Start creating the web album", 0, QApplication::UnicodeUTF8));
+        startButton->setToolTip(QApplication::translate("CreateAlbumWizzardClass", "Start creating the web album", 0));
 #endif // QT_NO_TOOLTIP
-        startButton->setText(QApplication::translate("CreateAlbumWizzardClass", "Start", 0, QApplication::UnicodeUTF8));
-        labelCreateGallery->setText(QApplication::translate("CreateAlbumWizzardClass", "Press \"Start\" to create album...", 0, QApplication::UnicodeUTF8));
+        startButton->setText(QApplication::translate("CreateAlbumWizzardClass", "Start", 0));
+        labelCreateGallery->setText(QApplication::translate("CreateAlbumWizzardClass", "Press \"Start\" to create album...", 0));
 #ifndef QT_NO_TOOLTIP
         openBrowserCheckBox->setToolTip(QApplication::translate("CreateAlbumWizzardClass", "Open the web album in an internet browser\n"
-"when finished", 0, QApplication::UnicodeUTF8));
+"when finished", 0));
 #endif // QT_NO_TOOLTIP
-        openBrowserCheckBox->setText(QApplication::translate("CreateAlbumWizzardClass", "Open photo album in web browser when finished", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(createTab), QApplication::translate("CreateAlbumWizzardClass", "Create", 0, QApplication::UnicodeUTF8));
+        openBrowserCheckBox->setText(QApplication::translate("CreateAlbumWizzardClass", "Open photo album in web browser when finished", 0));
+        tabWidget->setTabText(tabWidget->indexOf(createTab), QApplication::translate("CreateAlbumWizzardClass", "Create", 0));
         aboutTextBrowser->setHtml(QApplication::translate("CreateAlbumWizzardClass", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -421,11 +420,11 @@ public:
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">License for the specific language governing permissions and limitations under</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-inden"
-                        "t:0; text-indent:0px;\">the License.</p></td></tr></table></body></html>", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(aboutTab), QApplication::translate("CreateAlbumWizzardClass", "About", 0, QApplication::UnicodeUTF8));
-        nextButton->setText(QApplication::translate("CreateAlbumWizzardClass", ">>", 0, QApplication::UnicodeUTF8));
-        cancelButton->setText(QApplication::translate("CreateAlbumWizzardClass", "Cancel", 0, QApplication::UnicodeUTF8));
-        prevButton->setText(QApplication::translate("CreateAlbumWizzardClass", "<<", 0, QApplication::UnicodeUTF8));
+                        "t:0; text-indent:0px;\">the License.</p></td></tr></table></body></html>", 0));
+        tabWidget->setTabText(tabWidget->indexOf(aboutTab), QApplication::translate("CreateAlbumWizzardClass", "About", 0));
+        nextButton->setText(QApplication::translate("CreateAlbumWizzardClass", ">>", 0));
+        cancelButton->setText(QApplication::translate("CreateAlbumWizzardClass", "Cancel", 0));
+        prevButton->setText(QApplication::translate("CreateAlbumWizzardClass", "<<", 0));
     } // retranslateUi
 
 };

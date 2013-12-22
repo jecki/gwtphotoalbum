@@ -17,7 +17,7 @@ QT += core \
     network
 HEADERS += zipfile.h \
     albumdestination.h \
-    htmlprocessing.h \
+    htmlprocessing.h \   
     imagecollection.h \
     imageio.h \
     imageiocore.h \
@@ -27,7 +27,7 @@ HEADERS += zipfile.h \
     toolbox.h
 SOURCES += zipfile.cpp \
     albumdestination.cpp \
-    htmlprocessing.cpp \
+    htmlprocessing.cpp \  
     imagecollection.cpp \
     imageio.cpp \
     imageiocore.cpp \

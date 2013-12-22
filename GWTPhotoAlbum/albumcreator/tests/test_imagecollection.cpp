@@ -7,6 +7,7 @@
 
 #include "test_imagecollection.h"
 
+#include <Qt>
 #include <QtTest/QtTest>
 #include <QDir>
 #include <QFileInfo>
@@ -28,7 +29,7 @@ using namespace std;
 
 
 bool lessThanImageItem(const ImageItem *it1, const ImageItem *it2) {
-	return it1->destFileName() < it2->destFileName();
+	return (it1->destFileName() < it2->destFileName());
 }
 
 struct RemoveFile: IWalkDirCallback {
@@ -219,7 +220,7 @@ void test_imagecollection::captionsJSON() {
 
 
 inline bool findNum(const QString text, int number) {
-	return text.indexOf(QString::number(number)) >= 0;
+	return (text.indexOf(QString::number(number)) >= 0);
 }
 
 void test_imagecollection::resolutionsJSON() {

@@ -16,6 +16,7 @@
 
 
 #include "iconcache.h"
+#include "toolbox.h"
 //#include "filterproxy_class.h"
 
 #include <QPainter>
@@ -51,7 +52,7 @@ IconCache::~IconCache()
 
 
 bool IconCache::get(const QString filePath, QIcon &icon) {
-	return get(filePath, icon, iconSize);
+	return (get(filePath, icon, iconSize));
 }
 
 
@@ -61,15 +62,15 @@ inline QString pathOf(const QString &fileName) {
 	int i = path.lastIndexOf("/");
 	if (i < 0) i = 0;
     path.truncate(i);
-    return path;
+    return (path);
 }
 
 
 bool IconCache::get(const QString filePath, QIcon &icon, const QSize size) {
-	if (pathOf(filePath) != currentDir) return false;
+	if (pathOf(filePath) != currentDir) return (false);
 	if (active.contains(filePath)) {
 		icon = QIcon(sizeGuard(*active.value(filePath), size));
-		return true;
+		return (true);
 	}
 	QImage img;
 	bool ret = (ImageIO::instance()).quickRequest(this, filePath, img, size);
@@ -87,7 +88,7 @@ bool IconCache::get(const QString filePath, QIcon &icon, const QSize size) {
 		active.insert(filePath, pixmap);
 		icon = QIcon(*pixmap);
 	}
-	return ret;
+	return (ret);
 }
 
 
@@ -97,8 +98,8 @@ bool IconCache::readNextErrorMsg(QString &filePath, QString &errorMsg) {
 		QStringList error = errorMessages.takeFirst();
 		filePath = error.first();
 		errorMsg = error.last();
-		return true;
-	} else return false;
+		return (true);
+	} else return (false);
 }
 
 
@@ -108,29 +109,30 @@ void IconCache::setIconSize(const QSize size) {
 }
 
 
-QPixmap IconCache::sizeGuard(const QPixmap pixmap, const QSize size) {
-	QSize pmsize = pixmap.size();
-	// if (size != pmsize) { // find a better check here, taking aspect ratio into consideration
-	if ( (size.height() == pmsize.height() && size.width() >= pmsize.width()) ||
-		 (size.width() == pmsize.width() && size.height() >= pmsize.height()) ) {
-		QPixmap pm = pixmap.scaled(size, Qt::KeepAspectRatio,
-                                         Qt::SmoothTransformation);
-		if (size.width() * pmsize.height() ==
-			pmsize.width() * size.height()) {
-			return pm;
-		} else {
-			QPixmap dest(size);
-			dest.fill();
-			QPainter painter(&dest);
-
-			painter.drawPixmap((size.width() - pm.width())/2,
-					           (size.height() - pm.height())/2, pm);
-			return dest;
-		}
-	} else {
-		return pixmap;
-	}
-}
+//QPixmap IconCache::sizeGuard(const QPixmap pixmap, const QSize size, const int frame) {
+//	QSize pmsize = pixmap.size();
+//	if (size != pmsize) {
+////	if ( (size.height() == pmsize.height() && size.width() >= pmsize.width()) ||
+////		 (size.width() == pmsize.width() && size.height() >= pmsize.height()) ) {
+//		QPixmap pm = pixmap.scaled(size, Qt::KeepAspectRatio,
+//                                         Qt::FastTransformation);
+//		if (size.width() * pmsize.height() ==
+//			pmsize.width() * size.height()) {
+//			return (pm);
+//
+//		} else {
+//			QPixmap dest(QSize(size.width() + 2 * frame, size.height() + 2 * frame));
+//			dest.fill();
+//			QPainter painter(&dest);
+//
+//			painter.drawPixmap((size.width() - pm.width())/2 + frame,
+//					           (size.height() - pm.height())/2 + frame, pm);
+//			return (dest);
+//		}
+//	} else {
+//		return (pixmap);
+//	}
+//}
 
 
 void IconCache::receiveImage(const QString filePath, QImage image) {

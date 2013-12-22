@@ -35,6 +35,8 @@ class ImageListModel : public QAbstractListModel
     Q_OBJECT
 
 public:
+    static const int	FRAME_SIZE = 10;
+
     ImageListModel(QList<ImageItem *> &images, QWidget *parent = 0);
     ~ImageListModel();
 
@@ -53,8 +55,8 @@ public:
     virtual Qt::DropActions supportedDropActions() const;
 
 private:
-    QList<ImageItem *> &imageList;
-    QSet<QString>      imageNames;
+    QList<ImageItem *> 	&imageList;
+    QSet<QString>       imageNames;
 };
 
 #endif // IMAGELISTMODEL_H

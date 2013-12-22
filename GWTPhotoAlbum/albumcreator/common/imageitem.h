@@ -92,6 +92,7 @@ protected:
 
 private:
    	static	QThread *mainThread;
+   	static  QImage  placeholder;
 
     QImage	original;
     QImage  previewImg;

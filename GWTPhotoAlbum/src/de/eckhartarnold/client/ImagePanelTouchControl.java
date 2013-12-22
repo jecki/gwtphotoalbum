@@ -35,7 +35,7 @@ public class ImagePanelTouchControl implements TouchScreenReceiver {
    */
   public ImagePanelTouchControl(Slideshow slideshow) {
     this.slideshow = slideshow;
-    ImagePanel imp = this.slideshow.getImagePanel();
+    // ImagePanel imp = this.slideshow.getImagePanel();
   }
 
   public boolean tap(int x, int y) {
