@@ -156,7 +156,7 @@ QModelIndex AlbumView::myIndexAt(const QPoint &pos) {
 //		int y = pos.y();
 //		int w = iconSize().width();
 //		int h = iconSize().height();
-
+//TODO: Return proper index if pos points to whitespace.
 
 	}
 	return (index);

@@ -34,12 +34,15 @@
 
 
 ImageListModel::ImageListModel(QList<ImageItem *> &images, QWidget *parent)
-    : QAbstractListModel(parent), imageList(images), imageNames()
+    : QAbstractListModel(parent), imageList(images), imageNames(),
+      	  placeholder(sizeGuard(QPixmap(":/:/images/image_placeholder.png"),
+      			ImageItem::Thumbnail_Size, FRAME_SIZE))
 {
 	foreach (ImageItem *it, imageList) {
 		imageNames.insert(it->path());
 	}
 }
+
 
 ImageListModel::~ImageListModel()
 {
@@ -59,16 +62,19 @@ QVariant ImageListModel::data(const QModelIndex &index, int role) const
 		return (QString());
 		break;
 	case Qt::DecorationRole:
+		it->prefetchImage(ImageItem::THUMBNAIL);
+		if (it->requestsPending()) {
+			return (placeholder);
+			// TODO: issue postponed redraw if placeholder had to be returned
+		}
 		return (sizeGuard(QPixmap::fromImage(it->image(ImageItem::THUMBNAIL)),
 				ImageItem::Thumbnail_Size, FRAME_SIZE));
 		//return (QPixmap::fromImage(it->image(ImageItem::THUMBNAIL)));
-		break;
 	case Qt::ToolTipRole:
 		if (!it->caption().isEmpty())
 			tip << it->caption() << "\n";
 		tip << it->path() << " (" << sizeStr(it->size(ImageItem::IMAGE)) << ") ";
 		return (tip.join(""));
-		break;
 	case Qt::SizeHintRole:
 		return (QSize(ImageItem::Thumbnail_Size.width() +  2 * FRAME_SIZE,
 				      ImageItem::Thumbnail_Size.height() + 2 * FRAME_SIZE));

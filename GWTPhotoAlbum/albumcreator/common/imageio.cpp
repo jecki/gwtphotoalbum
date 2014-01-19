@@ -244,7 +244,7 @@ ImageIO::Request *ImageIO::requestImage(CallbackInterface *callback, const QStri
 	}
 	mutex.unlock();
 
-	return request;
+	return (request);
 }
 
 
@@ -287,12 +287,12 @@ bool ImageIO::quickRequest(CallbackInterface *callback, const QString filePath, 
 		} else {
 			image = img;
 		}
-		return true;
+		return (true);
 	} else {
 		mutex.unlock();
 		image = QImage();
 		requestImage(callback, filePath, size, uc, priority);
-		return false;
+		return (false);
 	}
 }
 
@@ -324,7 +324,7 @@ QImage ImageIO::loadImmediately(const QString filePath, const QSize size)
 			}
 		}
 	}
-	return img;
+	return (img);
 }
 
 
@@ -411,7 +411,7 @@ bool ImageIO::cancelAllRequests(CallbackInterface *callback)
 		}
 	}
 	mutex.unlock();
-	return ret;
+	return (ret);
 }
 
 
@@ -452,10 +452,10 @@ bool ImageIO::checkForDuplicate(Request *request)
 {
 	if (requestBook.contains(request->key)) {
 		delete request;
-		return true;
+		return (true);
 	} else {
 		requestBook.insert(request->key);
-		return false;
+		return (false);
 	}
 }
 

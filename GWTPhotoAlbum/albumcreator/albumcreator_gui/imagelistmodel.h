@@ -57,6 +57,7 @@ public:
 private:
     QList<ImageItem *> 	&imageList;
     QSet<QString>       imageNames;
+    QPixmap				placeholder;
 };
 
 #endif // IMAGELISTMODEL_H

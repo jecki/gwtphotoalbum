@@ -44,7 +44,7 @@ void ImageItemDelegate::paint (QPainter *painter,
 //	painter->drawPixmap(vr.x()+offset, vr.y()+offset, pixmap);
 
 	if (index == dropPosition) {
-		QBrush brush(QColor(250, 50, 50, 128)); //, Qt::LinearGradientPattern);
+		QBrush brush(QColor(250, 150, 50, 128)); //, Qt::LinearGradientPattern);
 		QPen pen(brush, 10);
 		painter->setPen(pen);
 		painter->drawRect(QRect(vr.x()+5, vr.y()+5, vr.width()-10, vr.height()-10));

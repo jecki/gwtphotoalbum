@@ -56,11 +56,12 @@ public:
     virtual ~ImageItem();
 
     void    prefetchImage(int imageClass = IMAGE);
+    int		requestsPending() { return (requestsIssued); };
     QImage  image(ImageClass c = IMAGE);
-    QString path() const { return filePath; }
-    QString caption() const { return imgCaption; }
+    QString path() const { return (filePath); }
+    QString caption() const { return (imgCaption); }
 
-    QString destFileName() const { return destName; }
+    QString destFileName() const { return (destName); }
     void    modifyDestName(const QString newDestName) { destName = newDestName; }
 
     void 	setCaption(const QString caption) { imgCaption = caption; }
@@ -68,8 +69,8 @@ public:
 
     QList<QImage> resized(QList<QSize> sizes);
 
-    bool 	noError() const { return error.isEmpty(); }
-    QString getError() const { return error; }
+    bool 	noError() const { return (error.isEmpty()); }
+    QString getError() const { return (error); }
     void	clearError() { error = QString(); }
 
     bool isValid();
@@ -92,7 +93,7 @@ protected:
 
 private:
    	static	QThread *mainThread;
-   	static  QImage  placeholder;
+   	//static  QImage  placeholder;
 
     QImage	original;
     QImage  previewImg;

@@ -51,6 +51,7 @@ void FileBrowserListView::startDrag(Qt::DropActions supportedActions) {
 		if (path == ".." or path == ".") {
 			selected.removeOne(index);
 		}
+		// TODO(Unnecessary?): else request image in Thumbnail Size
 	}
 
 	QMimeData *mime = itemModel->mimeData(selected);

@@ -66,9 +66,9 @@ bool ImageIOCore::fromCache(const QString filePath, const QSize size, UseCache u
 	if (cacheLookup(filePath, size, img)) {
 		resizeTask(QtConcurrent::run(this, &ImageIOCore::resizeAndNotify,
 									 img, filePath, size, uc));
-		return true;
+		return (true);
 	}
-	return false;
+	return (false);
 }
 
 
@@ -111,41 +111,41 @@ bool ImageIOCore::cacheLookup(const QString filePath, const QSize size, QImage &
 		img = big.object(filePath);
 		if (img != NULL && isOriginalSize(*img)) {
 			image = QImage(*img);
-			return true;
+			return (true);
 		}
 		img = medium.object(filePath);
 		if (img != NULL && isOriginalSize(*img)) {
 			image = QImage(*img);
-			return true;
+			return (true);
 		}
 		img = small.object(filePath);
 		if (img != NULL && isOriginalSize(*img)) {
 			image = QImage(*img);
-			return true;
+			return (true);
 		}
-		return false;
+		return (false);
 	}
 
 	if (size.width() < smallW && size.height() < smallH) {
 		img = small.object(filePath);
 		if (img != NULL && (img->width() >= size.width() || img->height() >= size.height())) {
 			image = QImage(*img);
-			return true;
+			return (true);
 		}
 	}
 	if (size.width() <= bigW && size.height() <= bigH) {
 		img = medium.object(filePath);
 		if (img != NULL && (img->width() >= size.width() || img->height() >= size.height())) {
 			image = QImage(*img);
-			return true;
+			return (true);
 		}
 	}
 	img = big.object(filePath);
 	if (img != NULL && (img->width() >= size.width() || img->height() >= size.height())) {
 		image = QImage(*img);
-		return true;
+		return (true);
 	}
-	return false;
+	return (false);
 }
 
 
@@ -229,11 +229,11 @@ void ImageIOCore::waitForPendingResizeTasks()
 QCache<QString, QImage> *ImageIOCore::selectCache(QSize size)
 {
 	if (size.width() > bigW || size.height() > bigH) {
-		return &big;
+		return (&big);
 	} else if (size.width() < smallW && size.height() < smallH) {
-		return &small;
+		return (&small);
 	} else {
-		return &medium;
+		return (&medium);
 	}
 }
 
@@ -243,7 +243,7 @@ QCache<QString, QImage> *ImageIOCore::selectCache(QSize size)
 ImageIOCore::ImageIOCore(QObject *parent) : QObject(parent) {
 	bigW = 1920; bigH = 1200; smallW = 480; smallH = 360;
 	setCacheSizes(65536, 65536, 32768);
-	setCacheMetrics(1600, 1200, 320, 240, false);
+	setCacheMetrics(1600, 1200, 320, 240, true);  // smallW and smallH should not be larger than ThumbnailSize.x and y times 2!!!
 }
 
 ImageIOCore::~ImageIOCore() {

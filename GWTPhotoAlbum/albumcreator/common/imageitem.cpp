@@ -40,7 +40,7 @@ QList<ImageItem *> ImageItem::cachedPreviews;
 int ImageItem::maxImages = 20;
 int ImageItem::maxPreviews = 50;
 QThread *ImageItem::mainThread = QThread::currentThread();
-QImage ImageItem::placeholder; // = QImage(":/:/images/image_placeholder.png");
+//QImage ImageItem::placeholder; // = QImage(":/:/images/image_placeholder.png");
 		// sizeGuard(QPixmap(":/:/images/image_placeholder.png"), Thumbnail_Size).toImage();
 
 /*!
@@ -172,12 +172,21 @@ void ImageItem::prefetchImage(int imageClass)
 
 	if (img->isNull()) {
 		requestsIssued++;
-		ImageIO::instance().quickRequest(this, filePath, *img, size);
-		if (img->isNull()) {
+		if (ImageIO::instance().quickRequest(this, filePath, *img, size)) {
+			requestsIssued--;
+			if (!original.isNull()) {
+				originalSize = original.size();
+			}
+		} else {
+			if (requestedClasses == request) requestsIssued--;
 			requestedClasses = request;
-		} else if (!original.isNull()) {
-			originalSize = original.size();
 		}
+//		ImageIO::instance().quickRequest(this, filePath, *img, size);
+//		if (img->isNull()) {
+//			requestedClasses = request;
+//		} else if (!original.isNull()) {
+//			originalSize = original.size();
+//		}
 	}
 }
 
@@ -357,15 +366,15 @@ QImage ImageItem::fetch(ImageClass c) const {
 			   "ImageItem::fetch", "image class must be IMAGE or PREVIEW or THUMBNAIL");
 
 	if (c == THUMBNAIL) {
-		if (thumbnailImg.isNull()) {
-			if (placeholder.isNull()) {
-				placeholder = sizeGuard(QPixmap(":/:/images/image_placeholder.png"), Thumbnail_Size).toImage();
-			}
-			Q_ASSERT(!placeholder.isNull());
-			return (placeholder);
-		} else {
+//		if (thumbnailImg.isNull()) {
+//			if (placeholder.isNull()) {
+//				placeholder = sizeGuard(QPixmap(":/:/images/image_placeholder.png"), Thumbnail_Size).toImage();
+//			}
+//			Q_ASSERT(!placeholder.isNull());
+//			return (placeholder);
+//		} else {
 			return (thumbnailImg);
-		}
+//		}
 
 	} else if (c == PREVIEW) {
 		return (previewImg);
@@ -384,6 +393,7 @@ QImage ImageItem::fetch(ImageClass c) const {
 void ImageItem::receiveImage(const QString filePath, QImage image) {
 	bool flag = false;
 	if (filePath == this->filePath) {
+		qDebug() << "Image received: " << filePath << requestsIssued;
 		requestsIssued--;
 		error = QString("");
 		if ( (requestedClasses & THUMBNAIL) && sizeFits(image.size(), Thumbnail_Size)) {
