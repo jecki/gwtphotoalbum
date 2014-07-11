@@ -78,7 +78,6 @@ ImageCollection::ImageCollection(QObject *parent)
 	gallery_horizontal_padding = 80;
 	gallery_vertical_padding = 30;
 	sizesList << ImageItem::Thumbnail_Size;
-	sizesList << QSize(320,240);
 	sizesList << QSize(640, 480);
 	sizesList << QSize(1280, 800);
 	sizesList << QSize(2048, 1200);

@@ -50,9 +50,10 @@ public class StatusTag {
    */
   public static void remove() {
     if (create()) {
-      DOM.removeChild((com.google.gwt.user.client.Element) 
-                          tag.getParentElement(), 
-                      (com.google.gwt.user.client.Element) tag);
+//      DOM.removeChild((com.google.gwt.dom.client.Element) 
+//                          tag.getParentElement(), 
+//                      (com.google.gwt.dom.client.Element) tag);
+      tag.getParentElement().removeChild(tag);      
       tag = null;
       removed = true;
     }

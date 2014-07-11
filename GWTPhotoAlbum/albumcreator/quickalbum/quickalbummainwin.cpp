@@ -8,7 +8,7 @@
 
 
 QuickAlbumMainWin::QuickAlbumMainWin(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent), returnValue(0)
 {
 	ui.setupUi(this);
 }

@@ -24,8 +24,8 @@ import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
+//import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -241,7 +241,8 @@ public class GalleryWidget extends GalleryBase {
     ClickHandler imageClickHandler = new ClickHandler() {
       public void onClick(ClickEvent event) {
         Widget sender = (Widget) event.getSource();
-        String id = DOM.getElementAttribute(sender.getElement(), "id");
+//        String id = DOM.getElementAttribute(sender.getElement(), "id");
+        String id = sender.getElement().getAttribute("id");
         firePickImage(Integer.parseInt(id));
         sender.removeStyleName("galleryTouched");
         sender.removeStyleName("galleryPressed");        
@@ -275,7 +276,8 @@ public class GalleryWidget extends GalleryBase {
       Image img = thumbnails.get(i);
       img.setStyleName("galleryImage");
       Element imgElement = img.getElement();
-      DOM.setElementAttribute(imgElement, "id", String.valueOf(i));           
+//      DOM.setElementAttribute(imgElement, "id", String.valueOf(i));
+      imgElement.setAttribute("id", String.valueOf(i));
       img.addClickHandler(imageClickHandler);
       img.addMouseDownHandler(imageMouseDownHandler);
       img.addMouseOverHandler(imageMouseOverHandler);

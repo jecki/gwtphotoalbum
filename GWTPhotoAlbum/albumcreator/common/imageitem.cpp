@@ -33,7 +33,7 @@
 
 static QImage ImageItem_nullImage;
 
-QSize ImageItem::Thumbnail_Size = QSize(160, 160);
+QSize ImageItem::Thumbnail_Size = QSize(320, 320);
 QSize ImageItem::Preview_Size   = QSize(1280, 960);
 QList<ImageItem *> ImageItem::cachedImages;
 QList<ImageItem *> ImageItem::cachedPreviews;

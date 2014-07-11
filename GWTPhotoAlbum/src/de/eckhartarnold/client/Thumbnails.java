@@ -21,8 +21,8 @@ import java.util.HashMap;
 //import java.util.Iterator;
 //import java.util.NoSuchElementException;
 
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
+//import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Image;
 
 /**
@@ -250,7 +250,8 @@ public class Thumbnails {
    * @return the index of the thumbnail
    */
   public int indexOf(Image img) {
-    String id = DOM.getElementAttribute(img.getElement(), "id");
+//    String id = DOM.getElementAttribute(img.getElement(), "id");
+    String id = img.getElement().getAttribute("id");
     int index = Integer.parseInt(id);
     assert index >= 0 && index < size() : 
          "Image is not a thumbnail or \"id\" was manipulated!";
@@ -278,7 +279,8 @@ public class Thumbnails {
     for (int i = 0; i < thumbnailURLs.length; i++) {
       imageList[i] = new Image(thumbnailURLs[i]);
       Element imgElement = imageList[i].getElement();
-      DOM.setElementAttribute(imgElement, "id", String.valueOf(i));        
+//      DOM.setElementAttribute(imgElement, "id", String.valueOf(i));
+      imgElement.setAttribute("id", String.valueOf(i));      
       actualSizes[i][0] = thumbnailSizes[i][0];
       actualSizes[i][1] = thumbnailSizes[i][1];     
     }
