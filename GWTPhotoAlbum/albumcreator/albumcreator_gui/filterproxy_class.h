@@ -56,7 +56,7 @@ public:
      */
     inline QString fileName(const QModelIndex &index) const
     {
-    	return data(index, QFileSystemModel::FileNameRole).toString();
+    	return (data(index, QFileSystemModel::FileNameRole).toString());
     }
 
     /*!
@@ -70,9 +70,9 @@ public:
         QString name = fileName.toUpper();
     	foreach(QString supportedFormat, imageFormats) {
             if (name.endsWith(supportedFormat))
-                return true;
+                return (true);
         }
-        return false;
+        return (false);
     }
 
     /*!
@@ -82,7 +82,7 @@ public:
      */
     inline QModelIndex indexOfPath(const QString &path)
     {
-        return this->mapFromSource(source->index(path));
+        return (this->mapFromSource(source->index(path)));
     }
 
 
@@ -93,7 +93,7 @@ public:
      */
     inline QString path(const QModelIndex &index)
     {
-    	return data(index, QFileSystemModel::FilePathRole).toString();
+    	return (data(index, QFileSystemModel::FilePathRole).toString());
 
     }
 
@@ -105,7 +105,7 @@ public:
      */
     inline bool isDir(const QModelIndex &index)
     {
-    	return source->isDir(mapToSource(index));
+    	return (source->isDir(mapToSource(index)));
     }
 
     /*!
@@ -127,9 +127,9 @@ public:
     virtual Qt::ItemFlags flags (const QModelIndex & index) const {
     	Qt::ItemFlags defaultFlags = QSortFilterProxyModel::flags(index);
     	if (index.isValid() && hasSupportedFormat(fileName(index))) {
-    		return Qt::ItemIsDragEnabled | defaultFlags;
+    		return (Qt::ItemIsDragEnabled | defaultFlags);
     	} else {
-    		return defaultFlags;
+    		return (defaultFlags);
     	}
     }
 
@@ -137,7 +137,7 @@ public:
     virtual QStringList mimeTypes() const {
     	QStringList types;
     	types << "text/uri-list" << "image/*";
-    	return types;
+    	return (types);
     }
 
     virtual QMimeData *mimeData(const QModelIndexList &indexes) const {
@@ -181,9 +181,9 @@ protected:
 
     	if (source->isDir(src_index)) {
     		if (fileName != ".")
-    			return true;
+    			return (true);
     		else
-    			return false;
+    			return (false);
         }
 
         return hasSupportedFormat(fileName);

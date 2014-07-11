@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'albumcreator.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.0
+** Created by: Qt User Interface Compiler version 5.2.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -244,8 +244,10 @@ public:
         albumView->setDefaultDropAction(Qt::MoveAction);
         albumView->setSelectionMode(QAbstractItemView::ExtendedSelection);
         albumView->setIconSize(QSize(180, 160));
+        albumView->setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
+        albumView->setHorizontalScrollMode(QAbstractItemView::ScrollPerItem);
         albumView->setMovement(QListView::Snap);
-        albumView->setFlow(QListView::TopToBottom);
+        albumView->setFlow(QListView::LeftToRight);
         albumView->setResizeMode(QListView::Adjust);
         albumView->setLayoutMode(QListView::Batched);
         albumView->setGridSize(QSize(180, 180));

@@ -128,7 +128,7 @@ void ImageIO::CallbackInterface::imageSaved(const QString filePath)
  */
 ImageIO &ImageIO::instance() {
 	static ImageIO	singleton;
-	return singleton;
+	return (singleton);
 }
 
 
@@ -225,12 +225,12 @@ ImageIO::Request *ImageIO::requestImage(CallbackInterface *callback, const QStri
 			   QString("ImageIO::requestImage "+filePath).toLocal8Bit().data(),
 			   "request image must be called from the main thread!");
 
-	if (terminateIO) return NULL;
+	if (terminateIO) return (NULL);
 	LoadRequest *request = new LoadRequest(Load, callback, filePath, size, uc);
 	mutex.lock();
 	if (checkForDuplicate(request)) {
 		mutex.unlock();
-		return NULL;
+		return (NULL);
 	}
 	if (iocore.fromCache(filePath, size, uc)) {
 		purgeList.append(request);
@@ -354,12 +354,12 @@ ImageIO::Request *ImageIO::saveImage(CallbackInterface *callback, const QString 
 			   QString("ImageIO::saveImage "+filePath).toLocal8Bit().data(),
 			   "request image must be called from the main thread!");
 
-	if (terminateIO) return NULL;
+	if (terminateIO) return (NULL);
 	SaveRequest *request = new SaveRequest(Save, callback, filePath, image, quality, uc);
 	mutex.lock();
 	if (checkForDuplicate(request)) {
 		mutex.unlock();
-		return NULL;
+		return (NULL);
 	}
 	if (priority == TopPriority) {
 		pending.append(request);
@@ -368,7 +368,7 @@ ImageIO::Request *ImageIO::saveImage(CallbackInterface *callback, const QString 
 	}
 	moreRequests.wakeOne();
 	mutex.unlock();
-	return request;
+	return (request);
 }
 
 
@@ -394,7 +394,7 @@ bool ImageIO::cancelRequest(Request *&request)
 		delete request;
 	}
 	mutex.unlock();
-	return result;
+	return (result);
 }
 
 
@@ -478,7 +478,7 @@ ImageIO::Request *ImageIO::findRequest(ImageIO::RequestType type, const QString 
 		}
 	}
 
-	return ret;
+	return (ret);
 }
 
 

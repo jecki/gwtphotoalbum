@@ -45,7 +45,7 @@ static QList<QSize> archiveSizes() {
 	asList << QSize(-1, -1);
 	asList << QSize(3000, 2250);
 	asList << QSize(2048, 1200);
-	return asList;
+	return (asList);
 }
 
 const QSize  ImageCollection::Original_Size = QSize(-1, -1);
@@ -59,7 +59,7 @@ QList<QSize> ImageCollection::Archive_Sizes = archiveSizes();
 
 
 ImageCollection::ImageCollection(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), archive(0), archiveImagePos(0)
 {
 	presentation_type = "gallery";
 	layout_type       = "fullscreen";
@@ -121,11 +121,11 @@ ImageItem *ImageCollection::search(const QString destName, int &continueWith)
 		continueWith++;
 		if (it->destFileName().indexOf(destName, 0, Qt::CaseInsensitive) >= 0 ||
 			destName.indexOf(it->destFileName(), 0, Qt::CaseInsensitive) >= 0) {
-			return it;
+			return (it);
 		}
 	}
 
-	return NULL;
+	return (NULL);
 }
 
 
@@ -139,9 +139,9 @@ ImageItem *ImageCollection::search(const QString destName, int &continueWith)
 ImageItem *ImageCollection::find(const QString destName)
 {
 	foreach(ImageItem *it, imageList) {
-		if (it->destFileName() == destName) return it;
+		if (it->destFileName() == destName) return (it);
 	}
-	return NULL;
+	return (NULL);
 }
 
 
@@ -189,7 +189,7 @@ int ImageCollection::addImageList(const QString &fileName)
 		}
 	}
 
-	return nr;
+	return (nr);
 }
 
 
@@ -231,7 +231,7 @@ bool ImageCollection::fromJSON(const QString infoJSON)
 		disable_scrolling = false;
 	}
 
-	return ok;
+	return (ok);
 }
 
 
@@ -270,7 +270,7 @@ QString ImageCollection::infoJSON() const
 	writeJSON(stream, QVariant(map), ok);
 	Q_ASSERT_X(ok, "ImageCollection::infoJSON", "error while constructing info JSON (this should never happen)!");
 	stream << "\n";
-	return str;
+	return (str);
 }
 
 
@@ -294,7 +294,7 @@ QString ImageCollection::directoriesJSON()
 
 	writeJSON(stream, QVariant(sizesStrings), ok);
 	Q_ASSERT_X(ok, "ImageCollection::directoriesJSON", "error while constructing JSON!");
-	return output;
+	return (output);
 }
 
 
@@ -317,7 +317,7 @@ QString ImageCollection::filenamesJSON() const
 	}
 	writeJSON(stream, QVariant(fileNames), ok);
 	Q_ASSERT_X(ok, "ImageCollection::filenamesJSON", "error while constructing JSON!");
-	return output;
+	return (output);
 }
 
 
@@ -341,7 +341,7 @@ QString ImageCollection::captionsJSON() const
 	writeJSON(stream, QVariant(map), ok);
 	Q_ASSERT_X(ok, "ImageCollection::captionsJSON", "error while constructing JSON!");
 	stream << "\n";
-	return str;
+	return (str);
 }
 
 
@@ -398,7 +398,7 @@ QString ImageCollection::resolutionsJSON()
 	writeJSON(stream, datalist, ok);
 	Q_ASSERT_X(ok, "ImageCollection::resolutionsJSON", "error while constructin JSON");
 	stream << "\n";
-	return output;
+	return (output);
 }
 
 
@@ -421,7 +421,7 @@ bool ImageCollection::terminateCreation(const QString error)
 	}
 	emit finished(ok, errorString());
 	running = false;
-	return ok;
+	return (ok);
 }
 
 /*!
@@ -456,7 +456,7 @@ bool ImageCollection::createAlbum(QString destinationPath)
 
 	destinationPath = QDir::cleanPath(QDir::fromNativeSeparators(destinationPath));
 	if (destinationPath.isEmpty()) {
-		return terminateCreation("empty directory name!");
+		return (terminateCreation("empty directory name!"));
 	}
 	if (destinationPath.at(destinationPath.length()-1) == '/') {
 		destinationPath = destinationPath.left(destinationPath.length()-1);
@@ -466,20 +466,20 @@ bool ImageCollection::createAlbum(QString destinationPath)
 
 	QDir parent(destination.path());
 	if (parent.exists(dirName)) {
-		return terminateCreation("directory: " + dirName + " already exists!");
+		return (terminateCreation("directory: " + dirName + " already exists!"));
 	}
 
 	if (!parent.mkdir(dirName)) {
-		return terminateCreation("could not create directory: " + destinationPath);
+		return (terminateCreation("could not create directory: " + destinationPath));
 	}
 	if (!parent.cd(dirName)) {
-		return terminateCreation("could not change to directory: "+dirName);
+		return (terminateCreation("could not change to directory: "+dirName));
 	}
 	// just an extra check, to avoid involuntary deletion of files
 	if (!QDir(destination.filePath()).count() == 0) {
 		destPath = destination.filePath();
 	} else {
-		return terminateCreation("strange path missmatch between "+destination.filePath()+" and " + parent.path());
+		return (terminateCreation("strange path missmatch between "+destination.filePath()+" and " + parent.path()));
 	}
 
 	deploy_GWTPhotoAlbumFiles(parent);
@@ -491,13 +491,13 @@ bool ImageCollection::createAlbum(QString destinationPath)
 	QString startPage = readTextFile(parent.path()+"/GWTPhotoAlbum_xs.html",
 						errorMsg, ok);
 	if (!ok) {
-		return terminateCreation();
+		return (terminateCreation());
 	}
 
 	parent.mkdir("slides");
 	foreach(const QSize &s, sizesList) {
 		if (!parent.mkdir("slides/"+sizeStr(s))) {
-			return terminateCreation("Could not create dir: slides/"+sizeStr(s));
+			return (terminateCreation("Could not create dir: slides/"+sizeStr(s)));
 		}
 	}
 	deploy_images(parent);
@@ -507,7 +507,7 @@ bool ImageCollection::createAlbum(QString destinationPath)
 				errorMsg << it->getError();
 			}
 		}
-		return terminateCreation();
+		return (terminateCreation());
 	}
 
 	QString infojs = infoJSON(),
@@ -548,12 +548,12 @@ bool ImageCollection::createAlbum(QString destinationPath)
 	parent.cd("..");
 	parent.cd("..");
 
-	return terminateCreation();
+	return (terminateCreation());
 }
 
 
 bool cmpdirs(QFileInfo &i1, QFileInfo &i2) {
-	return i1.path().length() > i2.path().length();
+	return (i1.path().length() > i2.path().length());
 }
 
 /*!
@@ -602,7 +602,7 @@ bool ImageCollection::rollback()
 
 	deployedFiles.clear();
 	destPath = QString();
-	return ok;
+	return (ok);
 }
 
 
@@ -623,20 +623,20 @@ bool ImageCollection::validateSizes() {
 		foreach(const QSize &s, sizesList) {
 			// there must be no more than 1 invalid (i.e. original) size.
 			if (s.isEmpty()) {
-				if (numInvalid >= 1) return false;
+				if (numInvalid >= 1) return (false);
 				numInvalid++;
 			// all valid sizes must be larger or equal than Thumbnail_Size
 			} else if (s.width() < ImageItem::Thumbnail_Size.width() ||
 				       s.height() < ImageItem::Thumbnail_Size.height() ) {
-				return false;
+				return (false);
 			// sizes must be of increasing order, the same size
 			// must not appear twice;
 			} else if ((s.width() < lastSize.width() ||
 					    s.height() < lastSize.height()) ||
 					   (s == lastSize)) {
-				return false;
+				return (false);
 			} else if (s == ImageItem::Thumbnail_Size) {
-				hasThumbnailSize = true;
+				hasThumbnailSize = (true);
 			}
 			lastSize = s;
 		}
@@ -644,11 +644,11 @@ bool ImageCollection::validateSizes() {
 		// or a slide show with a filmstrip
 		if (!hasThumbnailSize &&
 			(presentation_type == "gallery" || layout_data.indexOf('F') >= 0)) {
-			return false;
+			return (false);
 		}
-		return true;
+		return (true);
 	}
-	return false;
+	return (false);
 }
 
 ///*!
@@ -690,7 +690,7 @@ QSize ImageCollection::best_noscriptSize() {
 			cmp = d;
 		}
 	}
-	return bestsize;
+	return (bestsize);
 }
 
 

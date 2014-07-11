@@ -28,6 +28,7 @@
 #include <QList>
 #include <QSet>
 #include <QString>
+#include <QTimer>
 
 
 class ImageListModel : public QAbstractListModel
@@ -58,6 +59,9 @@ private:
     QList<ImageItem *> 	&imageList;
     QSet<QString>       imageNames;
     QPixmap				placeholder;
+
+private Q_SLOTS:
+	void update();
 };
 
 #endif // IMAGELISTMODEL_H

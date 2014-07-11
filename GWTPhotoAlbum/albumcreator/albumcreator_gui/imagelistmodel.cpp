@@ -23,6 +23,7 @@
 #include <QUrl>
 #include <QStringList>
 #include <QSet>
+#include <QTimer>
 
 #include "toolbox.h"
 #include "../common/imageitem.h"
@@ -64,8 +65,9 @@ QVariant ImageListModel::data(const QModelIndex &index, int role) const
 	case Qt::DecorationRole:
 		it->prefetchImage(ImageItem::THUMBNAIL);
 		if (it->requestsPending()) {
+			qDebug() << "TIMER START";
+			QTimer::singleShot(2000, Qt::VeryCoarseTimer, this, SLOT(update()));
 			return (placeholder);
-			// TODO: issue postponed redraw if placeholder had to be returned
 		}
 		return (sizeGuard(QPixmap::fromImage(it->image(ImageItem::THUMBNAIL)),
 				ImageItem::Thumbnail_Size, FRAME_SIZE));
@@ -167,4 +169,13 @@ int ImageListModel::rowCount(const QModelIndex &parent) const
 Qt::DropActions ImageListModel::supportedDropActions() const
 {
 	return (Qt::MoveAction|Qt::CopyAction);
+}
+
+
+void ImageListModel::update()
+{
+	qDebug() << "TIMER SIGNAL RECEIVED";
+	QModelIndex first = index(0, 0);
+	QModelIndex last = index(rowCount(QModelIndex())-1, 0);
+	emit dataChanged(first, last);
 }
