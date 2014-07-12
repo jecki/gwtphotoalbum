@@ -73,11 +73,12 @@ ImageCollection::ImageCollection(QObject *parent)
 	add_lowres_layout = true;
 	display_duration  = 5000;
 	image_fading 	  = -750; // negative value: fade in, fade out in sequence rather than at the same time
-	thumbnail_width   = ImageItem::Thumbnail_Size.width();
-	thumbnail_height  = ImageItem::Thumbnail_Size.height();
-	gallery_horizontal_padding = 80;
-	gallery_vertical_padding = 30;
+	thumbnail_width   = 320;  // ImageItem::Thumbnail_Size.width();
+	thumbnail_height  = 320;  // ImageItem::Thumbnail_Size.height();
+	gallery_horizontal_padding = 40;
+	gallery_vertical_padding = 15;
 	sizesList << ImageItem::Thumbnail_Size;
+	sizesList << QSize(320, 320);
 	sizesList << QSize(640, 480);
 	sizesList << QSize(1280, 800);
 	sizesList << QSize(2048, 1200);

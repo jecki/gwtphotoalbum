@@ -4,3 +4,6 @@
 /Makefile
 /Makefile.Debug
 /Makefile.Release
+/ui_albumcreator.h
+/ui_createalbumwizzard.h
+/ui_progressdialog.h
