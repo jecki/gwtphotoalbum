@@ -4,3 +4,8 @@
 /quickalbum
 /release
 /debug
+ui_*.h
+moc_*.cpp
+moc_*.o
+*.o
+

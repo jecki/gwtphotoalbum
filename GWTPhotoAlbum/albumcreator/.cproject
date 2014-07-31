@@ -136,7 +136,7 @@
 		<pathentry include="/usr/include/qt/QtCore" kind="inc" path="" system="true"/>
 		<pathentry include="/usr/include/qt/QtGui" kind="inc" path="" system="true"/>
 		<pathentry include="/usr/include/qt/QtWidgets" kind="inc" path="" system="true"/>
-		<pathentry include="/usr/include/c++/4.8.2" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include/c++/4.9.1" kind="inc" path="" system="true"/>
 		<pathentry excluding="test_createalbumwizzard/" kind="src" path=""/>
 		<pathentry kind="out" path=""/>
 	</storageModule>
