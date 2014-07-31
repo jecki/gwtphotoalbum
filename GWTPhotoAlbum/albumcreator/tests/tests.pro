@@ -10,7 +10,7 @@
 # the License.
 TEMPLATE = app
 TARGET = albumcreator_unit_tests
-CONFIG += debug
+CONFIG += debug_and_release
 QT += core \
     testlib
 INCLUDEPATH += ../common \
