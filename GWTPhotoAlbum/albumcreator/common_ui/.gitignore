@@ -7,3 +7,10 @@
 /Makefile.Release
 /release
 /debug/
+/ui_createalbumwizzard.h
+/ui_progressdialog.h
+/ui_createalbumwizzard.h
+/ui_progressdialog.h
+ui_*.h
+moc_*.cpp
+*.o
