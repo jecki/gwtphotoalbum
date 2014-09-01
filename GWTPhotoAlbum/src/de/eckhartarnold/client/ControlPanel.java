@@ -32,24 +32,31 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * The control panel of the slide show. 
+ * A control panel for the slide show. 
  * 
  * <p>The control panel consists of up to
  * four buttons: back, gallery, play, next and an optional progress bar. 
  * In addition to that the control panel can "swallow" a film strip which 
  * will be placed in the middle between the gallery and the play button.
- * The buttons can be disabled or completely be hidden (methods 
- * <code>setButtonEnable</code> and <code>setButtonShow</code>). 
  * 
  * @author eckhart
  *
  */
 public class ControlPanel extends Composite implements ClickHandler,
-    SlideshowListener, ResizeListener, AttachmentListener {
+    SlideshowListener, ResizeListener, AttachmentListener, SlideshowControl {
   
   /** Constants (bit values) for the control panel buttons */
-//  public static final int BEGIN = 1, BACK = 2, HOME = 4, PLAY = 8, NEXT = 16, END = 32;
-  public static final int BACK = 1, HOME = 2, PLAY = 4, NEXT = 8;
+  //  public static final int BEGIN = 1, BACK = 2, HOME = 4, PLAY = 8, NEXT = 16, END = 32;
+  public static final int BACK = 1;
+  /** Constants (bit values) for the control panel buttons */
+  //  public static final int BEGIN = 1, BACK = 2, HOME = 4, PLAY = 8, NEXT = 16, END = 32;
+  public static final int HOME = 2;
+  /** Constants (bit values) for the control panel buttons */
+  //  public static final int BEGIN = 1, BACK = 2, HOME = 4, PLAY = 8, NEXT = 16, END = 32;
+  public static final int NEXT = 8;
+  /** Constants (bit values) for the control panel buttons */
+  //  public static final int BEGIN = 1, BACK = 2, HOME = 4, PLAY = 8, NEXT = 16, END = 32;
+  public static final int PLAY = 4;
   
   /** an array of the possible pixel sizes of the buttons */
   protected static final int[]    ICON_SIZES = { 16, 24, 32, 48, 64 };
@@ -110,7 +117,7 @@ public class ControlPanel extends Composite implements ClickHandler,
   private Tooltip                 backTooltip, homeTooltip, 
                                   playPauseTooltip, nextTooltip;
   private int                     buttonSize;
-  private boolean                 hasProgressBar = true;
+//  private boolean                 hasProgressBar = true;
   private boolean                 autoResize = true;
   private int                     buttonsEnabled = NEXT|HOME|PLAY|BACK;
   private int                     buttonsShown = NEXT|HOME|PLAY|BACK;
@@ -141,21 +148,21 @@ public class ControlPanel extends Composite implements ClickHandler,
     initWidget(wrapper);
   }
   
-  /**
-   * Allows automatic adjustment of the size of the control panel if the size
-   * of the image panel changes.
-   */
-  public void allowAutoResize() {
-    autoResize = true;
-  }
-
-  /**
-   * Disallows automatic adjustment of the size of the control panel if the size
-   * of the image panel changes.
-   */  
-  public void disallowAutoResize() {
-    autoResize = false;
-  }
+//  /**
+//   * Allows automatic adjustment of the size of the control panel if the size
+//   * of the image panel changes.
+//   */
+//  public void allowAutoResize() {
+//    autoResize = true;
+//  }
+//
+//  /**
+//   * Disallows automatic adjustment of the size of the control panel if the size
+//   * of the image panel changes.
+//   */  
+//  public void disallowAutoResize() {
+//    autoResize = false;
+//  }
   
   /**
    * Returns the size of the control buttons as integer value. The size is 
@@ -177,19 +184,23 @@ public class ControlPanel extends Composite implements ClickHandler,
 //    return filmstrip;
 //  }
   
-  /**
-   * Hides the progress bar.
-   */
-  public void hideProgressBar() {
-    if (hasProgressBar) {
-      hasProgressBar = false;
-      composePanel();      
-    }
-  }
+//  /**
+//   * Hides the progress bar.
+//   */
+//  public void hideProgressBar() {
+//    if (hasProgressBar) {
+//      hasProgressBar = false;
+//      composePanel();      
+//    }
+//  }
   
   /* (non-Javadoc)
    * @see com.google.gwt.user.client.ui.ClickListener.onClick()
    */    
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#onClick(com.google.gwt.event.dom.client.ClickEvent)
+   */
+  @Override
   public void onClick(ClickEvent event) {
     Object sender = event.getSource();
     if (sender == back) {
@@ -218,6 +229,10 @@ public class ControlPanel extends Composite implements ClickHandler,
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.SlideshowListener.onFade()
    */      
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#onFade()
+   */
+  @Override
   public void onFade() {
     progress.setValue(slideshow.getCurrentSlide()+1);     
     if (filmstrip != null) filmstrip.focusImage(slideshow.getCurrentSlide());
@@ -226,6 +241,10 @@ public class ControlPanel extends Composite implements ClickHandler,
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.AttachmentListener#onLoad(com.google.gwt.user.client.ui.Widget)
    */
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#onLoad(com.google.gwt.user.client.ui.Widget)
+   */
+  @Override
   public void onLoad(Widget sender) {
 //    beginTooltip.setMaxAppearances(2);
 //    endTooltip.setMaxAppearances(2);
@@ -238,6 +257,10 @@ public class ControlPanel extends Composite implements ClickHandler,
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.ResizeListener.onResized()
    */    
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#onResized()
+   */
+  @Override
   public void onResized() { 
     if (autoResize) {
       // final int[][] resolutions = {{640,480}, {800, 600}, {1024,768}, 
@@ -264,6 +287,10 @@ public class ControlPanel extends Composite implements ClickHandler,
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.SlideshowListener.onShow()
    */   
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#onShow(int)
+   */
+  @Override
   public void onShow(int slideNr) {
     progress.setValue(slideNr+1);
     if (filmstrip != null) {
@@ -274,6 +301,10 @@ public class ControlPanel extends Composite implements ClickHandler,
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.SlideshowListener.onStart()
    */   
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#onStart()
+   */
+  @Override
   public void onStart() {
     if (!play.isDown()) {
       play.setDown(true);    
@@ -283,6 +314,10 @@ public class ControlPanel extends Composite implements ClickHandler,
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.SlideshowListener.onStop()
    */   
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#onStop()
+   */
+  @Override
   public void onStop() {
     if (play.isDown()) {
       play.setDown(false);     
@@ -292,6 +327,10 @@ public class ControlPanel extends Composite implements ClickHandler,
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.AttachmentListener#onUnload(com.google.gwt.user.client.ui.Widget)
    */
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#onUnload(com.google.gwt.user.client.ui.Widget)
+   */
+  @Override
   public void onUnload(Widget sender) {  
 //    beginTooltip.hide();
 //    endTooltip.hide();
@@ -304,39 +343,43 @@ public class ControlPanel extends Composite implements ClickHandler,
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.ResizeListener.prepareResized()
    */    
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#prepareResized()
+   */
+  @Override
   public void prepareResized() { 
     if (filmstrip != null) filmstrip.prepareResized();
   }   
   
-  /**
-   * Determines which buttons are enabled on the panel. If the play button is
-   * disabled, the slide show will be stopped in case it was running.
-   * 
-   * @param buttonFlags  the bit set of the buttons that are to be enabled 
-   */
-  public void setButtonEnabled(int buttonFlags) {
-    buttonsEnabled = buttonFlags;
-    if ((buttonsEnabled & PLAY) == 0) slideshow.stop();
-    enableOrDisableButtons();
-  } 
+//  /**
+//   * Determines which buttons are enabled on the panel. If the play button is
+//   * disabled, the slide show will be stopped in case it was running.
+//   * 
+//   * @param buttonFlags  the bit set of the buttons that are to be enabled 
+//   */
+//  public void setButtonEnabled(int buttonFlags) {
+//    buttonsEnabled = buttonFlags;
+//    if ((buttonsEnabled & PLAY) == 0) slideshow.stop();
+//    enableOrDisableButtons();
+//  } 
   
-  /**
-   * Determines which buttons are shown on the panel. If the play button is
-   * hidden the slide show will be stopped in case it was running.
-   *
-   * @param buttonFlags  the bit set of the buttons that are to be shown
-   */
-  public void setButtonShow(int buttonFlags) {
-    boolean redoPanel;
-    if (buttonsShown != buttonFlags) {
-      redoPanel = true;
-    } else {
-      redoPanel = false;
-    }
-    buttonsShown = buttonFlags;
-    if ((buttonsShown & PLAY) == 0) slideshow.stop();
-    if (redoPanel) composePanel();      
-  }
+//  /**
+//   * Determines which buttons are shown on the panel. If the play button is
+//   * hidden the slide show will be stopped in case it was running.
+//   *
+//   * @param buttonFlags  the bit set of the buttons that are to be shown
+//   */
+//  public void setButtonShow(int buttonFlags) {
+//    boolean redoPanel;
+//    if (buttonsShown != buttonFlags) {
+//      redoPanel = true;
+//    } else {
+//      redoPanel = false;
+//    }
+//    buttonsShown = buttonFlags;
+//    if ((buttonsShown & PLAY) == 0) slideshow.stop();
+//    if (redoPanel) composePanel();      
+//  }
   
   /**
    * Sets the size of the control buttons. If the new size is widely different
@@ -367,12 +410,10 @@ public class ControlPanel extends Composite implements ClickHandler,
     }
   }
   
-  /**
-   * Sets the listener for the "back to the gallery button". In order to listen
-   * to any of the other buttons, add a {@link SlideshowListener} to the
-   * slide show.
-   * @param listener the <code>ClickListener</code> for the gallery button
+  /* (non-Javadoc)
+   * @see de.eckhartarnold.client.SlideshowControl#setHomeButtonListener(com.google.gwt.event.dom.client.ClickHandler)
    */
+  @Override
   public void setHomeButtonListener(ClickHandler handler) {
     if (home != null) {
       if (homeButtonRegistration != null) {
@@ -383,15 +424,15 @@ public class ControlPanel extends Composite implements ClickHandler,
     homeButtonHandler = handler;
   }  
   
-  /**
-   * Shows the progress bar.
-   */
-  public void showProgressBar() {
-    if (!hasProgressBar) {
-      hasProgressBar = true;
-      composePanel(); 
-    }
-  }  
+//  /**
+//   * Shows the progress bar.
+//   */
+//  public void showProgressBar() {
+//    if (!hasProgressBar) {
+//      hasProgressBar = true;
+//      composePanel(); 
+//    }
+//  }  
   
   /**
    * Swallows a {@link Filmstrip} widget. The film strip will then become part

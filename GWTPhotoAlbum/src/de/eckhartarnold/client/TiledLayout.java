@@ -116,16 +116,17 @@ public class TiledLayout extends FullScreenLayout {
         }
         case ('P'):
         case ('F'): {
-          parent.add(controlPanel);
-          controlPanel.addStyleDependentName("tiled");
-          parent.setCellVerticalAlignment(controlPanel, 
+          assert control instanceof Widget;
+          parent.add((Widget) control);
+          ((Widget) control).addStyleDependentName("tiled");
+          parent.setCellVerticalAlignment(((Widget) control), 
               HasVerticalAlignment.ALIGN_MIDDLE); 
           if (parent instanceof HorizontalPanel 
               && parent.getWidgetCount() == 1) {
-            parent.setCellHorizontalAlignment(controlPanel, 
+            parent.setCellHorizontalAlignment(((Widget) control), 
                 HasHorizontalAlignment.ALIGN_RIGHT);
           } else {
-            parent.setCellHorizontalAlignment(controlPanel, 
+            parent.setCellHorizontalAlignment(((Widget) control), 
                 HasHorizontalAlignment.ALIGN_CENTER); 
           }       
           break;

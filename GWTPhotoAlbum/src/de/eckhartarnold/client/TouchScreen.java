@@ -181,7 +181,7 @@ public class TouchScreen implements TouchStartHandler,
 
   
   /**
-   * Returns the touch first touch in an array of touches with the same
+   * Returns the first touch in an array of touches with the same
    * identifier as a given identifier.
    * @param touches  the array of touches to be searched
    * @param id       the identifier for which a touch shall be returned

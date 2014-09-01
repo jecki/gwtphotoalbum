@@ -150,7 +150,7 @@ public class GWTPhotoAlbum implements EntryPoint {
 		      presentation.setLowresLayout(mobileLayout);
 		      if (presentation instanceof GalleryPresentation) {
 		        GalleryPresentation gp = (GalleryPresentation)presentation;
-		        mobileLayout.getControlPanel().setHomeButtonListener(gp);
+		        mobileLayout.getSlideshowControl().setHomeButtonListener(gp);
 		      }
 		    }
 		  }

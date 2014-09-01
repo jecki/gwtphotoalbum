@@ -32,7 +32,7 @@ public class SlideshowPresentation extends Presentation implements ClickHandler 
   
   public SlideshowPresentation(Panel parent, Layout layout) {
     super(parent, layout);
-    ControlPanel ctrl = layout.getControlPanel();
+    SlideshowControl ctrl = layout.getSlideshowControl();
 //    if (ctrl != null) {
 //      ctrl.setButtonShow(ControlPanel.BACK|ControlPanel.HOME|ControlPanel.PLAY
 //                         |ControlPanel.NEXT);
@@ -53,7 +53,7 @@ public class SlideshowPresentation extends Presentation implements ClickHandler 
    * first picture. (In the galler presentation it jumps to the gallery instead.
    * @see GalleryPresentation)
    * 
-   * @param event   a click event This may also be <code>null</code>
+   * @param event   a click event. This may also be <code>null</code>
    *                if the caller is not a widget object.
    */
   public void onClick(ClickEvent event) {

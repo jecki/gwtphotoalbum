@@ -71,7 +71,7 @@ public class GalleryPresentation extends Presentation implements GalleryListener
     super(parent, layout);
     this.gallery = gallery;
 
-    layout.getControlPanel().setHomeButtonListener(this);
+    layout.getSlideshowControl().setHomeButtonListener(this);
     gallery.addGalleryListener(this);
     layout.slideshow.addSlideshowListener(this);
     

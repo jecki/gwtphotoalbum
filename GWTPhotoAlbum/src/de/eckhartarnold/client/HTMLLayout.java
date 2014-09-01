@@ -64,8 +64,8 @@ public class HTMLLayout extends Layout {
       htmlPanel.add(caption, "caption");
       // caption.setSpacing(true);      
     }
-    if (controlPanel != null) {
-      htmlPanel.add(controlPanel, "controlPanel");
+    if (control != null && control instanceof Widget) {
+      htmlPanel.add((Widget) control, "controlPanel");
     }
   }
 

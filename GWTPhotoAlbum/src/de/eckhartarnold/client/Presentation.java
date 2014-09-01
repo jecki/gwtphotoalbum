@@ -64,7 +64,7 @@ public abstract class Presentation implements ResizeHandler, ValueChangeHandler<
   
   /**
    * Constructor of class <code>Presentation</code>. Prepares everything
-   * for the presentation, but does not activate the add the layout to the
+   * for the presentation, but does not add the layout to the
    * parent panel or activate the slideshow.
    * @param parent  the parent panel
    * @param layout  the layout object.

@@ -57,7 +57,7 @@ public abstract class Layout {
   /** The widget that display the caption. */
   protected Caption      caption;
   /** The control panel widget. */
-  protected ControlPanel controlPanel;
+  protected SlideshowControl control;
   /** 
    * The film strip widget which, if present at all, is usually "swallowed" 
    * by the control panel.
@@ -106,12 +106,12 @@ public abstract class Layout {
   }
 
   /**
-   * Returns the <code>ControlPanel</code> object, if the layout contains a
+   * Returns the <code>SlideshowControl</code> object, if the layout contains a
    * control panel.
-   * @return the <code>ControlPanel</code> object or <code>null</code>
+   * @return the <code>SlideshowControl</code> object or <code>null</code>
    */
-  public ControlPanel getControlPanel() {
-    return controlPanel;
+  public SlideshowControl getSlideshowControl() {
+    return control;
   }  
   
   /**
@@ -147,12 +147,12 @@ public abstract class Layout {
    */
   public void issueResize() {
     imagePanel.prepareResized();
-    if (controlPanel != null) controlPanel.prepareResized();
+    if (control != null) control.prepareResized();
     if (caption != null) { 
       caption.prepareResized();
       caption.onResized();
     }
-    if (controlPanel != null) controlPanel.onResized();
+    if (control != null) control.onResized();
     imagePanel.onResized();
   }
 
@@ -182,11 +182,11 @@ public abstract class Layout {
     slideshow = new Slideshow(imagePanel, collection.getImageNames(), 
         collection.getDirectories(), collection.getImageSizes());
     if (configuration.contains("F")) {
-      controlPanel = new ControlPanel(slideshow);
+      control = new ControlPanel(slideshow);
       filmstrip = new Filmstrip(collection);
-      controlPanel.swallowFilmstrip(filmstrip, true);
+      ((ControlPanel) control).swallowFilmstrip(filmstrip, true);
     } else if (configuration.contains("P")) { 
-      controlPanel = new ControlPanel(slideshow);
+      control = new ControlPanel(slideshow);
     }
     if (configuration.contains("C") || configuration.contains("O"))
       caption = new Caption(slideshow, collection.getCaptions());
