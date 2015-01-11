@@ -1,18 +1,67 @@
-function GWTPhotoAlbum(){var P='',wb='" for "gwt:onLoadErrorFn"',ub='" for "gwt:onPropertyErrorFn"',ib='"><\/script>',Z='#',Eb='&',nc='../GWTPhotoAlbum.css',gc='.cache.html',_='/',$b='00FDE08169CD190B10803FC80ABA35C8',ac='10C65A27B60007BEC5A0AB2C7D8C553F',bc='371EE6ABD8A3814CDF8A8FCC229388AE',cc='418BB2BD687796B12AE1F8375A9AF303',fc=':',ob='::',pc='<script defer="defer">GWTPhotoAlbum.onInjectionDone(\'GWTPhotoAlbum\')<\/script>',hb='<script id="',rb='=',$='?',dc='ABA909C7DA97E2559944E42898A4D356',Mb='ActiveXObject',tb='Bad handler "',Nb='ChromeTab.ChromeFrame',oc='DOMContentLoaded',ec='EEC7016F0623CF6CC1AF8ABC1F74D074',Q='GWTPhotoAlbum',eb='GWTPhotoAlbum.nocache.js',nb='GWTPhotoAlbum::',jb='SCRIPT',Hb='Unexpected exception in locale detection, using default: ',Gb='_',Fb='__gwt_Locale',gb='__gwt_marker_GWTPhotoAlbum',kb='base',cb='baseUrl',T='begin',S='bootstrap',Lb='chromeframe',bb='clear.cache.gif',qb='content',Zb='de',Cb='default',_b='en',Y='end',Tb='gecko',Ub='gecko1_8',U='gwt.codesvr=',V='gwt.hosted=',W='gwt.hybrid',hc='gwt/chrome/chrome.css',vb='gwt:onLoadErrorFn',sb='gwt:onPropertyErrorFn',pb='gwt:property',mc='head',Xb='hosted.html?GWTPhotoAlbum',lc='href',Sb='ie6',Rb='ie8',Qb='ie9',xb='iframe',ab='img',yb="javascript:''",ic='link',Wb='loadExternalRefs',Bb='locale',Db='locale=',lb='meta',Ab='moduleRequested',X='moduleStartup',Pb='msie',mb='name',Jb='opera',zb='position:absolute;width:0;height:0;border:none',jc='rel',Ob='safari',db='script',Yb='selectingPermutation',R='startup',kc='stylesheet',fb='undefined',Vb='unknown',Ib='user.agent',Kb='webkit';var l=window,m=document,n=l.__gwtStatsEvent?function(a){return l.__gwtStatsEvent(a)}:null,o=l.__gwtStatsSessionId?l.__gwtStatsSessionId:null,p,q,r,s=P,t={},u=[],v=[],w=[],x=0,y,z;n&&n({moduleName:Q,sessionId:o,subSystem:R,evtGroup:S,millis:(new Date).getTime(),type:T});if(!l.__gwt_stylesLoaded){l.__gwt_stylesLoaded={}}if(!l.__gwt_scriptsLoaded){l.__gwt_scriptsLoaded={}}function A(){var b=false;try{var c=l.location.search;return (c.indexOf(U)!=-1||(c.indexOf(V)!=-1||l.external&&l.external.gwtOnLoad))&&c.indexOf(W)==-1}catch(a){}A=function(){return b};return b}
-function B(){if(p&&q){var b=m.getElementById(Q);var c=b.contentWindow;if(A()){c.__gwt_getProperty=function(a){return H(a)}}GWTPhotoAlbum=null;c.gwtOnLoad(y,Q,s,x);n&&n({moduleName:Q,sessionId:o,subSystem:R,evtGroup:X,millis:(new Date).getTime(),type:Y})}}
-function C(){function e(a){var b=a.lastIndexOf(Z);if(b==-1){b=a.length}var c=a.indexOf($);if(c==-1){c=a.length}var d=a.lastIndexOf(_,Math.min(c,b));return d>=0?a.substring(0,d+1):P}
-function f(a){if(a.match(/^\w+:\/\//)){}else{var b=m.createElement(ab);b.src=a+bb;a=e(b.src)}return a}
-function g(){var a=F(cb);if(a!=null){return a}return P}
-function h(){var a=m.getElementsByTagName(db);for(var b=0;b<a.length;++b){if(a[b].src.indexOf(eb)!=-1){return e(a[b].src)}}return P}
-function i(){var a;if(typeof isBodyLoaded==fb||!isBodyLoaded()){var b=gb;var c;m.write(hb+b+ib);c=m.getElementById(b);a=c&&c.previousSibling;while(a&&a.tagName!=jb){a=a.previousSibling}if(c){c.parentNode.removeChild(c)}if(a&&a.src){return e(a.src)}}return P}
-function j(){var a=m.getElementsByTagName(kb);if(a.length>0){return a[a.length-1].href}return P}
-var k=g();if(k==P){k=h()}if(k==P){k=i()}if(k==P){k=j()}if(k==P){k=e(m.location.href)}k=f(k);s=k;return k}
-function D(){var b=document.getElementsByTagName(lb);for(var c=0,d=b.length;c<d;++c){var e=b[c],f=e.getAttribute(mb),g;if(f){f=f.replace(nb,P);if(f.indexOf(ob)>=0){continue}if(f==pb){g=e.getAttribute(qb);if(g){var h,i=g.indexOf(rb);if(i>=0){f=g.substring(0,i);h=g.substring(i+1)}else{f=g;h=P}t[f]=h}}else if(f==sb){g=e.getAttribute(qb);if(g){try{z=eval(g)}catch(a){alert(tb+g+ub)}}}else if(f==vb){g=e.getAttribute(qb);if(g){try{y=eval(g)}catch(a){alert(tb+g+wb)}}}}}}
-function E(a,b){return b in u[a]}
-function F(a){var b=t[a];return b==null?null:b}
-function G(a,b){var c=w;for(var d=0,e=a.length-1;d<e;++d){c=c[a[d]]||(c[a[d]]=[])}c[a[e]]=b}
-function H(a){var b=v[a](),c=u[a];if(b in c){return b}var d=[];for(var e in c){d[c[e]]=e}if(z){z(a,d,b)}throw null}
-var I;function J(){if(!I){I=true;var a=m.createElement(xb);a.src=yb;a.id=Q;a.style.cssText=zb;a.tabIndex=-1;m.body.appendChild(a);n&&n({moduleName:Q,sessionId:o,subSystem:R,evtGroup:X,millis:(new Date).getTime(),type:Ab});a.contentWindow.location.replace(s+L)}}
-v[Bb]=function(){var b=null;var c=Cb;try{if(!b){var d=location.search;var e=d.indexOf(Db);if(e>=0){var f=d.substring(e+7);var g=d.indexOf(Eb,e);if(g<0){g=d.length}b=d.substring(e+7,g)}}if(!b){b=F(Bb)}if(!b){b=l[Fb]}if(b){c=b}while(b&&!E(Bb,b)){var h=b.lastIndexOf(Gb);if(h<0){b=null;break}b=b.substring(0,h)}}catch(a){alert(Hb+a)}l[Fb]=c;return b||Cb};u[Bb]={de:0,'default':1,en:2};v[Ib]=function(){var c=navigator.userAgent.toLowerCase();var d=function(a){return parseInt(a[1])*1000+parseInt(a[2])};if(function(){return c.indexOf(Jb)!=-1}())return Jb;if(function(){return c.indexOf(Kb)!=-1||function(){if(c.indexOf(Lb)!=-1){return true}if(typeof window[Mb]!=fb){try{var b=new ActiveXObject(Nb);if(b){b.registerBhoIfNeeded();return true}}catch(a){}}return false}()}())return Ob;if(function(){return c.indexOf(Pb)!=-1&&m.documentMode>=9}())return Qb;if(function(){return c.indexOf(Pb)!=-1&&m.documentMode>=8}())return Rb;if(function(){var a=/msie ([0-9]+)\.([0-9]+)/.exec(c);if(a&&a.length==3)return d(a)>=6000}())return Sb;if(function(){return c.indexOf(Tb)!=-1}())return Ub;return Vb};u[Ib]={gecko1_8:0,ie6:1,ie8:2,ie9:3,opera:4,safari:5};GWTPhotoAlbum.onScriptLoad=function(){if(I){q=true;B()}};GWTPhotoAlbum.onInjectionDone=function(){p=true;n&&n({moduleName:Q,sessionId:o,subSystem:R,evtGroup:Wb,millis:(new Date).getTime(),type:Y});B()};D();C();var K;var L;if(A()){if(l.external&&(l.external.initModule&&l.external.initModule(Q))){l.location.reload();return}L=Xb;K=P}n&&n({moduleName:Q,sessionId:o,subSystem:R,evtGroup:S,millis:(new Date).getTime(),type:Yb});if(!A()){try{G([Zb,Qb],$b);G([Cb,Qb],$b);G([_b,Qb],$b);G([Zb,Jb],ac);G([Cb,Jb],ac);G([_b,Jb],ac);G([Zb,Rb],bc);G([Cb,Rb],bc);G([_b,Rb],bc);G([Zb,Sb],cc);G([Cb,Sb],cc);G([_b,Sb],cc);G([Zb,Ub],dc);G([Cb,Ub],dc);G([_b,Ub],dc);G([Zb,Ob],ec);G([Cb,Ob],ec);G([_b,Ob],ec);K=w[H(Bb)][H(Ib)];var M=K.indexOf(fc);if(M!=-1){x=Number(K.substring(M+1));K=K.substring(0,M)}L=K+gc}catch(a){return}}var N;function O(){if(!r){r=true;if(!__gwt_stylesLoaded[hc]){var a=m.createElement(ic);__gwt_stylesLoaded[hc]=a;a.setAttribute(jc,kc);a.setAttribute(lc,s+hc);m.getElementsByTagName(mc)[0].appendChild(a)}if(!__gwt_stylesLoaded[nc]){var a=m.createElement(ic);__gwt_stylesLoaded[nc]=a;a.setAttribute(jc,kc);a.setAttribute(lc,s+nc);m.getElementsByTagName(mc)[0].appendChild(a)}B();if(m.removeEventListener){m.removeEventListener(oc,O,false)}if(N){clearInterval(N)}}}
-if(m.addEventListener){m.addEventListener(oc,function(){J();O()},false)}var N=setInterval(function(){if(/loaded|complete/.test(m.readyState)){J();O()}},50);n&&n({moduleName:Q,sessionId:o,subSystem:R,evtGroup:S,millis:(new Date).getTime(),type:Y});n&&n({moduleName:Q,sessionId:o,subSystem:R,evtGroup:Wb,millis:(new Date).getTime(),type:T});m.write(pc)}
-GWTPhotoAlbum();
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * This startup script is used when we run superdevmode from an app server.
+ */
+(function($wnd, $doc){
+  // document.head does not exist in IE8
+  var $head = $doc.head || $doc.getElementsByTagName('head')[0];
+  // Compute some codeserver urls so as the user does not need bookmarklets
+  var hostName = $wnd.location.hostname;
+  var serverUrl = 'http://' + hostName + ':9876';
+  var module = 'GWTPhotoAlbum';
+  var nocacheUrl = serverUrl + '/recompile-requester/' + module;
+
+  // Insert the superdevmode nocache script in the first position of the head
+  var devModeScript = $doc.createElement('script');
+  devModeScript.src = nocacheUrl;
+
+  // Everybody except IE8 does fire an error event
+  // This means that we do not detect a non running SDM with IE8.
+  if (devModeScript.addEventListener) {
+    var callback = function() {
+      // Don't show the confirmation dialogue twice (multimodule)
+      if (!$wnd.__gwt__sdm__confirmed &&
+           (!$wnd.__gwt_sdm__recompiler || !$wnd.__gwt_sdm__recompiler.loaded)) {
+        $wnd.__gwt__sdm__confirmed = true;
+        if ($wnd.confirm(
+            "Couldn't load " +  module + " from Super Dev Mode\n" +
+            "server at " + serverUrl + ".\n" +
+            "Please make sure this server is ready.\n" +
+            "Do you want to try again?")) {
+          $wnd.location.reload();
+        }
+      }
+    };
+    devModeScript.addEventListener("error", callback, true);
+  }
+
+  var injectScriptTag = function(){
+    $head.insertBefore(devModeScript, $head.firstElementChild || $head.children[0]);
+  };
+
+  if (/loaded|complete/.test($doc.readyState)) {
+    injectScriptTag();
+  } else {
+    //defer app script insertion until the body is ready
+    if($wnd.addEventListener){
+      $wnd.addEventListener('load', injectScriptTag, false);
+    } else{
+      $wnd.attachEvent('onload', injectScriptTag);
+    }
+  }
+})(window, document);

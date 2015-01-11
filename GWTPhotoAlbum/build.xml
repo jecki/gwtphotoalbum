@@ -9,6 +9,9 @@
 	<path id="project.class.path">
 		<pathelement location="war/WEB-INF/classes" />
 		<pathelement location="${gwt.sdk}/gwt-user.jar" />
+	    <pathelement location="${gwt.sdk}/gwt-dev.jar"/>
+	    <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar"/>
+	    <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar"/>		
 		<fileset dir="${gwt.sdk}" includes="gwt-dev*.jar" />
 		<!-- Add any additional non-server libs (such as JUnit) -->
 		<fileset dir="war/WEB-INF/lib" includes="**/*.jar" />
@@ -23,8 +26,10 @@
 
 	<target name="javac" depends="libs" description="Compile java source to bytecode">
 		<mkdir dir="war/WEB-INF/classes" />
-		<javac srcdir="src" includes="**" encoding="utf-8" destdir="war/WEB-INF/classes"
-			source="1.5" target="1.5" nowarn="true" debug="true" debuglevel="lines,vars,source">
+		<javac srcdir="src" includes="**" encoding="utf-8" 
+			destdir="war/WEB-INF/classes"
+			source="1.7" target="1.7" nowarn="true" 
+			debug="true" debuglevel="lines,vars,source">
 			<classpath refid="project.class.path" />
 		</javac>
 		<copy todir="war/WEB-INF/classes">
@@ -34,12 +39,10 @@
 
 	<target name="gwtc" depends="javac"
 		description="GWT compile to JavaScript (production mode)">
-		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler" maxmemory="512m">
 			<classpath>
 				<pathelement location="src" />
 				<path refid="project.class.path" />
-				<pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar" />
-				<pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
 			</classpath>
 			<!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
 			<jvmarg value="-Xmx256M" />
@@ -52,12 +55,10 @@
 	</target>
 
 	<target name="devmode" depends="javac" description="Run development mode">
-		<java failonerror="true" fork="true" classname="com.google.gwt.dev.DevMode">
+		<java failonerror="true" fork="true" classname="com.google.gwt.dev.DevMode"  maxmemory="512m">
 			<classpath>
 				<pathelement location="src" />
 				<path refid="project.class.path" />
-				<pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar" />
-				<pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
 			</classpath>
 			<jvmarg value="-Xmx256M" />
 			<arg value="-startupUrl" />
@@ -70,37 +71,8 @@
 		</java>
 	</target>
 
-	<!-- Test targets suppressed because -junit argument was not specified when 
-		running webAppCreator. <target name="javac.tests" depends="javac" description="Compiles 
-		test code"> <javac srcdir="test" includes="**" encoding="utf-8" source="1.5" 
-		target="1.5" nowarn="true" destdir="war/WEB-INF/classes" debug="true" debuglevel="lines,vars,source"> 
-		<classpath location="path_to_the_junit_jar"/> <classpath refid="project.class.path"/> 
-		</javac> </target> <target name="test.dev" depends="javac.tests" description="Run 
-		development mode tests"> <mkdir dir="reports/htmlunit.dev" /> <junit fork="yes" 
-		printsummary="yes" haltonfailure="yes"> <jvmarg line="-Xmx256m" /> <sysproperty 
-		key="gwt.args" value="-standardsMode -logLevel WARN" /> <sysproperty key="java.awt.headless" 
-		value="true" /> <classpath> <pathelement location="src" /> <pathelement location="test" 
-		/> <path refid="project.class.path" /> <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar" 
-		/> <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar" 
-		/> <pathelement location="path_to_the_junit_jar" /> </classpath> <batchtest 
-		todir="reports/htmlunit.dev" > <fileset dir="test" > <include name="**/*Test.java" 
-		/> </fileset> </batchtest> <formatter type="plain" /> <formatter type="xml" 
-		/> </junit> </target> <target name="test.prod" depends="javac.tests" description="Run 
-		production mode tests"> <mkdir dir="reports/htmlunit.prod" /> <junit fork="yes" 
-		printsummary="yes" haltonfailure="yes"> <jvmarg line="-Xmx256m" /> <sysproperty 
-		key="gwt.args" value="-prod -standardsMode -logLevel WARN -standardsMode 
-		-out www-test" /> <sysproperty key="java.awt.headless" value="true" /> <classpath> 
-		<pathelement location="src" /> <pathelement location="test" /> <path refid="project.class.path" 
-		/> <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar" /> <pathelement 
-		location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar" /> <pathelement 
-		location="path_to_the_junit_jar" /> </classpath> <batchtest todir="reports/htmlunit.prod" 
-		> <fileset dir="test" > <include name="**/*Test.java" /> </fileset> </batchtest> 
-		<formatter type="plain" /> <formatter type="xml" /> </junit> </target> <target 
-		name="test" description="Run development and production mode tests"> <antcall 
-		target="test.dev" /> <antcall target="test.prod" /> </target> -->
-
-	<target name="hosted" depends="devmode"
-		description="Run development mode (NOTE: the 'hosted' target is deprecated)" />
+	<!-- <target name="hosted" depends="devmode"
+		description="Run development mode (NOTE: the 'hosted' target is deprecated)" /> -->
 
 	<target name="build" depends="gwtc" description="Build this project" />
 

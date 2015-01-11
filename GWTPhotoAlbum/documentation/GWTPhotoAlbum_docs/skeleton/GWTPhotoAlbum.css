@@ -323,7 +323,7 @@
 }
 
 /* .imageClickable {
-	cursor:pointer;
+ 	cursor:pointer;
 }*/
 
 
@@ -331,6 +331,9 @@
 	z-index:0;
 }
 
+.notifier {
+	z-index:15;
+}
 
 .tiled {
 	background-color:#303040;
