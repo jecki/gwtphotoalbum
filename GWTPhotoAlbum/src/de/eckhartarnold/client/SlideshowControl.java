@@ -26,10 +26,10 @@ public interface SlideshowControl {
    */
   public abstract void onClick(ClickEvent event);
 
-  /* (non-Javadoc)
-   * @see de.eckhartarnold.client.SlideshowListener.onFade()
-   */
-  public abstract void onFade();
+//  /* (non-Javadoc)
+//   * @see de.eckhartarnold.client.SlideshowListener.onFade()
+//   */
+//  public abstract void onFade();
 
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.AttachmentListener#onLoad(com.google.gwt.user.client.ui.Widget)
@@ -41,20 +41,20 @@ public interface SlideshowControl {
    */
   public abstract void onResized();
 
-  /* (non-Javadoc)
-   * @see de.eckhartarnold.client.SlideshowListener.onShow()
-   */
-  public abstract void onShow(int slideNr);
+//  /* (non-Javadoc)
+//   * @see de.eckhartarnold.client.SlideshowListener.onShow()
+//   */
+//  public abstract void onShow(int slideNr);
 
-  /* (non-Javadoc)
-   * @see de.eckhartarnold.client.SlideshowListener.onStart()
-   */
-  public abstract void onStart();
+//  /* (non-Javadoc)
+//   * @see de.eckhartarnold.client.SlideshowListener.onStart()
+//   */
+//  public abstract void onStart();
 
-  /* (non-Javadoc)
-   * @see de.eckhartarnold.client.SlideshowListener.onStop()
-   */
-  public abstract void onStop();
+//  /* (non-Javadoc)
+//   * @see de.eckhartarnold.client.SlideshowListener.onStop()
+//   */
+//  public abstract void onStop();
 
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.AttachmentListener#onUnload(com.google.gwt.user.client.ui.Widget)

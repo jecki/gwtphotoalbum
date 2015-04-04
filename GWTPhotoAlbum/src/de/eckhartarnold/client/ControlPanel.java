@@ -175,6 +175,16 @@ public class ControlPanel extends Composite implements ClickHandler,
     return buttonSize;
   }
   
+  
+  /**
+   * Returns true if the control panel has swallowed (i.e. contains) a 
+   * film strip.
+   * @return true, if control panel contains a film strip
+   */
+  public boolean hasFilmStrip() {
+    return filmstrip != null;
+  }
+  
 //  /**
 //   * Returns the "swallowed" film strip or <code>null</code> if the control
 //   * panel does not contain a film strip.

@@ -2,3 +2,5 @@
 /Makefile
 *.orig
 *~
+war/GWTPhotoAlbum/*
+war/GWTPhotoAlbum_xs/*

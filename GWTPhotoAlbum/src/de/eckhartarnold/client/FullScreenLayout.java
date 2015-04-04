@@ -111,17 +111,8 @@ public class FullScreenLayout extends Layout {
           info.getInfo().get(CaptionOverlay.KEY_CAPTION_POSITION));
     String panelPos = info.getInfo().get(PanelOverlayBase.KEY_PANEL_POSITION);
     if (control != null && control instanceof ControlPanel) {
-      if (filmstrip != null) {
-        popup = new FilmstripOverlay((ControlPanel) control, imagePanel, panelPos);
-        ((FilmstripOverlay) popup).syncWithCaption(overlay);
-      } else {
-        popup = new ControlPanelOverlay((ControlPanel) control, imagePanel, panelPos);
-      }
-//      popup.setPossiblePositions(ControlPanelOverlay.CORNERS);
-//      if (caption != null) 
-//        popup.setPossiblePositions(ControlPanelOverlay.BOTTOM_CAPTION);
-//      else
-//        popup.setPossiblePositions(ControlPanelOverlay.NORTH_AND_SOUTH);
+      popup = new ControlPanelOverlay((ControlPanel) control, imagePanel, panelPos);
+      ((ControlPanelOverlay) popup).syncWithCaption(overlay);
     }    
   }
 }

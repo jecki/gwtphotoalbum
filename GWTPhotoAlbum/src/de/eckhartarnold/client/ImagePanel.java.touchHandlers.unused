@@ -23,31 +23,25 @@ import java.util.HashMap;
 
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ErrorEvent;
 import com.google.gwt.event.dom.client.ErrorHandler;
-import com.google.gwt.event.dom.client.HasClickHandlers;
-import com.google.gwt.event.dom.client.HasMouseDownHandlers;
 import com.google.gwt.event.dom.client.HasMouseMoveHandlers;
 import com.google.gwt.event.dom.client.HasMouseWheelHandlers;
-//import com.google.gwt.event.dom.client.HasTouchEndHandlers;
-//import com.google.gwt.event.dom.client.HasTouchMoveHandlers;
-//import com.google.gwt.event.dom.client.HasTouchStartHandlers;
+import com.google.gwt.event.dom.client.HasTouchEndHandlers;
+import com.google.gwt.event.dom.client.HasTouchMoveHandlers;
+import com.google.gwt.event.dom.client.HasTouchStartHandlers;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
-import com.google.gwt.event.dom.client.MouseDownEvent;
-import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseMoveHandler;
 import com.google.gwt.event.dom.client.MouseWheelEvent;
 import com.google.gwt.event.dom.client.MouseWheelHandler;
-//import com.google.gwt.event.dom.client.TouchEndEvent;
-//import com.google.gwt.event.dom.client.TouchEndHandler;
-//import com.google.gwt.event.dom.client.TouchMoveEvent;
-//import com.google.gwt.event.dom.client.TouchMoveHandler;
-//import com.google.gwt.event.dom.client.TouchStartEvent;
-//import com.google.gwt.event.dom.client.TouchStartHandler;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchEndHandler;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
+import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Window;
@@ -68,9 +62,8 @@ import com.google.gwt.user.client.ui.Widget;
  * @author eckhart
  */
 public class ImagePanel extends Composite implements HasMouseMoveHandlers, 
-    HasMouseWheelHandlers, SourcesAttachmentEvents, ResizeListener,
-    HasClickHandlers, HasMouseDownHandlers /* ,
-    /* HasTouchStartHandlers, HasTouchMoveHandlers, HasTouchEndHandlers */  {
+    HasMouseWheelHandlers, SourcesAttachmentEvents, HasTouchStartHandlers, 
+    HasTouchMoveHandlers, HasTouchEndHandlers, ResizeListener {
     
   /**
    * Interface for event listeners of <code>ImagePanel</code>.
@@ -292,17 +285,6 @@ public class ImagePanel extends Composite implements HasMouseMoveHandlers,
     attachmentListeners.add(listener);
   }
   
-
-  @Override
-  public HandlerRegistration addMouseDownHandler(MouseDownHandler handler) {
-    return addHandler(handler, MouseDownEvent.getType());
-  }
-
-  @Override
-  public HandlerRegistration addClickHandler(ClickHandler handler) {
-    return addHandler(handler, ClickEvent.getType());
-  }  
-  
   /* (non-Javadoc)
    * @see com.google.gwt.event.dom.client.HasMouseMoveHandlers#addMouseMoveHandler(com.google.gwt.event.dom.client.MouseMoveHandler)
    */
@@ -317,26 +299,26 @@ public class ImagePanel extends Composite implements HasMouseMoveHandlers,
     return addHandler(handler, MouseWheelEvent.getType());   
   }
   
-//  /* (non-Javadoc)
-//   * @see com.google.gwt.event.dom.client.HasTouchEndHandlers#addTouchEndHandler(com.google.gwt.event.dom.client.TouchEndHandler)
-//   */
-//  public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
-//    return addHandler(handler, TouchEndEvent.getType());
-//  }
-//  
-//  /* (non-Javadoc)
-//   * @see com.google.gwt.event.dom.client.HasTouchMoveHandlers#addTouchStartHandler(com.google.gwt.event.dom.client.TouchMoveHandler)
-//   */
-//  public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
-//    return addHandler(handler, TouchMoveEvent.getType());
-//  }  
-//  
-//  /* (non-Javadoc)
-//   * @see com.google.gwt.event.dom.client.HasTouchStartHandlers#addTouchStartHandler(com.google.gwt.event.dom.client.TouchStartHandler)
-//   */
-//  public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
-//    return addHandler(handler, TouchStartEvent.getType());
-//  }
+  /* (non-Javadoc)
+   * @see com.google.gwt.event.dom.client.HasTouchEndHandlers#addTouchEndHandler(com.google.gwt.event.dom.client.TouchEndHandler)
+   */
+  public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
+    return addHandler(handler, TouchEndEvent.getType());
+  }
+  
+  /* (non-Javadoc)
+   * @see com.google.gwt.event.dom.client.HasTouchMoveHandlers#addTouchStartHandler(com.google.gwt.event.dom.client.TouchMoveHandler)
+   */
+  public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
+    return addHandler(handler, TouchMoveEvent.getType());
+  }  
+  
+  /* (non-Javadoc)
+   * @see com.google.gwt.event.dom.client.HasTouchStartHandlers#addTouchStartHandler(com.google.gwt.event.dom.client.TouchStartHandler)
+   */
+  public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
+    return addHandler(handler, TouchStartEvent.getType());
+  }  
   
   /**
    * Removes the image from the panel so that an empty panel
@@ -812,7 +794,7 @@ public class ImagePanel extends Composite implements HasMouseMoveHandlers,
       fadeIn.run(Math.abs(fading));
     } 
     fireFade();
-  }  
+  }    
 
 }
 
