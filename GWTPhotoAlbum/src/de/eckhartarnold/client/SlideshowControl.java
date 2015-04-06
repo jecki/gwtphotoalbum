@@ -21,25 +21,25 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public interface SlideshowControl {
 
-  /** 
-   * This click handler should resemble a home button.
-   */
-  public abstract void onClick(ClickEvent event);
+//  /** 
+//   * This click handler should resemble a home button.
+//   */
+//  public abstract void onClick(ClickEvent event);
 
 //  /* (non-Javadoc)
 //   * @see de.eckhartarnold.client.SlideshowListener.onFade()
 //   */
 //  public abstract void onFade();
 
-  /* (non-Javadoc)
-   * @see de.eckhartarnold.client.AttachmentListener#onLoad(com.google.gwt.user.client.ui.Widget)
-   */
-  public abstract void onLoad(Widget sender);
+//  /* (non-Javadoc)
+//   * @see de.eckhartarnold.client.AttachmentListener#onLoad(com.google.gwt.user.client.ui.Widget)
+//   */
+//  public abstract void onLoad(Widget sender);
 
-  /* (non-Javadoc)
-   * @see de.eckhartarnold.client.ResizeListener.onResized()
-   */
-  public abstract void onResized();
+//  /* (non-Javadoc)
+//   * @see de.eckhartarnold.client.ResizeListener.onResized()
+//   */
+//  public abstract void onResized();
 
 //  /* (non-Javadoc)
 //   * @see de.eckhartarnold.client.SlideshowListener.onShow()
@@ -56,15 +56,15 @@ public interface SlideshowControl {
 //   */
 //  public abstract void onStop();
 
-  /* (non-Javadoc)
-   * @see de.eckhartarnold.client.AttachmentListener#onUnload(com.google.gwt.user.client.ui.Widget)
-   */
-  public abstract void onUnload(Widget sender);
+//  /* (non-Javadoc)
+//   * @see de.eckhartarnold.client.AttachmentListener#onUnload(com.google.gwt.user.client.ui.Widget)
+//   */
+//  public abstract void onUnload(Widget sender);
 
-  /* (non-Javadoc)
-   * @see de.eckhartarnold.client.ResizeListener.prepareResized()
-   */
-  public abstract void prepareResized();
+//  /* (non-Javadoc)
+//   * @see de.eckhartarnold.client.ResizeListener.prepareResized()
+//   */
+//  public abstract void prepareResized();
 
   /**
    * Sets the listener for the "back to the gallery button". In order to listen

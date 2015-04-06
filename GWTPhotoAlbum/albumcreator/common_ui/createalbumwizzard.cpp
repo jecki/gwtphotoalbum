@@ -156,9 +156,9 @@ void CreateAlbumWizzard::exportData(ImageCollection &ic) const
 	}
 	ic.archiveSize = ui.archiveRes->itemData(ui.archiveRes->currentIndex()).toSize();
 	if (ui.filmstripNavigation->isChecked()) {
-		ic.layout_data = "IOF";
+		ic.layout_data = "IOFT";
 	} else {
-		ic.layout_data = "IOP";
+		ic.layout_data = "IOPT";
 	}
 	if (ui.crossFade->isChecked()) {
 		ic.image_fading = 1000;

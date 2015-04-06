@@ -185,17 +185,17 @@ class WebAlbum:
         if self.fullscreen:
             if self.filmstrip:
                 info["layout type"] = "fullscreen"
-                info["layout data"] = "IOF"
+                info["layout data"] = "IOFT"
             else:
                 info["layout type"] = "fullscreen"
-                info["layout data"] = "CIP"
+                info["layout data"] = "CIPT"
         else:
             if self.filmstrip:
                 info["layout type"] = "tiled"
-                info["layout data"] = "ICF"
+                info["layout data"] = "ICFT"
             else:
                 info["layout type"] = "tiled"
-                info["layout data"] = "ICP"
+                info["layout data"] = "ICPT"
                 
         if self.overblend:
             info["image fading"] = "1000"

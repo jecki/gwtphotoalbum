@@ -413,6 +413,16 @@ public class ImagePanel extends Composite implements HasMouseMoveHandlers,
 //    }
 //  }  
 
+  
+  /**
+   * Returns the panel proper, i.e. the absolute panel on which the images
+   * are placed.
+   * @return  An absolute panel inside the image panel.
+   */
+  public AbsolutePanel getPanel() {
+    return panel;
+  }
+  
   /**
    * Resizes the displayed image(s), if the containing 
    * <code>FlipImagePanel</code> has been resized.

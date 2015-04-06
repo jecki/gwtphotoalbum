@@ -5,6 +5,6 @@
   "image clickable": "true",
   "disable scrolling": "true",
   "layout type":"tiled",
-  "layout data":"IOF",
+  "layout data":"IOFT",
   "presentation type":"gallery"  
 }

@@ -53,7 +53,6 @@ body {
 	z-index:20;
 }
 
-
 .progressBar {
 	background-color:rgb(32, 32, 128);  /* #404080; */
 	background-color:rgba(32, 32, 160, 0.8);
@@ -113,7 +112,12 @@ body {
 	background-color:rgba(255, 255, 255, 0.5);
 }
 
-
+/*
+ * Touch screen controls
+ */
+.touch {
+	z-index:100;
+}
 
 /*
  *  Caption
@@ -360,5 +364,5 @@ body {
 }
 
 .debugger {
-	z-index:100;
+	z-index:1000;
 }

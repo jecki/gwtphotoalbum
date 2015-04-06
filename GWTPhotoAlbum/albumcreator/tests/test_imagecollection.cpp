@@ -152,7 +152,7 @@ void test_imagecollection::fromJSON() {
 	QVERIFY(ic->title == "GWTPhotoAlbum Demonstration");
 	QVERIFY(ic->disable_scrolling == true);
 	QVERIFY(ic->layout_type == "tiled");
-	QVERIFY(ic->layout_data == "IOF");
+	QVERIFY(ic->layout_data == "IOFT");
 	QVERIFY(ic->presentation_type == "gallery");
 }
 

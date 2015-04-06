@@ -62,7 +62,7 @@ public class FullScreenLayout extends Layout {
    * @param collection    the collection of images
    */  
   public FullScreenLayout(ImageCollectionInfo collection) {
-    this(collection, "PIC");
+    this(collection, "PICT");
   }
   
 //  /**

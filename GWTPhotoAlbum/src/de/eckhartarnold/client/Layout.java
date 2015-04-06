@@ -18,6 +18,8 @@ package de.eckhartarnold.client;
 
 //import com.google.gwt.event.dom.client.ClickEvent;
 //import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -51,13 +53,16 @@ public abstract class Layout {
   
   /** The standard configuration of the layout: control panel at the top,
    * image panel in the middle, caption at the bottom. */
-  public static final String  STD_CFG = "PIC"; // Panel, Image, Caption
+  public static final String  STD_CFG = "IOFT"; // Image, Caption, Filmstrip, Touch
+                                     // "PICT"; // Panel, Image, Caption, Touch
   
   
   /** The widget that display the caption. */
-  protected Caption      caption;
+  protected Caption       caption;
   /** The control panel widget. */
-  protected SlideshowControl control;
+  protected ControlPanel  control;
+  /** Touchscreen controls */
+  protected TouchControls touch;
   /** 
    * The film strip widget which, if present at all, is usually "swallowed" 
    * by the control panel.
@@ -90,9 +95,9 @@ public abstract class Layout {
   public Layout(ImageCollectionInfo collection) {
     String cfg;
     if (collection.hasCaptions()) 
-      cfg = "PIC";
+      cfg = "PICT";
     else
-      cfg = "PI";
+      cfg = "PIT";
     init(collection, cfg);
   }
   
@@ -155,6 +160,17 @@ public abstract class Layout {
     if (control != null) control.onResized();
     imagePanel.onResized();
   }
+  
+  /**
+   * Sets the listener for the "home" resp. "back to the gallery button" for
+   * all control panels of the slideshow. 
+   * @see de.eckhartarnold.client.SlideshowControl#setHomeButtonListener(com.google.gwt.event.dom.client.ClickHandler)
+   * @param handler the <code>ClickHandler</code> for the gallery/home button
+   */
+  public void setHomeButtonListener(ClickHandler handler) {
+    if (control != null) control.setHomeButtonListener(handler);
+    if (touch != null) touch.setHomeButtonListener(handler);
+  }
 
   private void init(ImageCollectionInfo collection, String configuration) {
     imagePanel = new ImagePanel(collection);
@@ -187,6 +203,11 @@ public abstract class Layout {
       ((ControlPanel) control).swallowFilmstrip(filmstrip, true);
     } else if (configuration.contains("P")) { 
       control = new ControlPanel(slideshow);
+    }
+    Debugger.print("Checking for Touch controls..." + configuration);
+    if (configuration.contains("T")) {
+      touch = new TouchControls(slideshow);
+      Debugger.print("Touch controls added!");
     }
     if (configuration.contains("C") || configuration.contains("O"))
       caption = new Caption(slideshow, collection.getCaptions());

@@ -32,11 +32,6 @@ public class SlideshowPresentation extends Presentation implements ClickHandler 
   
   public SlideshowPresentation(Panel parent, Layout layout) {
     super(parent, layout);
-    SlideshowControl ctrl = layout.getSlideshowControl();
-//    if (ctrl != null) {
-//      ctrl.setButtonShow(ControlPanel.BACK|ControlPanel.HOME|ControlPanel.PLAY
-//                         |ControlPanel.NEXT);
-//    }
     activateSlideshow();
     int imageNr = Presentation.parseSlideToken(History.getToken());
     if (imageNr >= 0) {
@@ -45,7 +40,7 @@ public class SlideshowPresentation extends Presentation implements ClickHandler 
       layout.getSlideshow().showImmediately(0);
       layout.getSlideshow().start();
     }
-    ctrl.setHomeButtonListener(this);    
+    layout.setHomeButtonListener(this);    
   }
 
   /**

@@ -63,7 +63,7 @@ ImageCollection::ImageCollection(QObject *parent)
 {
 	presentation_type = "gallery";
 	layout_type       = "fullscreen";
-	layout_data       = "IOF";
+	layout_data       = "IOFT";
 	// image_clickable   = false;
 	panel_position    = "bottom";
 	caption_position  = "bottom";

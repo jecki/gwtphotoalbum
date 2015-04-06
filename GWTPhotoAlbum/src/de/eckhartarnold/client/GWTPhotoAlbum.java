@@ -106,6 +106,7 @@ public class GWTPhotoAlbum implements EntryPoint {
 		    String layoutType = src.getInfo().get(KEY_LAYOUT_TYPE);
 		    String layoutData = src.getInfo().get(KEY_LAYOUT_DATA);
 
+		    Debugger.print(layoutData);
 		    if (layoutType == null 
 		        || layoutType.equalsIgnoreCase(LAYOUT_FULLSCREEN)) {
 		      if (layoutData != null) {
@@ -150,7 +151,7 @@ public class GWTPhotoAlbum implements EntryPoint {
 		      presentation.setLowresLayout(mobileLayout);
 		      if (presentation instanceof GalleryPresentation) {
 		        GalleryPresentation gp = (GalleryPresentation)presentation;
-		        mobileLayout.getSlideshowControl().setHomeButtonListener(gp);
+		        mobileLayout.setHomeButtonListener(gp);
 		      }
 		    }
 		  }

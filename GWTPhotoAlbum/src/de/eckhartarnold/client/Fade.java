@@ -58,9 +58,10 @@ class Fade extends Animation {
 //    style.filter = "alpha(opacity=" + opacity + ")"; 
 //  }-*/;
   
-  private double from, to, threshold, _opacity = -1.0;
-  private Widget widget;
-  private boolean completeOnCancel = true;
+  private double    from, to, threshold, _opacity = -1.0;
+  /** The widget that is faded. */
+  protected Widget  widget;
+  private boolean   completeOnCancel = true;
   
   /**
    * Default constructor for class <code>Fade</code>. The default
