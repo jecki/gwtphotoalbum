@@ -58,8 +58,6 @@ public class Slideshow implements AttachmentListener {
         if (current == terminal && !loop) stop();
         else timer.schedule(imagePanel.getDuration());      
       }
-      // Debugger.print("fireShow: "+current);
-      // GWT.log("fireShow: "+current, null);
       fireShow(current);
     }
     public void onFade() {

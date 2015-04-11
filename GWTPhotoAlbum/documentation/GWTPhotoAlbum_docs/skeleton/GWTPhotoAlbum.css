@@ -1,3 +1,7 @@
+body {
+	margin: 0 0 0 0;
+}
+
 /*
  *  ControlPanel
  */
@@ -49,10 +53,9 @@
 	z-index:20;
 }
 
-
 .progressBar {
-	background-color:rgb(64, 64, 128);  /* #404080; */
-	background-color:rgba(64, 64, 128, 0.5);
+	background-color:rgb(32, 32, 128);  /* #404080; */
+	background-color:rgba(32, 32, 160, 0.8);
 	color:#C0D0FF;
 	font-size:xx-small;
 	text-align:left;
@@ -109,7 +112,12 @@
 	background-color:rgba(255, 255, 255, 0.5);
 }
 
-
+/*
+ * Touch screen controls
+ */
+.touch {
+	z-index:100;
+}
 
 /*
  *  Caption
@@ -217,7 +225,7 @@
 }
 
 .filmstripHighlighted {
-	border:2px solid #D0D0D8; /* #D0D090; */
+	border:2px solid #FF9030; /* #D0D090; */
 	cursor:default;	
 }
 
@@ -227,11 +235,11 @@
 }*/
 
 .filmstripTouched {
-	border:2px solid #505058; /* #F0A040; */
+	border:2px solid #FFFFFF; /* #F0A040; */
 }
 
 .filmstripPressed {
-	border:2px solid #E0E0E8; /* #A07040; */
+	border:2px solid #FF2000; /* #A07040; */
 }
 
 .filmstripPopup {
@@ -356,5 +364,5 @@
 }
 
 .debugger {
-	z-index:100;
+	z-index:1000;
 }

@@ -204,10 +204,8 @@ public abstract class Layout {
     } else if (configuration.contains("P")) { 
       control = new ControlPanel(slideshow);
     }
-    Debugger.print("Checking for Touch controls..." + configuration);
     if (configuration.contains("T")) {
       touch = new TouchControls(slideshow);
-      Debugger.print("Touch controls added!");
     }
     if (configuration.contains("C") || configuration.contains("O"))
       caption = new Caption(slideshow, collection.getCaptions());

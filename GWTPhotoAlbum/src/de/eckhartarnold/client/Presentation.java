@@ -153,7 +153,7 @@ public abstract class Presentation implements ResizeHandler, ValueChangeHandler<
    */
   protected void deactivateSlideshow() {
     if (slideshowActive) {
-      layout.getSlideshow().stop(); // <- just to make sure in case the browser "forgets" to send an unload message
+      layout.getSlideshow().stop(); // <- just to make sure in case the browser "forgets" to send an unload message    
       parent.remove(layout.getRootWidget());    
       slideshowActive = false;
     }

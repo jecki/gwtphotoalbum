@@ -148,9 +148,6 @@ public class ImagePanel extends Composite implements HasMouseMoveHandlers,
   private class ImageErrorHandler implements ErrorHandler {
     public void onError(ErrorEvent event) {
       Image img = (Image) event.getSource();
-      // DEBUG
-      // Debugger.print("Image loading error:\n  "+img.getUrl());
-      // DEBUG
       GWT.log("ImagePanel.ImageErrorHandler.onError:\n  "+img.getUrl(), null);
     }    
   }
@@ -591,8 +588,6 @@ public class ImagePanel extends Composite implements HasMouseMoveHandlers,
     imageNames = urls;
     this.sizes = sizes;
     sizeStep = pickSize(sizes);
-    // Debugger.print(urls[sizeStep]);
-    // GWT.log(urls[sizeStep], null);
     exchangeImage(urls[sizeStep], notifier);
   }
   

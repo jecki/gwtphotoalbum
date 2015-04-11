@@ -1,6 +1,6 @@
 {
   "add lowres layout": "true", 
-  "bottom line": "<a href=\"http://code.google.com/p/gwtphotoalbum/\">code.google.com/p/gwtphotoalbum/</a><br /><br />", 
+  "bottom line": "created with <a href=\"https://github.com/jecki/gwtphotoalbum\">gwtphotoalbum</a><br /><br />", 
   "disable scrolling": "true", 
   "gallery horizontal padding": "70", 
   "gallery vertical padding": "30", 

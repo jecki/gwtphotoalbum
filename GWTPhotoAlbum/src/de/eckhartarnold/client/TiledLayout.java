@@ -153,8 +153,6 @@ public class TiledLayout extends FullScreenLayout {
           break;
         }
         default:
-          // Debugger.print("error");
-          // GWT.log("error", null);
           assert false: 
               "Illegal token '"+config.charAt(i)+"' in config string";
       }
