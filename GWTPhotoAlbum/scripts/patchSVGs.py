@@ -35,8 +35,9 @@ rx_width = re.compile('<svg.*?width *?= *?"(?P<value>.*?)".*?>',
                       re.IGNORECASE | re.DOTALL)
 rx_height = re.compile('<svg.*?height *?= *?"(?P<value>.*?)".*?>',
                        re.IGNORECASE | re.DOTALL)
-rx_viewPort = re.compile('<svg.*?viewPort *?= *?"(?P<value>.*?)".*?>',
-                         re.IGNORECASE | re.DOTALL)
+rx_viewBox = re.compile('<svg.*?viewBox *?= *?"(?P<value>.*?)".*?>',
+                        re.IGNORECASE | re.DOTALL)
+rx_svg = re.compile('<svg.*?(?P<value>\B)>')
 
 rx_inkscape_secret = re.compile('\n *?inkscape:export-filename.*?= *?".*?"',
                                 re.IGNORECASE | re.DOTALL)
@@ -51,9 +52,24 @@ def patchSVGs(directory):
     for f in files:
         if f.lower().endswith(".svg"):
             with open(f) as svg_file:
-                svg_data = f.read()
-                TO BE CONTINUED...
-
+                svg = f.read()
+                width = rx_width.search(svg).group('value')
+                height = rx_height.search(svg).group('value')
+                vb_match = rx_viewBox.search(svg)
+                viewBox = vb_match.group('value')
+                if viewBox:
+                    vb = viewBox.split(' ')
+                    if width != vb[2] or height != vb[3]:
+                        vb[2] = width
+                        vb[3] = height
+                        viewBox = ' '.join(vb)
+                        a, b = vb_match.span('value')
+                        svg = svg[:a] + viewBox + svg[b:]
+                else:
+                    a, b = rx_svg.search(svg).span('value')
+                    svg = svg[:a] + ('\n   viewBox="0 0 %s %s"' %
+                                     (width, height)) + svb[b:]
+            TO BE CONTINUED
     os.chdir(olddir)
 
 
