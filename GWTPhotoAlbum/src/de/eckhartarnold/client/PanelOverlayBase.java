@@ -39,6 +39,7 @@ public abstract class PanelOverlayBase implements MouseMoveHandler,
    *  "upper left", "upper right", "lower left", "lower right" 
    */
   public static final String  KEY_PANEL_POSITION = "panel position";  
+  public static final double  POPUP_THRESHOLD = 25.0;
   
   /** 
    * The time in milliseconds until the control panel popup is hidden
@@ -79,11 +80,16 @@ public abstract class PanelOverlayBase implements MouseMoveHandler,
   public void onMouseMove(MouseMoveEvent event) {
     int x = event.getX();
     int y = event.getY();
-    if (lastMouseX != x || lastMouseY != y) {    
-      showPopup(x, y);
-      lastMouseX = x;
-      lastMouseY = y;
+    int border = controlPanel.getCrtlBtnSize() * 2;
+    // if (lastMouseX != x || lastMouseY != y) {
+    if (distance(lastMouseX - x, lastMouseY - y) > POPUP_THRESHOLD ||
+        x < border || y < border || 
+        x > (Toolbox.getOffsetWidth(baseWidget) - border) || 
+        y > (Toolbox.getOffsetHeight(baseWidget) - border) ){
+      showPopup(x, y);  
     }
+    lastMouseX = x;
+    lastMouseY = y;       
   }
   
 //  /* (non-Javadoc)
@@ -116,5 +122,9 @@ public abstract class PanelOverlayBase implements MouseMoveHandler,
       popupVisible = true;
     }
     timer.schedule(delay);   
+  }
+  
+  private double distance(int dx, int dy) {
+    return Math.sqrt(dx*dx + dy*dy);
   }
 }

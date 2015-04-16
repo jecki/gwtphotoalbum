@@ -14,8 +14,7 @@
    id="svg3761"
    version="1.1"
    inkscape:version="0.48.2 r9819"
-   sodipodi:docname="begin_down.svg"
-   viewBox="0 0 32 64">
+   sodipodi:docname="Neues Dokument 2">
   <defs
      id="defs3763">
     <filter
@@ -74,6 +73,12 @@
      id="layer1"
      inkscape:label="Layer 1"
      inkscape:groupmode="layer">
+    <path
+       style="fill:none;stroke:#ff8080;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter4941)"
+       d="M 8,4 8,60 12,60 12,32 24,60 20,32 24,4 12,32 12,4 z"
+       id="path3771"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccc" />
     <path
        style="fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.18181818999999999;stroke-opacity:1"
        d="m 8.6181818,32.036364 0,-27.4545458 1.3636364,0 1.3636368,0 0,27.4545458 0,27.454545 -1.3636368,0 -1.3636364,0 0,-27.454545 z"
