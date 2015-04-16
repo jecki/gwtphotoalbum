@@ -34,7 +34,7 @@ import com.google.gwt.user.client.ui.Widget;
  *
  */
 public class TouchControls implements AttachmentListener, SlideshowControl,
-    ClickHandler { // MouseMoveHandler, MouseDownHandler
+    ClickHandler, MouseDownHandler {
 
   private class FadeOut extends Fade {     
     FadeOut(Widget widget) {
@@ -64,43 +64,43 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
     }    
   }
   
-  protected static final double  FADE_STEPS = 0.10;   
-   
+  protected static final double  FADE_STEPS = 0.10; 
+  
+  private static final int  FIRST = 0, BACK = 0, BACK_DOWN = 1, NEXT = 2, 
+      NEXT_DOWN = 3, HOME = 4, HOME_DOWN = 5, PLAY = 6, PAUSE = 7, LAST = 7; 
+  
   private ClickHandler homeButtonHandler = null;
   private Fade         fader;
   private ImagePanel   imagePanel;
-  private Image        back, next, home, play, pause;
+  private Image[]      symbol = new Image[8];
   private Slideshow    slideshow;
   
   public TouchControls(Slideshow slideshow) {
     this.slideshow = slideshow;
     imagePanel = slideshow.getImagePanel();
     imagePanel.addClickHandler(this);    
-    back = new Image("icons/back.svg");
-    next = new Image("icons/next.svg");
-    home = new Image("icons/gallery.svg");
-    play = new Image("icons/play.svg");
-    pause = new Image("icons/pause.svg");
-    back.addStyleName("touch");
-    next.addStyleName("touch");
-    home.addStyleName("touch"); 
-    play.addStyleName("touch"); 
-    pause.addStyleName("touch");     
-    Fade.setOpacity(back, 0.0);   
-    Fade.setOpacity(next, 0.0);
-    Fade.setOpacity(home, 0.0);
-    Fade.setOpacity(play, 0.0);
-    Fade.setOpacity(pause, 0.0);    
+    symbol[BACK] = new Image("icons/back.svg");
+    symbol[BACK_DOWN] = new Image("icons/back_down.svg");
+    symbol[NEXT] = new Image("icons/next.svg");
+    symbol[NEXT_DOWN] = new Image("icons/next_down.svg");
+    symbol[HOME] = new Image("icons/gallery.svg");
+    symbol[HOME_DOWN] = new Image("icons/gallery_down.svg");
+    symbol[PLAY] = new Image("icons/play.svg");
+    symbol[PAUSE] = new Image("icons/pause.svg");
+    for (int i = FIRST; i <= LAST; i++) {
+      symbol[i].addStyleName("touch");
+      Fade.setOpacity(symbol[i], 0.0);
+    }   
     imagePanel.addAttachmentListener(this);
   }
   
-//  /* (non-Javadoc)
-//   * @see com.google.gwt.event.dom.client.MouseDownHandler#onMouseDown(com.google.gwt.event.dom.client.MouseDownEvent)
-//   */
-//  @Override
-//  public void onMouseDown(MouseDownEvent event) {
-//
-//  }
+  /* (non-Javadoc)
+   * @see com.google.gwt.event.dom.client.MouseDownHandler#onMouseDown(com.google.gwt.event.dom.client.MouseDownEvent)
+   */
+  @Override
+  public void onMouseDown(MouseDownEvent event) {
+
+  }
 //
 //  /* (non-Javadoc)
 //   * @see com.google.gwt.event.dom.client.MouseMoveHandler#onMouseMove(com.google.gwt.event.dom.client.MouseMoveEvent)
@@ -123,27 +123,27 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
     if (y < h * 7 / 8) {
       if (x < w / 4) {
         // back
-        visualFeedBack(back, 0, h/8, w/5, h*6/8);
+        visualFeedBack(symbol[BACK], 0, h/8, w/5, h*6/8);
         slideshow.stop();
         slideshow.back();        
       } else if (x > w * 3 / 4) {
         // next
-        visualFeedBack(next, w*4/5, h/8, w/5, h*6/8);
+        visualFeedBack(symbol[NEXT], w*4/5, h/8, w/5, h*6/8);
         slideshow.stop();
         slideshow.next();        
       } else if (y < h / 4) {
         // home
         hideAllWidgets();
-        showWidget(home, w/4, 0, w/2, h/4);
-        fader = new FadeHomeButton(home, event);
+        showWidget(symbol[HOME], w/4, 0, w/2, h/4);
+        fader = new FadeHomeButton(symbol[HOME], event);
         fader.run(100);               
       } else {
         // play pause
         if (slideshow.isRunning()) {
-          visualFeedBack(pause, w/4, h/4, w/2, h/2);            
+          visualFeedBack(symbol[PAUSE], w/4, h/4, w/2, h/2);            
           slideshow.stop();
         } else {
-          visualFeedBack(play, w/4, h/4, w/2, h/2);           
+          visualFeedBack(symbol[PLAY], w/4, h/4, w/2, h/2);           
           slideshow.next();
           slideshow.start();
         }        
@@ -177,26 +177,12 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
 
   private void hideAllWidgets() {
     AbsolutePanel panel = imagePanel.getPanel();   
-    if (panel.getWidgetIndex(back) >= 0) {
-      Fade.setOpacity(back, 0.0);      
-      panel.remove(back);
-    }   
-    if (panel.getWidgetIndex(next) >= 0) {
-      Fade.setOpacity(next, 0.0);      
-      panel.remove(next);
+    for (int i = FIRST; i <= LAST; i++) {
+      if (panel.getWidgetIndex(symbol[i]) >= 0) {
+        Fade.setOpacity(symbol[i], 0.0);      
+        panel.remove(symbol[i]);
+      }         
     }
-    if (panel.getWidgetIndex(home) >= 0) {
-      Fade.setOpacity(home, 0.0);      
-      panel.remove(home);
-    }
-    if (panel.getWidgetIndex(play) >= 0) {
-      Fade.setOpacity(play, 0.0);      
-      panel.remove(play);
-    }    
-    if (panel.getWidgetIndex(pause) >= 0) {
-      Fade.setOpacity(pause, 0.0);      
-      panel.remove(pause);
-    } 
   }
   
   private void showWidget(Image img, int x, int y, int w, int h) {
