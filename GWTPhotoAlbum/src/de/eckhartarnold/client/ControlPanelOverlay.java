@@ -101,7 +101,8 @@ public class ControlPanelOverlay extends PanelOverlayBase {
    */
   public void syncWithCaption(CaptionOverlay caption) {
     if ( (position == TOP     && caption.getShowAtTop()) ||
-         (position == BOTTOM  && !caption.getShowAtTop()) ) {
+         (position == BOTTOM  // && controlPanel.hasFilmStrip() 
+          && !caption.getShowAtTop()) ) {
       this.syncedCaption = caption;      
       this.switchCaption = true;
     } else {
@@ -186,7 +187,9 @@ public class ControlPanelOverlay extends PanelOverlayBase {
       controlPanel.onResized();      
     }
     if (height == 0) height = Toolbox.getOffsetHeight(controlPanel);
-    if (position == BOTTOM) {
+    // A control panels without film strip always appears at the top
+    if (position == BOTTOM // && controlPanel.hasFilmStrip()
+        ) { 
       y += h-height;
     }
     popup.setPopupPosition(x, y);

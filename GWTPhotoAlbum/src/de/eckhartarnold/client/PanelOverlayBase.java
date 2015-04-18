@@ -82,9 +82,10 @@ public abstract class PanelOverlayBase implements MouseMoveHandler,
     int y = event.getY();
     int border = controlPanel.getCrtlBtnSize() * 2;
     // if (lastMouseX != x || lastMouseY != y) {
-    if (distance(lastMouseX - x, lastMouseY - y) > POPUP_THRESHOLD ||
-        x < border || y < border || 
-        x > (Toolbox.getOffsetWidth(baseWidget) - border) || 
+    if ( // distance(lastMouseX - x, lastMouseY - y) > POPUP_THRESHOLD ||
+        // x < border ||
+        y < border || 
+        // x > (Toolbox.getOffsetWidth(baseWidget) - border) || 
         y > (Toolbox.getOffsetHeight(baseWidget) - border) ){
       showPopup(x, y);  
     }
@@ -124,7 +125,7 @@ public abstract class PanelOverlayBase implements MouseMoveHandler,
     timer.schedule(delay);   
   }
   
-  private double distance(int dx, int dy) {
-    return Math.sqrt(dx*dx + dy*dy);
-  }
+//  private double distance(int dx, int dy) {
+//    return Math.sqrt(dx*dx + dy*dy);
+//  }
 }

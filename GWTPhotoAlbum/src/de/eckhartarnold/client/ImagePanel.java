@@ -30,6 +30,7 @@ import com.google.gwt.event.dom.client.ErrorHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.dom.client.HasMouseDownHandlers;
 import com.google.gwt.event.dom.client.HasMouseMoveHandlers;
+import com.google.gwt.event.dom.client.HasMouseUpHandlers;
 import com.google.gwt.event.dom.client.HasMouseWheelHandlers;
 //import com.google.gwt.event.dom.client.HasTouchEndHandlers;
 //import com.google.gwt.event.dom.client.HasTouchMoveHandlers;
@@ -40,6 +41,8 @@ import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseMoveHandler;
+import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.event.dom.client.MouseWheelEvent;
 import com.google.gwt.event.dom.client.MouseWheelHandler;
 //import com.google.gwt.event.dom.client.TouchEndEvent;
@@ -69,7 +72,7 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class ImagePanel extends Composite implements HasMouseMoveHandlers, 
     HasMouseWheelHandlers, SourcesAttachmentEvents, ResizeListener,
-    HasClickHandlers, HasMouseDownHandlers /* ,
+    HasClickHandlers, HasMouseDownHandlers, HasMouseUpHandlers /* ,
     /* HasTouchStartHandlers, HasTouchMoveHandlers, HasTouchEndHandlers */  {
     
   /**
@@ -303,13 +306,20 @@ public class ImagePanel extends Composite implements HasMouseMoveHandlers,
   /* (non-Javadoc)
    * @see com.google.gwt.event.dom.client.HasMouseMoveHandlers#addMouseMoveHandler(com.google.gwt.event.dom.client.MouseMoveHandler)
    */
+  @Override
   public HandlerRegistration addMouseMoveHandler(MouseMoveHandler handler) {
     return addHandler(handler, MouseMoveEvent.getType());
+  }
+  
+  @Override
+  public HandlerRegistration addMouseUpHandler(MouseUpHandler handler) {
+    return addHandler(handler, MouseUpEvent.getType());
   }
 
   /* (non-Javadoc)
    * @see com.google.gwt.event.dom.client.HasMouseWheelHandlers#addMouseWheelHandler(com.google.gwt.event.dom.client.MouseWheelHandler)
    */
+  @Override
   public HandlerRegistration addMouseWheelHandler(MouseWheelHandler handler) {
     return addHandler(handler, MouseWheelEvent.getType());   
   }
