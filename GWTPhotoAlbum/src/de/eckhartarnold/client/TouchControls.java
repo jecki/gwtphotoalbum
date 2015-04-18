@@ -89,10 +89,10 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
   public TouchControls(Slideshow slideshow) {
     this.slideshow = slideshow;
     imagePanel = slideshow.getImagePanel();
-    imagePanel.addClickHandler(this);
+//    imagePanel.addClickHandler(this);
     imagePanel.addMouseDownHandler(this);
-    imagePanel.addMouseMoveHandler(this);
-    imagePanel.addMouseUpHandler(this);
+//    imagePanel.addMouseMoveHandler(this);
+//    imagePanel.addMouseUpHandler(this);
     symbol[BACK] = new Image("icons/back.svg");
     symbol[BACK_DOWN] = new Image("icons/back.svg");
     symbol[NEXT] = new Image("icons/next.svg");
@@ -123,22 +123,24 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
    */
   @Override
   public void onMouseDown(MouseDownEvent event) {
-    int button = buttonTouched(event.getX(), event.getY());
-    buttonDown = button;
-    Rectangle r = buttonBoundary(button);   
-    if (button >= FIRST && button <= LAST) {
-      if (button == BACK || button == NEXT || button == HOME) {
-        button++;
-      } else if (button == PLAY) {
-        if (slideshow.isRunning()) {
-          button = PAUSE;
-        }
-      }
-      showWidget(symbol[button], r.x, r.y, r.w, r.h);
-      hideAllOtherWidgets(symbol[button]);
-      fader = new Fade(symbol[button], 0.0, 1.0, FADE_STEPS);
-      fader.run(100);      
-    }
+    buttonDown = buttonTouched(event.getX(), event.getY()); 
+    click(event.getX(), event.getY());
+//    int button = buttonTouched(event.getX(), event.getY());
+//    buttonDown = button;
+//    Rectangle r = buttonBoundary(button);   
+//    if (button >= FIRST && button <= LAST) {
+//      if (button == BACK || button == NEXT || button == HOME) {
+//        button++;
+//      } else if (button == PLAY) {
+//        if (slideshow.isRunning()) {
+//          button = PAUSE;
+//        }
+//      }
+//      showWidget(symbol[button], r.x, r.y, r.w, r.h);
+//      hideAllOtherWidgets(symbol[button]);
+//      fader = new Fade(symbol[button], 0.0, 1.0, FADE_STEPS);
+//      fader.run(100);      
+//    }
   }
 
   /* (non-Javadoc)
@@ -263,9 +265,9 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
     } else if (button == HOME) {
       showWidget(symbol[HOME], r.x, r.y, r.w, r.h);      
       hideAllOtherWidgets(symbol[HOME]);
-      homeButtonHandler.onClick(null);
+      // homeButtonHandler.onClick(null);
       fader = new FadeHomeButton(symbol[HOME], null); // TODO: using null here is a hack!!! Need to refactor home button listener logic.
-      fader.run(100);               
+      fader.run(200);               
     } else if (button == PLAY){
       if (slideshow.isRunning()) {
         visualFeedBack(symbol[PAUSE],r.x, r.y, r.w, r.h);            
