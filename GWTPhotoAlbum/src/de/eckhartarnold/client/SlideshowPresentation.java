@@ -20,6 +20,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
 
 /**
  * A simpler version of class {@link GalleryPresentation} which only "presents"
@@ -30,8 +31,11 @@ import com.google.gwt.user.client.History;
  */
 public class SlideshowPresentation extends Presentation implements ClickHandler { 
   
-  public SlideshowPresentation(Panel parent, Layout layout) {
+  protected String referrer;
+  
+  public SlideshowPresentation(Panel parent, Layout layout, String referrer) {
     super(parent, layout);
+    this.referrer = referrer;
     activateSlideshow();
     int imageNr = Presentation.parseSlideToken(History.getToken());
     if (imageNr >= 0) {
@@ -42,7 +46,7 @@ public class SlideshowPresentation extends Presentation implements ClickHandler 
     }
     layout.setHomeButtonListener(this);    
   }
-
+  
   /**
    * Click handler for the HOME-Button of the control panel. Jumps back to the
    * first picture. (In the galler presentation it jumps to the gallery instead.
@@ -52,8 +56,12 @@ public class SlideshowPresentation extends Presentation implements ClickHandler 
    *                if the caller is not a widget object.
    */
   public void onClick(ClickEvent event) {
-    Slideshow slideshow = layout.getSlideshow();
-    slideshow.stop();    
-    slideshow.show(0);
+    if (referrer != "") {
+      Window.Location.assign(referrer); 
+    } else {
+      Slideshow slideshow = layout.getSlideshow();
+      slideshow.stop();    
+      slideshow.show(0);
+    }
   }
 }

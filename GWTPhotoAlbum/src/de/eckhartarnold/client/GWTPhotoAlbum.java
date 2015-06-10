@@ -139,10 +139,14 @@ public class GWTPhotoAlbum implements EntryPoint {
 	        gallery = new Gallery(src);
 	        presentation = new GalleryPresentation(root, gallery, layout);		      
 		    } else if (presentationType.equalsIgnoreCase(PRESENTATION_SLIDESHOW)) {
-		      presentation = new SlideshowPresentation(root, layout);   
+		      presentation = new SlideshowPresentation(root, layout, "");
+		    } else if (presentationType.startsWith("http://") || 
+		               presentationType.startsWith("https://")) {
+		      presentation = new SlideshowPresentation(root, layout, 
+		                                               presentationType);
 		    } else {
           ImageCollectionReader.ERROR_DIALOG.message("Illegal presentation " +
-              "type: " + layoutType);
+              "type or referrer: " + presentationType);
 		    }
 		    if (src.getInfo().get(KEY_ADD_LOWRES_LAYOUT) != "false" && 
 		        presentation != null) {

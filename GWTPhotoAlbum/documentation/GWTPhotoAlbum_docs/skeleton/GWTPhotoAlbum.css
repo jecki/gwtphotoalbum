@@ -119,6 +119,11 @@ body {
 	z-index:100;
 }
 
+.touchDown {
+	z-index:99;
+}
+
+
 /*
  *  Caption
  */ 
