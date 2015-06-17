@@ -347,8 +347,8 @@ void test_imagecollection::createAlbum() {
 
 	QVERIFY(entries.indexOf("index.html") >= 0);
 	// QVERIFY(entries.indexOf("index_offline.html") >= 0);
-	QVERIFY(entries.indexOf("GWTPhotoAlbum_xs.html") >= 0);
-	QVERIFY(entries.indexOf("GWTPhotoAlbum_fatxs.html") >= 0);
+	QVERIFY(entries.indexOf("GWTPhotoAlbum.html") >= 0);
+	QVERIFY(entries.indexOf("GWTPhotoAlbum_fat.html") >= 0);
 	for (int i = 1; i <= numImages; i++) {
 		QVERIFY( entries.indexOf(QString("noscript_image")+QString::number(i)+QString(".html")) >= 0 );
 	}

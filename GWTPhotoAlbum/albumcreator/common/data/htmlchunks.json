@@ -48,7 +48,7 @@ try it none the less, please click on the link below:
   //-->
   </script>
   <noscript>
-  <meta http-equiv="REFRESH" content="0;noscript_$ENTRY.html">
+  <meta http-equiv="REFRESH" content="0;noscript_$ENTRY.html" />
   </noscript>
 </head>
 <body>
@@ -120,7 +120,7 @@ $GALLERYROWS
     </div>
     <br /><br /><br />
     <div style="text-align:center;">
-    <a style="color:#40A0FF; text-size:9px;" href="GWTPhotoAlbum_xs.html#Slide_$SLIDENR">javascript version</a>
+    <a style="color:#40A0FF; text-size:9px;" href="GWTPhotoAlbum.html#Slide_$SLIDENR">javascript version</a>
     </div><br />
 </body>
 </html>

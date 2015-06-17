@@ -19,7 +19,7 @@
 #include <QCoreApplication>
 #include <QMutexLocker>
 #include <QStringList>
-#include <QNetworkAccessManager>
+// #include <QNetworkAccessManager>
 
 
 #ifndef NDEBUG

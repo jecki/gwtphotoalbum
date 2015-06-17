@@ -50,7 +50,7 @@
 			<arg value="war" />
 			<!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
 			<arg line="${gwt.args}" />
-			<arg value="de.eckhartarnold.GWTPhotoAlbum_xs" />
+			<arg value="de.eckhartarnold.GWTPhotoAlbum" />
 		</java>
 	</target>
 

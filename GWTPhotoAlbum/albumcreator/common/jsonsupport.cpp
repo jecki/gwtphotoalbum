@@ -28,11 +28,6 @@
 #include <QSize>
 
 
-#ifndef NDEBUG
-#include <iostream>
-#endif
-
-
 /*!
  * Skips part of a JSON text until a stop character is reached.
  * Sets the ok flag to false if no stop character is reached within the
@@ -53,7 +48,7 @@ inline bool parseSkip(QString stoppers, const QString text, int &index, int stop
 		}
 		if (index >= stop) ok = false;
 	}
-	return ok;
+	return (ok);
 }
 
 
@@ -77,10 +72,10 @@ QString parseMultiLineString(const QString text, int &index, int stop, bool &ok)
 		} else {
 			int n = index-start;
 			index += 3;
-			return text.mid(start, n);
+			return (text.mid(start, n));
 		}
 	}
-	return QString("");
+	return (QString(""));
 }
 
 
@@ -96,7 +91,7 @@ QString parseMultiLineString(const QString text, int &index, int stop, bool &ok)
 QString parseString(const QString text, int &index, int stop, bool &ok) {
 	if (parseSkip("\"'", text, index, stop, ok)) {
 		if (text.mid(index, 3) == "\"\"\"") {
-			return parseMultiLineString(text, index, stop, ok);
+			return (parseMultiLineString(text, index, stop, ok));
 		}
 		QChar delimiter = text[index];
 		index++;
@@ -120,11 +115,11 @@ QString parseString(const QString text, int &index, int stop, bool &ok) {
 				}
 			}
 			ret.truncate(ret.length() - t);
-			return ret;
+			return (ret);
 
 		}
 	}
-	return QString("");
+	return (QString(""));
 }
 
 
@@ -149,7 +144,7 @@ QStringList parseStringList(const QString text, int &index, int stop, bool &ok) 
 		}
 		index++;
 	}
-	return ret;
+	return (ret);
 }
 
 
@@ -180,7 +175,7 @@ QMap<QString, QString> parseStringMap(const QString text, int &index, int stop, 
 		}
 		index++;
 	}
-	return ret;
+	return (ret);
 }
 
 

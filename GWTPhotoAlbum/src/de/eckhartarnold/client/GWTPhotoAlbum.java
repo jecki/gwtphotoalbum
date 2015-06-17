@@ -18,6 +18,8 @@ package de.eckhartarnold.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.RunAsyncCallback;
+import com.google.gwt.user.client.Window;
 //import com.google.gwt.i18n.client.LocaleInfo;
 //import com.google.gwt.user.client.ui.HTML;
 //import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -100,7 +102,7 @@ public class GWTPhotoAlbum implements EntryPoint {
     
 		new ImageCollectionReader(GWT.getHostPageBaseURL() + IMAGE_COLLECTION_DIR, 
 		    new ImageCollectionReader.ICallback() {
-		  public void callback(ImageCollectionReader src) {
+		  public void callback(final ImageCollectionReader src) {
 		    
 		    // create layout
 		    String layoutType = src.getInfo().get(KEY_LAYOUT_TYPE);
@@ -136,8 +138,15 @@ public class GWTPhotoAlbum implements EntryPoint {
 		    String presentationType = src.getInfo().get(KEY_PRESENTATION_TYPE);
 		    if (presentationType == null || 
 		        presentationType.equalsIgnoreCase(PRESENTATION_GALLERY)) {
-	        gallery = new Gallery(src);
-	        presentation = new GalleryPresentation(root, gallery, layout);		      
+		      GWT.runAsync(new RunAsyncCallback() {
+	          public void onFailure(Throwable caught) {
+	            Window.alert("Sorry, could not load Gallery classes!");
+	          }		        
+	          public void onSuccess() {
+	            gallery = new Gallery(src);
+	            presentation = new GalleryPresentation(root, gallery, layout);
+	          }
+		      });
 		    } else if (presentationType.equalsIgnoreCase(PRESENTATION_SLIDESHOW)) {
 		      presentation = new SlideshowPresentation(root, layout, "");
 		    } else if (presentationType.startsWith("http://") || 

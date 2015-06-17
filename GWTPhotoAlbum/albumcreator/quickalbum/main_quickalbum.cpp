@@ -84,6 +84,6 @@ int main(int argc, char *argv[])
 	std::cout << "program finished!" << std::endl;
 #endif
 
-	return ret;
+	return (ret);
 	// return w.returnValue;
 }

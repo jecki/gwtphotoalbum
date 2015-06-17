@@ -36,10 +36,6 @@
 #include <QtCore/QtConcurrentRun>
 #endif
 
-#ifndef NDEBUG
-#include <iostream>
-#endif
-
 static QList<QSize> archiveSizes() {
 	QList<QSize> asList;
 	asList << QSize(-1, -1);
@@ -73,8 +69,8 @@ ImageCollection::ImageCollection(QObject *parent)
 	add_lowres_layout = true;
 	display_duration  = 5000;
 	image_fading 	  = -750; // negative value: fade in, fade out in sequence rather than at the same time
-	thumbnail_width   = 320;  // ImageItem::Thumbnail_Size.width();
-	thumbnail_height  = 320;  // ImageItem::Thumbnail_Size.height();
+	thumbnail_width   = 160;  // ImageItem::Thumbnail_Size.width();
+	thumbnail_height  = 160;  // ImageItem::Thumbnail_Size.height();
 	gallery_horizontal_padding = 40;
 	gallery_vertical_padding = 15;
 	sizesList << ImageItem::Thumbnail_Size;
@@ -488,10 +484,10 @@ bool ImageCollection::createAlbum(QString destinationPath)
 	if (presentation_type == "gallery") flags |= HTMLProcessing::GALLERY;
 	if (add_noscript_version) flags |= HTMLProcessing::NOSCRIPT_PAGES;
 	writeTextFile(genHTML.indexPage(flags), parent.path()+"/index.html", errorMsg, ok);
-	QString startPage = readTextFile(parent.path()+"/GWTPhotoAlbum_xs.html",
+	QString startPage = readTextFile(parent.path()+"/GWTPhotoAlbum.html",
 						errorMsg, ok);
 	if (!ok) {
-		return (terminateCreation());
+		return (terminateCreation(" File index.html or GWTPhotoalbum.html!?"));
 	}
 
 	parent.mkdir("slides");
@@ -518,7 +514,7 @@ bool ImageCollection::createAlbum(QString destinationPath)
 
 	writeTextFile(genHTML.fatStartPage(startPage, infojs,
 				directoriesjs, filenamesjs, captionsjs, resolutionsjs),
-				parent.path()+"/GWTPhotoAlbum_fatxs.html", errorMsg, ok);
+				parent.path()+"/GWTPhotoAlbum_fat.html", errorMsg, ok);
 	if (add_offline_version) {
 		writeTextFile(genHTML.offlineIndex(flags), parent.path()+"/index_offline.html", errorMsg, ok);
 	}
@@ -748,7 +744,8 @@ void ImageCollection::deploy_GWTPhotoAlbumFiles(QDir location)
 			archive.close();
 		}
 		if (archive.error() != QFile::NoError) {
-			errorMsg << archive.errorString();
+			errorMsg << archive.errorString() << " "
+					 << ":/data/GWTPhotoAlbum-Deploy.qa";
 			ok = false;
 		}
 
@@ -781,7 +778,8 @@ void ImageCollection::deploy_GWTPhotoAlbumFiles(QDir location)
 						i += L;
 						file.close();
 						if (file.error() != QFile::NoError) {
-							errorMsg << file.errorString();
+							errorMsg << file.errorString()
+									 << " File: " << location.path();
 							ok = false;
 						}
 					}

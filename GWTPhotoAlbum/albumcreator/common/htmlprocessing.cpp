@@ -21,14 +21,13 @@
 #include <QIODevice>
 
 #ifndef NDEBUG
-#include <iostream>
 #include <QFileInfo>
 #include "toolbox.h"
 #endif
 
 
-const QString HTMLProcessing::startPageName = "GWTPhotoAlbum_xs.html";
-const QString HTMLProcessing::fatStartPageName = "GWTPhotoAlbum_fatxs.html";
+const QString HTMLProcessing::startPageName = "GWTPhotoAlbum.html";
+const QString HTMLProcessing::fatStartPageName = "GWTPhotoAlbum_fat.html";
 const QString HTMLProcessing::noscriptFirstPageName = "noscript_gallery.html"; // exchange gallery through image0 in case there is no gallery
 const QString HTMLProcessing::noscriptImagePageName = "noscript_image$NUMBER.html";
 
@@ -97,10 +96,10 @@ bool HTMLProcessing::readTemplates(QTextStream &chunks_json)
 		}
 		int N = sizeof(templatenames) / sizeof(templatenames[0]);
 		for (int i = 0; i < N; i++) {
-			if (!htmlTemplates.contains(templatenames[i])) return false;
+			if (!htmlTemplates.contains(templatenames[i])) return (false);
 		}
 	}
-	return ok;
+	return (ok);
 }
 
 
@@ -131,11 +130,11 @@ void HTMLProcessing::setDoctype(int doctype)
 int  HTMLProcessing::doctype()
 {
 	if (doctype_string == htmlTemplates["doctypeHTML5"]) {
-		return DOCTYPE_HTML5;
+		return (DOCTYPE_HTML5);
 	} else if (doctype_string == htmlTemplates["doctypeXHTML11"]) {
-		return DOCTYPE_XHTML11;
+		return (DOCTYPE_XHTML11);
 	} else {
-		return DOCTYPE_UNKNOWN;
+		return (DOCTYPE_UNKNOWN);
 	}
 }
 
@@ -160,7 +159,7 @@ QString HTMLProcessing::indexPage(int flags)
 	}
 	idxPage.replace("$ALBUM", startPageName)
 	       .replace("$DOCTYPE", doctype_string);
-	return idxPage;
+	return (idxPage);
 }
 
 
@@ -173,7 +172,7 @@ QString HTMLProcessing::offlineIndex(int flags)
 {
 	QString idxPage = indexPage(flags);
 	idxPage.replace(startPageName, fatStartPageName);
-	return idxPage;
+	return (idxPage);
 }
 
 
@@ -184,10 +183,11 @@ QString HTMLProcessing::offlineIndex(int flags)
  * @return
  */
 QString createJSONBlock(QString name, QString block) {
-	QString ret = QString("<script id=\"") + name + QString("\" style=\"display:none;\">\n");
+	QString ret = QString("<script id=\"") + name +
+			      QString("\" style=\"display:none;\" type=\"application/json\">\n");
 	ret += block;
 	ret += QString("</script>\n");
-	return ret;
+	return (ret);
 }
 
 
@@ -218,7 +218,7 @@ QString HTMLProcessing::fatStartPage(QString &startPage, const QString info_json
 			oldJSONBlock = true;
 		} else if (line.indexOf("src=\"GWTPhotoAlbum/GWTPhotoAlbum.nocache.js\"") >= 0) {
 			output << line.replace("GWTPhotoAlbum/GWTPhotoAlbum.nocache.js",
-					"GWTPhotoAlbum_xs/GWTPhotoAlbum_xs.nocache.js") << "\n";
+					"GWTPhotoAlbum/GWTPhotoAlbum.nocache.js") << "\n";
 		} else if (line.indexOf("<meta name=\"info\"") >= 0) {
 			// pass
 		} else if (line.indexOf("</head>") >= 0) {
@@ -234,7 +234,7 @@ QString HTMLProcessing::fatStartPage(QString &startPage, const QString info_json
 		}
 	}
 	output.flush();
-	return result;
+	return (result);
 }
 
 
@@ -292,7 +292,7 @@ QString HTMLProcessing::noscriptGallery(const QString title, const QString subti
 		   .replace("$GALLERYROWS", galleryrows)
 	       .replace("$DOCTYPE", doctype_string);
 
-	return gallery;
+	return (gallery);
 }
 
 
@@ -350,7 +350,7 @@ QString HTMLProcessing::noscriptImagePage(int imageNr, const QString sizeDir,
 	             .replace("$IMAGE", imageHTML)
                  .replace("$DOCTYPE", doctype_string);
 
-	return imagePageHTML;
+	return (imagePageHTML);
 }
 
 

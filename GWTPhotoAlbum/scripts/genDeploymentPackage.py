@@ -115,7 +115,7 @@ def assemble():
             pathname = (os.path.normpath(dirname[len(source_dir):]), "")
             while pathname[0] not in ["", "/"]:
                 pathname = os.path.split(pathname[0])
-            if pathname[1] not in ["GWTPhotoAlbum_xs", "icons", "."] or \
+            if pathname[1] not in ["GWTPhotoAlbum", "icons", "."] or \
                     dirname.find(".svn") >= 0:
                 print ("ignoring directory: " + dirname)
                 return
@@ -126,11 +126,11 @@ def assemble():
                     if entry.find("Demo") >= 0 \
                             or (os.path.isdir(os.path.join(dirname, entry)) \
                             and entry not in ("gwt", "icons",  # "GWTPhotoAlbum"  
-                                              "GWTPhotoAlbum_xs")) \
+                                              "GWTPhotoAlbum")) \
                             or entry in ["index.html", "index_offline.html", 
                                          "GWTPhotoAlbum_offline.html",
-                                         "GWTPhotoAlbum.html"] \
-                            or entry.find("_fatxs") >= 0 \
+                                         "GWTPhotoAlbum_xs.html"] \
+                            or entry.find("_fat") >= 0 \
                             or entry.startswith("noscript_") :
                         print ("ignoring: "+entry)
                         names.remove(entry)

@@ -81,7 +81,7 @@ bool contains_still_templates(const QString &str)
 
 void test_htmlprocessing::initTestCase() {
 	QMap<QString, QString> files = extractDeploymentFiles();
-	startPage = files["GWTPhotoAlbum_xs.html"];
+	startPage = files["GWTPhotoAlbum.html"];
 	QVERIFY(!startPage.isEmpty());
 	try {
 		hp = new HTMLProcessing(); // implicitly tests "readTemplates"

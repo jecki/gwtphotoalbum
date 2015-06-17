@@ -88,7 +88,7 @@ public:
     ImageItem *search(const QString destName, int &continueWith);
     ImageItem *find(const QString destName);
 
-    QList<QSize> const &sizes() { return sizesList; };
+    QList<QSize> const &sizes() { return (sizesList); };
     void		 setSizes(const QList<QSize> &sizesList) { this->sizesList = sizesList; };
 
     int		addImageList(const QString &fileName);
@@ -102,10 +102,10 @@ public:
 	QString resolutionsJSON();
 
 	bool    createAlbum(QString destinationPath);
-	bool	isRunning() const {return running; } /*!< returns true, if album creation is under way, false otherwise */
+	bool	isRunning() const {return (running); } /*!< returns true, if album creation is under way, false otherwise */
 	bool	rollback();
 
-	QString errorString() { return errorMsg.join("\n"); }
+	QString errorString() { return (errorMsg.join("\n")); }
 
 private:
 	HTMLProcessing genHTML;

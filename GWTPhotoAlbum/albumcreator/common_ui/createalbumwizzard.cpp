@@ -93,9 +93,9 @@ CreateAlbumWizzard::~CreateAlbumWizzard()
 QString CreateAlbumWizzard::albumUrl() const
 {
 	if (albumTask.isFinished() && albumTask.result()) {
-		return destPath + "/index.html";
+		return (destPath + "/index.html");
 	} else {
-		return QString();
+		return (QString());
 	}
 }
 
@@ -188,10 +188,10 @@ bool CreateAlbumWizzard::queryStopAlbumCreation()
 		if (ic.isRunning()) {
 			ui.labelCreateGallery->setText(tr("Album creation interrupted!"));
 			ic.stopAlbumCreation();
-			return true;
+			return (true);
 		}
 	}
-	return false;
+	return (false);
 }
 
 
@@ -209,13 +209,13 @@ QString CreateAlbumWizzard::albumNameSuggestion(const QString &path) const
 	if (location.exists()) {
 		QString name = deriveFileName(ui.titleEdit->text());
 		if (name.isEmpty()) {
-			return "album";
+			return ("album");
 		} else {
-			return name;
+			return (name);
 		}
 	} else {
 		location.setFile(ui.locationEdit->text());
-		return location.fileName();
+		return (location.fileName());
 	}
 }
 
@@ -250,7 +250,7 @@ QString CreateAlbumWizzard::albumPath(const QString &path) const
 			i++;
 		}
 	}
-	return location.filePath();
+	return (location.filePath());
 }
 
 
@@ -266,7 +266,7 @@ QString CreateAlbumWizzard::albumParentDir(const QString &path) const
 	while (!(location.isDir() && location.exists())) {
 		location.setFile(location.path());
 	}
-	return location.filePath();
+	return (location.filePath());
 }
 
 
@@ -282,7 +282,7 @@ QString CreateAlbumWizzard::archiveNameSuggestion() const
 	if (name.isEmpty()) {
 		name = "all_pictures";
 	}
-	return name+".zip";
+	return (name+".zip");
 }
 
 
@@ -300,7 +300,7 @@ static const QString GENERIC_ARCHIVE_LINK_TEXT(QObject::tr("download all picture
  */
 int CreateAlbumWizzard::archiveLinkPosition(const QString &html) const
 {
-	return html.indexOf(ARCHIVE_LINK_START);
+	return (html.indexOf(ARCHIVE_LINK_START));
 }
 
 
@@ -315,11 +315,11 @@ QString CreateAlbumWizzard::archiveLinkText(const QString &html) const
 {
 	int i = archiveLinkPosition(html);
 	if (i < 0) {
-		return GENERIC_ARCHIVE_LINK_TEXT;
+		return (GENERIC_ARCHIVE_LINK_TEXT);
 	} else {
 		int k = html.indexOf(">", i + ARCHIVE_LINK_START.length()) + 1;
 		int l = html.indexOf("<", k) - k;
-		return html.mid(k, l);
+		return (html.mid(k, l));
 	}
 }
 
@@ -338,7 +338,7 @@ QString &CreateAlbumWizzard::removeArchiveLink(QString &html) const
 		int l = html.indexOf(ARCHIVE_LINK_END, i)-i +ARCHIVE_LINK_END.length();
 		html.remove(i, l);
 	}
-	return html;
+	return (html);
 }
 
 
@@ -365,7 +365,7 @@ QString &CreateAlbumWizzard::addArchiveLink(QString &html, int position, QString
 	} else {
 		html.insert(position, link);
 	}
-	return html;
+	return (html);
 }
 
 

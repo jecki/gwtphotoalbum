@@ -180,14 +180,14 @@ public class ImageCollectionReader implements ImageCollectionInfo {
         return true;
       } else {
         String location = Window.Location.getHref();
-        if (!location.contains("GWTPhotoAlbum_fatxs.html")) {
-          String target = "GWTPhotoAlbum_fatxs.html";
+        /* if (!location.contains("GWTPhotoAlbum_fat.html")) {
+          String target = "GWTPhotoAlbum_fat.html";
           int i = location.lastIndexOf("#");
           if (i >= 0) {
             target += location.substring(i);
           }
           redirect(GWT.getHostPageBaseURL()+target);
-        }
+        } */
         return false;
       }    
     }    
@@ -433,10 +433,10 @@ public class ImageCollectionReader implements ImageCollectionInfo {
   private void readJSON(String url, JSONDelegate task, IMessage error) {
     RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
     JSONReceiver receiver = new JSONReceiver(url, task, error);
-    try {
-      builder.sendRequest(null, receiver);
-    } catch (RequestException e) {
-      if (!receiver.extractJSONfromHTML()) {
+    if (!receiver.extractJSONfromHTML()) {    
+      try {
+        builder.sendRequest(null, receiver);
+      } catch (RequestException e) {
         error.message("Couldn't retrieve JSON: " + url + 
             "<br />" + e.getMessage());
       }
