@@ -86,6 +86,7 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
   private ImagePanel   imagePanel;
   private Image[]      symbol = new Image[8];
   private Slideshow    slideshow;
+  private boolean      touched = false;
   
   public TouchControls(Slideshow slideshow) {
     this.slideshow = slideshow;
@@ -119,8 +120,12 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
   @Override
   public void onMouseDown(MouseDownEvent event) {
     if (event.getNativeButton() == NativeEvent.BUTTON_LEFT) {
-      buttonDown = buttonTouched(event.getX(), event.getY()); 
-      touch(event.getX(), event.getY());
+      if (touched) {
+        touched = false;
+      } else {
+        buttonDown = buttonTouched(event.getX(), event.getY()); 
+        touch(event.getX(), event.getY());
+      }
     }
 //    int button = buttonTouched(event.getX(), event.getY());
 //    buttonDown = button;
@@ -171,7 +176,8 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
       // Debugger.print("TouchControls.onTouchStart() x = " + touches.get(0).getClientX() + "  y = " + touches.get(0).getClientY());
       int x = touches.get(0).getClientX();
       int y = touches.get(0).getClientY();
-      buttonDown = buttonTouched(x, y);       
+      buttonDown = buttonTouched(x, y); 
+      touched = true;
       touch(x, y);
     }
   }  
