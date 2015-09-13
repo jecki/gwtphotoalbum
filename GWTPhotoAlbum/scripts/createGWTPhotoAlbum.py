@@ -346,6 +346,7 @@ checkJSPageHTML = u"""<?xml version="1.0" encoding="UTF-8" ?>
   <title>GWTPhotoAlbum Redirect Page</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta name="generator"  content="GWTPhotoAlbum creator" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
   <script type="text/javascript">
   <!--
   window.location = "$ALBUM"
@@ -374,7 +375,8 @@ redirectPageHTML = u"""<?xml version="1.0" encoding="UTF-8" ?>
 <head>
   <title>GWTPhotoAlbum Redirect Page</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <meta name="generator"  content="GWTPhotoAlbum creator" />
+  <meta name="generator" content="GWTPhotoAlbum creator" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
   <script type="text/javascript">
   <!--
   window.location = "$ALBUM"
@@ -405,7 +407,8 @@ galleryHTML = u"""<?xml version="1.0" encoding="UTF-8" ?>
 <head>
   <title>$TITLE</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <meta name="generator"  content="GWTPhotoAlbum creator" />  
+  <meta name="generator" content="GWTPhotoAlbum creator" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
   <link rel="stylesheet" type="text/css" href="GWTPhotoAlbum.css" />     
 </head>
 <body>
@@ -453,7 +456,8 @@ imagePageHTML = u"""<?xml version="1.0" encoding="UTF-8" ?>
 <head>
   <title>$TITLE</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <meta name="generator"  content="GWTPhotoAlbum creator" />
+  <meta name="generator" content="GWTPhotoAlbum creator" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
   <link rel="stylesheet" type="text/css" href="GWTPhotoAlbum.css" />
 </head>
 <body class="imageBackground">

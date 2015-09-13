@@ -90,6 +90,11 @@ public class Debugger implements ResizeHandler {
     //singleton.onWindowResized(Window.getClientWidth(), 
     //    Window.getClientHeight());      
   }
+  
+  
+  public static native void consoleLog(String txt) /*-{
+      console.log(txt);
+  }-*/;
 
   /**
    * Sets the size of the debugger

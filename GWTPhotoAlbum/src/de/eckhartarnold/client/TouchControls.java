@@ -16,14 +16,15 @@
 
 package de.eckhartarnold.client;
 
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.dom.client.NativeEvent;
+import com.google.gwt.dom.client.Touch;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
-import com.google.gwt.event.dom.client.MouseMoveEvent;
-import com.google.gwt.event.dom.client.MouseMoveHandler;
-import com.google.gwt.event.dom.client.MouseUpEvent;
-import com.google.gwt.event.dom.client.MouseUpHandler;
+import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
@@ -44,7 +45,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author eckhart
  */
 public class TouchControls implements AttachmentListener, SlideshowControl,
-    MouseDownHandler, MouseMoveHandler, MouseUpHandler, ClickHandler {
+    TouchStartHandler, MouseDownHandler { // , MouseMoveHandler, MouseUpHandler, ClickHandler {
 
 //  private class FadeOut extends Fade {     
 //    FadeOut(Widget widget) {
@@ -89,10 +90,8 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
   public TouchControls(Slideshow slideshow) {
     this.slideshow = slideshow;
     imagePanel = slideshow.getImagePanel();
-//    imagePanel.addClickHandler(this);
     imagePanel.addMouseDownHandler(this);
-//    imagePanel.addMouseMoveHandler(this);
-//    imagePanel.addMouseUpHandler(this);
+    imagePanel.addTouchStartHandler(this);
     symbol[BACK] = new Image("icons/back.svg");
     symbol[BACK_DOWN] = new Image("icons/back.svg");
     symbol[NEXT] = new Image("icons/next.svg");
@@ -113,18 +112,16 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
   }
   
   
-  @Override
-  public void onClick(ClickEvent event) {
-    click(event.getX(), event.getY());    
-  }
-  
+ 
   /* (non-Javadoc)
    * @see com.google.gwt.event.dom.client.MouseDownHandler#onMouseDown(com.google.gwt.event.dom.client.MouseDownEvent)
    */
   @Override
   public void onMouseDown(MouseDownEvent event) {
-    buttonDown = buttonTouched(event.getX(), event.getY()); 
-    click(event.getX(), event.getY());
+    if (event.getNativeButton() == NativeEvent.BUTTON_LEFT) {
+      buttonDown = buttonTouched(event.getX(), event.getY()); 
+      touch(event.getX(), event.getY());
+    }
 //    int button = buttonTouched(event.getX(), event.getY());
 //    buttonDown = button;
 //    Rectangle r = buttonBoundary(button);   
@@ -142,27 +139,6 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
 //      fader.run(100);      
 //    }
   }
-
-  /* (non-Javadoc)
-   * @see com.google.gwt.event.dom.client.MouseMoveHandler#onMouseMove(com.google.gwt.event.dom.client.MouseMoveEvent)
-   */
-  @Override
-  public void onMouseMove(MouseMoveEvent event) {
-    int button = buttonTouched(event.getX(), event.getY());
-    if (buttonDown >= FIRST && button != buttonDown) {
-      hideAllOtherWidgets(null);
-      buttonDown = -1;
-    }
-  }
-
-  /* (non-Javadoc)
-   * @see de.eckhartarnold.client.SlideshowControl#onClick(com.google.gwt.event.dom.client.ClickEvent)
-   */
-  @Override
-  public void onMouseUp(MouseUpEvent event) {
-    click(event.getX(), event.getY());
-  }
-
 
   /* (non-Javadoc)
    * @see de.eckhartarnold.client.SlideshowControl#setHomeButtonListener(com.google.gwt.event.dom.client.ClickHandler)
@@ -186,6 +162,19 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
   public void onUnload(Widget sender) {
     hideAllOtherWidgets(null);
   }
+  
+  @Override
+  public void onTouchStart(TouchStartEvent event) {
+    JsArray<Touch> touches = event.getTouches();
+    // Debugger.print("TouchControls.onTouchStart() touches.length = " + touches.length());
+    if (touches.length() > 0) {
+      // Debugger.print("TouchControls.onTouchStart() x = " + touches.get(0).getClientX() + "  y = " + touches.get(0).getClientY());
+      int x = touches.get(0).getClientX();
+      int y = touches.get(0).getClientY();
+      buttonDown = buttonTouched(x, y);       
+      touch(x, y);
+    }
+  }  
   
   /**
    * Returns the screen boundary for the visual feedback of a particular touch
@@ -240,12 +229,12 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
   }
   
   /**
-   * Reaction for a click or up event on the panel.
+   * Reaction for a touch event on the panel.
    * 
    * @param x  x-position of the event
    * @param y  y-position of the event
    */
-  protected void click(int x, int y) {
+  protected void touch(int x, int y) {
     int button = buttonTouched(x, y);    
     if (buttonDown == -1 || button != buttonDown) {
       hideAllOtherWidgets(null);
@@ -314,4 +303,5 @@ public class TouchControls implements AttachmentListener, SlideshowControl,
     fader = new Fade(img, 1.0, 0.0, FADE_STEPS);
     fader.run(500);
   }
+
 }

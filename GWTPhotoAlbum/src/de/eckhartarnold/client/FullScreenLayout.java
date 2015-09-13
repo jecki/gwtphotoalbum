@@ -51,6 +51,7 @@ public class FullScreenLayout extends Layout {
   public FullScreenLayout(ImageCollectionInfo collection, 
       String configuration) {
     super(collection, configuration);
+    // requestFullscreen();
     initOverlayWidgets(collection);
   } 
 
@@ -115,5 +116,34 @@ public class FullScreenLayout extends Layout {
       ((ControlPanelOverlay) popup).syncWithCaption(overlay);
     }    
   }
+  
+  
+  public static native void exitFullscreen()
+  /*-{
+    if ($doc.exitFullscreen) {
+      $doc.exitFullscreen();
+    } else if ($doc.msExitFullscreen) {
+      $doc.msExitFullscreen();
+    } else if ($doc.mozCancelFullScreen) {
+      $doc.mozCancelFullScreen();
+    } else if ($doc.webkitCancelFullScreen) {
+      $doc.webkitCancelFullScreen();
+    }
+  }-*/;
+  
+  public static native void requestFullscreen()
+  /*-{
+    var docElement = $doc.documentElement;
+    if (docElement.requestFullscreen) {
+      docElement.requestFullscreen();
+    } else if (docElement.msRequestFullscreen) {
+      docElement.msRequestFullscreen();
+    } else if (docElement.mozRequestFullScreen) {
+      docElement.mozRequestFullScreen();
+    } else if (docElement.webkitRequestFullScreen) {
+      docElement.webkitRequestFullScreen();
+    }
+  }-*/;  
+    
 }
 

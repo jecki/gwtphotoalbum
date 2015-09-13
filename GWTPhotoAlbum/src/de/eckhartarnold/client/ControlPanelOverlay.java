@@ -16,7 +16,6 @@
 
 package de.eckhartarnold.client;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;

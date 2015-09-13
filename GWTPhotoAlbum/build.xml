@@ -59,6 +59,7 @@
 			<classpath>
 				<pathelement location="src" />
 				<path refid="project.class.path" />
+			        <pathelement location="${gwt.sdk}/gwt-codeserver.jar"/>
 			</classpath>
 			<jvmarg value="-Xmx256M" />
 			<arg value="-startupUrl" />

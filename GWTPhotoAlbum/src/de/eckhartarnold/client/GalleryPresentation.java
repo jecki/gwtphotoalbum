@@ -81,7 +81,8 @@ public class GalleryPresentation extends Presentation implements GalleryListener
     }
     else onPickImage(imageNr);
     
-    History.addValueChangeHandler(this);  
+    History.addValueChangeHandler(this);
+    Debugger.consoleLog("GWTPhotoAlbum started");    
   }
   
   /**

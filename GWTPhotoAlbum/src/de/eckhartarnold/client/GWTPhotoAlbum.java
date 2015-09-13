@@ -96,7 +96,7 @@ public class GWTPhotoAlbum implements EntryPoint {
 	/**
    * This is the entry point method. (See the class description.)
    */
-	public void onModuleLoad() {  
+	public void onModuleLoad() {
 	  StatusTag.setHTML("initializing...");
     root = RootPanel.get();
     
