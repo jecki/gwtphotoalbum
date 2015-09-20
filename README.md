@@ -1,13 +1,13 @@
-# gwtphotoalbum
-
 GWTPhotoAlbum is a free (Apache 2.0 License) AJAX library for an online 
 photo gallery and slide show. 
 
-Project website: http://code.google.com/p/gwtphotoalbum/
+Project website: https://github.com/jecki/gwtphotoalbum
+
+(Former project website: http://code.google.com/p/gwtphotoalbum/)
 
 
-Copyright 2008-2012 Eckhart Arnold (eckhart_arnold@yahoo.de).
- 
+Copyright 2008-2015 Eckhart Arnold (eckhart_arnold@yahoo.de).
+
 Licensed under the Apache License, Version 2.0 (the "License") 
 You may obtain a copy of the License at
 
@@ -70,7 +70,7 @@ software must be installed on your system first:
 Python 2.6 or higher (www.python.org)
 The python imaging library PIL (http://www.pythonware.com/products/pil/)
 The pyexiv2 library (http://tilloy.net/dev/pyexiv2/)
-      
+
 
 How to use the sources:
 -----------------------
@@ -97,4 +97,3 @@ appreciated.
 Finally, why not help programming it? It does not need to be the core 
 components, but some plug-ins/export filters for popular imaging software 
 like Picasa or F-Spot would be nice, wouldn't they?
-
