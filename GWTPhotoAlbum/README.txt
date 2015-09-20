@@ -1,10 +1,12 @@
 GWTPhotoAlbum is a free (Apache 2.0 License) AJAX library for an online 
 photo gallery and slide show. 
 
-Project website: http://code.google.com/p/gwtphotoalbum/
+Project website: https://github.com/jecki/gwtphotoalbum
+
+(Former project website: http://code.google.com/p/gwtphotoalbum/)
 
 
-Copyright 2008-2012 Eckhart Arnold (eckhart_arnold@yahoo.de).
+Copyright 2008-2015 Eckhart Arnold (eckhart_arnold@yahoo.de).
  
 Licensed under the Apache License, Version 2.0 (the "License") 
 You may obtain a copy of the License at
