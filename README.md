@@ -55,10 +55,9 @@ Features:
 How to start from here:
 -----------------------
 
-First, you may want to look at some examples to see what it looks like:
+First, you may want to look at an example to see what it looks like:
 
-http://www.eckhartarnold.de/apppages/demos/GWTPhotoAlbum/GWTPhotoAlbum_Demo1.html
-http://www.eckhartarnold.de/apppages/demos/GWTPhotoAlbum/GWTPhotoAlbum_Demo2.html
+http://www.eckhartarnold.de/apppages/GWTPhotoAlbum/BayreuthAndAbroad
 
 If you want to create your own album, run the program "GWTPhotoAlbumCreator.py" 
 from the "scripts" subdirectory which leads you through the creation of a 
