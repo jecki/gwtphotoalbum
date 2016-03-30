@@ -50,6 +50,8 @@ Features:
    higher, Internet Explorer 7 and higher, Safari 3 and higher,
    Google Chrome; (unfortunately it does not work with the 
    KDE-Konqueror browser :( )
+
+9. Rudimentary touch screen support.
    
       
 How to start from here:
@@ -83,18 +85,5 @@ javadocs of the AJAX part of GWTPhotoAlbum can be found in the sub-directory
 "documentation/javadocs".
 
 
-How to join in:
----------------
 
-You can always help me developing this program by writing me bug 
-reports or giving comments about what you like and what you do not like
-about the program.
-
-Also, if you happen to be a good artist, some help regarding the design of
-the control buttons, the photo gallery and other aspect would be greatly
-appreciated. 
-
-Finally, why not help programming it? It does not need to be the core 
-components, but some plug-ins/export filters for popular imaging software 
-like Picasa or F-Spot would be nice, wouldn't they?
 
